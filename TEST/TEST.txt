@@ -1,5 +1,5 @@
 public static void main(String []args)
 {
-	printf("Hello Everybirdie");
+
 	printf("DAAAAAAAA");
 }
