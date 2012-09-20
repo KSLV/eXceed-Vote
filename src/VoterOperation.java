@@ -1,32 +1,32 @@
 
 public class VoterOperation {
 	
-	private String getName(id id)
+	private String getName(int id)
 	{
 		return "";
 	}
 	
-	private String getSureName(id id)
+	private String getSureName(int id)
 	{
 		return "";
 	}
 	
-	private int getTotalBallot(id id)
+	private int getTotalBallot(int id)
 	{
 		return 0;
 	}
 	
-	private int getUsedBallot(id id)
+	private int getUsedBallot(int id)
 	{
 		return 0;
 	}
 	
-	private void setTotalBallot(id id,int total)
+	private void setTotalBallot(int id,int total)
 	{
 		
 	}
 	
-	private void setUsedBallot(id id, int used)
+	private void setUsedBallot(int id, int used)
 	{
 		
 	}
