@@ -1,12 +1,14 @@
 
 public class Voter {
 	
-	private int id;
-	private int ballot;
-	public Voter(int id, int ballot)
-	{
-		this.ballot = ballot;
-		this.id = id;
+	protected String name;
+	protected String suName;
+	protected int totalBallot;
+	protected int id;
+	protected int uesdBallot;
+	
+	public Voter()
+	{		
 	}
 
 }
