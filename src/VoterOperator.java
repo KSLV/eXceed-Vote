@@ -1,5 +1,5 @@
 
-public class VoterOperation {
+public class VoterOperator {
 	
 	private String getName(id id)
 	{
