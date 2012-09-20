@@ -5,7 +5,7 @@ public class Voter {
 	protected String sureName;
 	protected int totalBallot;
 	protected int id;
-	protected int usedBallot;
+	protected int useBallot;
 	
 	public Voter()
 	{		
