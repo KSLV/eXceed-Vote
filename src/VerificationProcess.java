@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 
+
 public abstract class VerificationProcess {
 
 	private InputStream uis,pis;
@@ -13,7 +14,7 @@ public abstract class VerificationProcess {
 	private String tmpUsername;
 	private String tmpPassword;
 	private String userListDir;
-	private String passListDir;
+	private String passListDir;	
 
 	public VerificationProcess(String userListDir , String passListDir) throws IOException
 	{

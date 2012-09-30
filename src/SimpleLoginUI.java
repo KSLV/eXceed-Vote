@@ -1,11 +1,14 @@
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class SimpleLoginUI extends VerificationProcess{
 
 	private Scanner scanner;
 	private static String userListDir = "src//UsernameList.txt";
-	private static String passListDir = "src//PasswordList.txt";
+	private static String passListDir = "src//PasswordList.txt";	
+	
+	private Logger logger = Logger.getLogger(this.toString());
 	
 	public SimpleLoginUI() throws IOException
 	{
@@ -33,12 +36,15 @@ public class SimpleLoginUI extends VerificationProcess{
 			}
 		}while(idCounter == 0);
 		
-		if(idCounter != 0) callSimpleVoterUI(idCounter);
+		if(idCounter != 0) callSimpleVoterUI(idCounter,inputUsername);
 		
 	}
 	
-	private void callSimpleVoterUI(int idCounter) throws IOException
+	private void callSimpleVoterUI(int idCounter,String UserName) throws IOException
 	{
+		//////////////// log4j /////////////
+		logger.info(UserName+" Login");
+		////////////////////////////////////
 		System.out.println("Login Success! with ID : "+ idCounter);
 		new SimpleUI(idCounter);
 	}
