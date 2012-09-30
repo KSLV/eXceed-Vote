@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 import java.lang.reflect.Field;
 
 import javax.swing.JButton;
@@ -16,12 +17,12 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class GUIController extends JFrame{
+public class LoginGUIController extends JFrame{
 	
 	private String choose;
 	private JTextField userField;
 	private JPasswordField passField;
-	public GUIController()
+	public LoginGUIController()
 	{
 		super("Sign in");
 		setLayout(new GridLayout(3, 2));
@@ -29,6 +30,7 @@ public class GUIController extends JFrame{
 		
 		userField = new JTextField();
 		userField.setFont(new Font(userField.getFont() + "", 0, 20));
+		add(userField);
 		
 		addLabel("Password");
 		passField = new JPasswordField();
@@ -52,6 +54,21 @@ public class GUIController extends JFrame{
 		String password = passField.getText();
 		System.out.println(userName);
 		System.out.println(password);
+		int checkLogin = 0;
+		try {
+			LoginGUI loginGUI = new LoginGUI(userName, password);
+			checkLogin = loginGUI.verifyLogin(userName, password);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if(checkLogin != 0)
+		{
+			System.out.print("Fin");
+		}else
+		{
+			System.out.print("Fail!!");
+		}
+		
 		this.dispose();
 	}
 	
