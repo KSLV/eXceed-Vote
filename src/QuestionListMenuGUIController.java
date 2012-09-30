@@ -1,7 +1,5 @@
 import java.awt.Font;
-import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -12,7 +10,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 
@@ -22,20 +19,14 @@ public class QuestionListMenuGUIController extends JFrame{
 	private JPanel title;
 	private ArrayList<String> questionList = new ArrayList<String>();
 	private ArrayList<String> nBallotList = new ArrayList<String>();
-	private QuestionListMenuGUI qlmg;
 	private int userID;
 
-	public QuestionListMenuGUIController(int idUser)
+	public QuestionListMenuGUIController(int idUser , ArrayList<String> questionList , ArrayList<String> nBallotList)
 	{
 		super("QuestionListMenu");
 		this.userID = idUser;
-		try {
-			qlmg = new QuestionListMenuGUI(userID);
-			questionList = qlmg.getQuestionList();
-			nBallotList = qlmg.getNBallotList();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		this.questionList = questionList;
+		this.nBallotList = nBallotList;
 		//setLayout(new GridLayout(3, 2));
 		setLayout(new BoxLayout(this.getContentPane(), 1));
 		JPanel head = new JPanel(new GridLayout(1,1));
@@ -65,7 +56,7 @@ public class QuestionListMenuGUIController extends JFrame{
 	
 	public void close()
 	{
-		this.dispose();
+		dispose();
 	}
 		
 	
@@ -88,7 +79,7 @@ public class QuestionListMenuGUIController extends JFrame{
 						{
 							try {
 								close();
-								VoteMenu voteMenu = new VoteMenu(userID, i+1);
+								new VoteMenu(userID, i+1);
 							} catch (IOException e1) {
 								e1.printStackTrace();
 							}

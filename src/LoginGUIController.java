@@ -1,18 +1,13 @@
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
 import java.io.IOException;
-import java.lang.reflect.Field;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -48,7 +43,7 @@ public class LoginGUIController extends JFrame{
 	}
 	
 
-	public void submit()
+	public void submit() throws IOException
 	{
 		LoginGUI loginGUI;
 		String userName = userField.getText();
@@ -65,18 +60,19 @@ public class LoginGUIController extends JFrame{
 		if(userID != 0)
 		{
 			System.out.println("Fin");
-			QuestionListMenuGUIController questionListMenuGUIController = new QuestionListMenuGUIController(userID);
+			cancel();
+			new QuestionListMenuGUI(userID);
 		}else
 		{
 			System.out.print("Fail!!");
 		}
 		
-		this.dispose();
+		dispose();
 	}
 	
 	public void cancel()
 	{
-		this.dispose();
+		dispose();
 	}
 	
 	/**
@@ -101,7 +97,11 @@ public class LoginGUIController extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				choose = e.getActionCommand();
 				if (choose.equals("Submit")) {
-					submit();
+					try {
+						submit();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 				}
 				if (choose.equals("Cancel")) {
 					cancel();
