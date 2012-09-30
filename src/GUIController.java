@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -10,6 +11,7 @@ import java.lang.reflect.Field;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -27,7 +29,7 @@ public class GUIController extends JFrame{
 		
 		userField = new JTextField();
 		userField.setFont(new Font(userField.getFont() + "", 0, 20));
-		add(userField);
+		a.add(userField);
 		
 		addLabel("Password");
 		passField = new JPasswordField();
@@ -38,6 +40,7 @@ public class GUIController extends JFrame{
 		
 		addButton("Submit");
 		addButton("Cancel");
+		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		pack();
 		setVisible(true);
