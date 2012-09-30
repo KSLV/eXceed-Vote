@@ -3,6 +3,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.logging.Logger;
 
 
 
@@ -15,6 +16,8 @@ public abstract class VerificationProcess {
 	private String tmpPassword;
 	private String userListDir;
 	private String passListDir;	
+	
+	private final Logger logger = Logger.getLogger(this.toString());
 
 	public VerificationProcess(String userListDir , String passListDir) throws IOException
 	{
@@ -37,6 +40,9 @@ public abstract class VerificationProcess {
 		{
 			if(tmpUsername.equals(username) && tmpPassword.equals(password)) 
 			{
+				
+				logger.info(username +" Login");
+				
 				uis.close();
 				uin.close();
 				ubr.close();

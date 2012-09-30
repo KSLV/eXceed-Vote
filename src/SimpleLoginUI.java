@@ -8,7 +8,7 @@ public class SimpleLoginUI extends VerificationProcess{
 	private static String userListDir = "src//UsernameList.txt";
 	private static String passListDir = "src//PasswordList.txt";	
 	
-	private Logger logger = Logger.getLogger(this.toString());
+	//private Logger logger = Logger.getLogger(this.toString());
 	
 	public SimpleLoginUI() throws IOException
 	{
@@ -43,7 +43,7 @@ public class SimpleLoginUI extends VerificationProcess{
 	private void callSimpleVoterUI(int idCounter,String UserName) throws IOException
 	{
 		//////////////// log4j /////////////
-		logger.info(UserName+" Login");
+		//logger.info(UserName+" Login");
 		////////////////////////////////////
 		System.out.println("Login Success! with ID : "+ idCounter);
 		new SimpleUI(idCounter);
