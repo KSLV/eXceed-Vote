@@ -3,28 +3,47 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-
+/**
+ * Display question list and handle user choices
+ * @author KSLV
+ * @version Sep 30, 2012
+ */
 public class QuestionMenu {
 
-	private int userID;
-	private int questionNumber;
+	private int userID; //Indicate line number of the current user
+	private int questionNumber; //Indicate total number of question
 	private String questionListDir = "src//QuestionsList.txt";
 	private String nBallotListDir = "src//NBallotList.txt";
-	private InputStream qis,nis;
+	private InputStream qis,nis; //InputStream for QuestionsList.txt and NBallotList.txt, respectively
 	private InputStreamReader qin,nin;
 	private BufferedReader qbr,nbr;
 	private Scanner scanner;
+	private ArrayList<String> questionList;
+	private ArrayList<String> nBallotList;
 	
+	/**
+	 * Constructor for this class
+	 * @param userID Current user's line number indicator
+	 * @throws IOException
+	 */
 	public QuestionMenu(int userID) throws IOException {
 		this.userID = userID;
+		questionList = new ArrayList<String>();
+		nBallotList = new ArrayList<String>();
+		readData();
 		displayQuestionList();
 		readCommand();
 
 	}
 
-	private void displayQuestionList() throws IOException
+	/**
+	 * Display the List of Vote Questions
+	 * @throws IOException
+	 */
+	private void readData() throws IOException
 	{
 		qis = new FileInputStream(questionListDir);
 		qin = new InputStreamReader(qis);
@@ -32,34 +51,50 @@ public class QuestionMenu {
 		nis = new FileInputStream(nBallotListDir);
 		nin = new InputStreamReader(nis);
 		nbr = new BufferedReader(nin);
-		questionNumber = 0;
 		
 		String brTmp = new String();
 		for(int i = 1 ; i <= userID ; i++)
 		{
 			brTmp = nbr.readLine();
 		}
+		String[] brSplitTmp = brTmp.split("\t");
+		for(int i = 0 ; i < brSplitTmp.length ; i++)
+		{
+			nBallotList.add(brSplitTmp[i]);
+		}
 		nis.close();
 		nin.close();
 		nbr.close();
 		
-		String[] NBallotTemp = brTmp.split("\t");
 		String tmpQuestion = qbr.readLine();
-		for(int questionNumCounter = 1 ; tmpQuestion != null ; questionNumCounter++)
+		while(tmpQuestion != null)
 		{
-			System.out.printf("%s ( %s Ballot Left ) : %d\n",tmpQuestion, NBallotTemp[questionNumber], questionNumCounter);
+			questionList.add(tmpQuestion);
 			tmpQuestion = qbr.readLine();
-			questionNumber++;
 		}
 		qis.close();
 		qin.close();
 		qbr.close();
 		
-		System.out.println("Back to Menu : 0");
-		System.out.print("Enter Command : ");
+		
 
 	}
 	
+	private void displayQuestionList()
+	{
+		for(int i = 0 ; i < questionList.size() ; i++)
+		{
+			System.out.printf("%s (%s ballot left) : %d\n",questionList.get(i),nBallotList.get(i),i + 1);
+		}
+		
+		System.out.println("Back to Menu : 0");
+		System.out.print("Enter Command : ");
+	}
+	
+	/**
+	 * Receive and handle user commands
+	 * @throws IOException
+	 */
 	private void readCommand() throws IOException
 	{
 		scanner = new Scanner(System.in);
