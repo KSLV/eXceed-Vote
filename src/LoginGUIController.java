@@ -65,7 +65,7 @@ public class LoginGUIController extends JFrame{
 		if(userID != 0)
 		{
 			System.out.println("Fin");
-			QuestionListMenuGUIController a = new QuestionListMenuGUIController(userID);
+			QuestionListMenuGUIController questionListMenuGUIController = new QuestionListMenuGUIController(userID);
 		}else
 		{
 			System.out.print("Fail!!");
