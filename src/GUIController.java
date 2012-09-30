@@ -29,7 +29,6 @@ public class GUIController extends JFrame{
 		
 		userField = new JTextField();
 		userField.setFont(new Font(userField.getFont() + "", 0, 20));
-		a.add(userField);
 		
 		addLabel("Password");
 		passField = new JPasswordField();
