@@ -34,8 +34,8 @@ public class QuestionMenu {
 		questionList = new ArrayList<String>();
 		nBallotList = new ArrayList<String>();
 		readData();
-		displayQuestionList();
-		readCommand();
+		//displayQuestionList();
+		//readCommand();
 
 	}
 
@@ -127,5 +127,14 @@ public class QuestionMenu {
 		}while(command != 0);
 	}
 	
+	public ArrayList<String> getQuestionList()
+	{
+		return questionList;
+	}
+	
+	public ArrayList<String> getNBallotList()
+	{
+		return nBallotList;
+	}
 	
 }

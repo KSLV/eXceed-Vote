@@ -50,20 +50,22 @@ public class LoginGUIController extends JFrame{
 
 	public void submit()
 	{
+		LoginGUI loginGUI;
 		String userName = userField.getText();
 		String password = passField.getText();
 		System.out.println(userName);
 		System.out.println(password);
-		int checkLogin = 0;
+		int userID = 0;
 		try {
-			LoginGUI loginGUI = new LoginGUI(userName, password);
-			checkLogin = loginGUI.verifyLogin(userName, password);
+			loginGUI = new LoginGUI(userName, password);
+			userID = loginGUI.verifyLogin(userName, password);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		if(checkLogin != 0)
+		if(userID != 0)
 		{
-			System.out.print("Fin");
+			System.out.println("Fin");
+			QuestionListMenuGUIController a = new QuestionListMenuGUIController(userID);
 		}else
 		{
 			System.out.print("Fail!!");
