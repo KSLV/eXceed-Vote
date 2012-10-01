@@ -54,13 +54,13 @@ public class QuestionListMenuGUIController extends JFrame{
 		setVisible(true);
 	}
 	
-	public void close()
+	private void close()
 	{
 		dispose();
 	}
 		
 	
-	public void addQuestion()
+	private void addQuestion()
 	{
 		for(int i=0;i<questionList.size();i++)
 		{
@@ -78,8 +78,7 @@ public class QuestionListMenuGUIController extends JFrame{
 						if(e.getActionCommand().equals(questionList.get(i)))
 						{
 							close();
-							//new VoteMenu(userID, i+1);
-							new VoteMenuGUIController(userID, i+1,e.getActionCommand());
+							new VoteMenuGUIController(userID, i+1,e.getActionCommand(),nBallotList.get(i));
 						}
 					}
 				}

@@ -43,7 +43,7 @@ public class LoginGUIController extends JFrame{
 	}
 	
 
-	public void submit() throws IOException
+	private void submit() throws IOException
 	{
 		LoginGUI loginGUI;
 		String userName = userField.getText();
@@ -70,7 +70,7 @@ public class LoginGUIController extends JFrame{
 		dispose();
 	}
 	
-	public void cancel()
+	private void cancel()
 	{
 		dispose();
 	}
