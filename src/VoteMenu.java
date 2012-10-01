@@ -68,16 +68,11 @@ public class VoteMenu extends VoteProcess{
 		tin = new InputStreamReader(tis);
 		tbr = new BufferedReader(tin);
 		String tmpTeam = tbr.readLine();
-		teamList.add(tmpTeam);
-		System.out.println(tmpTeam);
-		
-		while(tmpTeam != null);
+		while(tmpTeam != null)
 		{
-			tmpTeam = tbr.readLine();
 			teamList.add(tmpTeam);
-			System.out.println("aaaaaaa");
+			tmpTeam = tbr.readLine();
 		}
-		System.out.println("bbbbbb");
 		tis.close();
 		tin.close();
 		tbr.close();
