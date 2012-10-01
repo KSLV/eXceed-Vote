@@ -50,7 +50,7 @@ public abstract class VerificationProcess {
 				pin.close();
 				pbr.close();
 				return idCounter;
-			}
+			}			
 			idCounter++;
 			tmpUsername = ubr.readLine();
 			tmpPassword = pbr.readLine();
@@ -61,6 +61,7 @@ public abstract class VerificationProcess {
 		pis.close();
 		pin.close();
 		pbr.close();
+		logger.info("Invalid UserName or Password");
 		return 0;
 	}
 	

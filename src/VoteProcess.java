@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.util.logging.Logger;
 
 
 public abstract class VoteProcess {
@@ -25,8 +26,12 @@ public abstract class VoteProcess {
 	private OutputStreamWriter tnor,tvor;
 	private BufferedWriter tnbw,tvbw;
 	
+	private final Logger logger = Logger.getLogger(this.toString());
+	
 	public VoteProcess(int userID,int questionNumber) throws IOException
 	{
+		logger.info("Question No."+questionNumber);
+		
 		this.userID = userID;
 		this.questionNumber = questionNumber;
 		
@@ -66,6 +71,8 @@ public abstract class VoteProcess {
 	{
 		if(getNBallot() > 0)
 		{
+			logger.info("vote to team "+ team);
+			
 			writeTmpVote(team);
 			writeTmpNBallot(team);
 			if(nBallotList.exists() && voteScore.exists())
@@ -78,6 +85,7 @@ public abstract class VoteProcess {
 			}
 			
 		}
+		logger.info("Out of Ballot");
 		return false;
 	}
 	
