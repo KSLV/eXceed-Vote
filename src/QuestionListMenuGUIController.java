@@ -77,12 +77,9 @@ public class QuestionListMenuGUIController extends JFrame{
 					{
 						if(e.getActionCommand().equals(questionList.get(i)))
 						{
-							try {
-								close();
-								new VoteMenu(userID, i+1);
-							} catch (IOException e1) {
-								e1.printStackTrace();
-							}
+							close();
+							//new VoteMenu(userID, i+1);
+							new VoteMenuGUIController(userID, i+1,e.getActionCommand());
 						}
 					}
 				}

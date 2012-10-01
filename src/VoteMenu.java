@@ -22,9 +22,11 @@ public class VoteMenu extends VoteProcess{
 	public VoteMenu(int userID, int questionNumber) throws IOException
 	{
 		super(userID , questionNumber);
+		System.out.println("Test");
 		readTeamList();
-		displayTeamList();
-		readCommand();
+		//displayTeamList();
+		
+		//readCommand();
 	}
 	
 	private void displayTeamList() throws IOException
@@ -65,19 +67,23 @@ public class VoteMenu extends VoteProcess{
 		tis = new FileInputStream(teamListDir);
 		tin = new InputStreamReader(tis);
 		tbr = new BufferedReader(tin);
-		
 		String tmpTeam = tbr.readLine();
+		teamList.add(tmpTeam);
+		System.out.println(tmpTeam);
+		
 		while(tmpTeam != null);
 		{
 			tmpTeam = tbr.readLine();
+			teamList.add(tmpTeam);
+			System.out.println("aaaaaaa");
 		}
-		
+		System.out.println("bbbbbb");
 		tis.close();
 		tin.close();
 		tbr.close();
 	}
 	
-	private ArrayList<String> getTeamList()
+	public ArrayList<String> getTeamList()
 	{
 		return teamList;
 	}
