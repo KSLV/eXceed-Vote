@@ -3,6 +3,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -15,31 +16,22 @@ public class VoteMenu extends VoteProcess{
 	private InputStreamReader tin;
 	private BufferedReader tbr;
 	private Scanner scanner;
+	private ArrayList<String> teamList;
 	
 	
 	public VoteMenu(int userID, int questionNumber) throws IOException
 	{
 		super(userID , questionNumber);
+		readTeamList();
 		displayTeamList();
 		readCommand();
 	}
 	
 	private void displayTeamList() throws IOException
 	{
-		tis = new FileInputStream(teamListDir);
-		tin = new InputStreamReader(tis);
-		tbr = new BufferedReader(tin);
-		String tmpTeam = tbr.readLine();
-		teamNumber = 0;
-		for(int i = 1 ; tmpTeam != null ; i++)
-		{
-			System.out.printf("%s : %d\n",tmpTeam,i);
-			tmpTeam = tbr.readLine();
-			teamNumber++;
-		}
-		tis.close();
-		tin.close();
-		tbr.close();
+		
+
+		
 		System.out.printf("You have %d ballot left.\n",getNBallot());
 		System.out.printf("Enter team number you like to vote for\nEnter 0 to go back to Question Menu : ");
 	}
@@ -65,5 +57,28 @@ public class VoteMenu extends VoteProcess{
 			command = scanner.nextInt();
 			}
 		}while(command != 0);
+	}
+	
+	private void readTeamList() throws IOException
+	{
+		teamList = new ArrayList<String>();
+		tis = new FileInputStream(teamListDir);
+		tin = new InputStreamReader(tis);
+		tbr = new BufferedReader(tin);
+		
+		String tmpTeam = tbr.readLine();
+		while(tmpTeam != null);
+		{
+			tmpTeam = tbr.readLine();
+		}
+		
+		tis.close();
+		tin.close();
+		tbr.close();
+	}
+	
+	private ArrayList<String> getTeamList()
+	{
+		return teamList;
 	}
 }
