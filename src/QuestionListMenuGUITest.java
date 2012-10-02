@@ -10,7 +10,11 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-
+/**
+ * 
+ * @author Lattasit 5410545061
+ * @version Oct 2, 2012
+ */
 public class QuestionListMenuGUITest {
 
 	/**
@@ -49,4 +53,29 @@ public class QuestionListMenuGUITest {
 		assertEquals(2,qListGUI.getUserID());
 	}
 
+	/**
+	 * Test if the QuestionListMenuGUI initialize correct userID or not.
+	 * @throws IOException
+	 */
+	@Test (expected = FileNotFoundException.class)
+	public void testInvalidFileLocation() throws IOException
+	{
+		QuestionListMenuGUI qListGUI = new QuestionListMenuGUI(1);
+		assertEquals(1,qListGUI.getUserID());
+		new FileInputStream("src//List.txt");
+	}
+	
+	/**
+	 * Test if the QuestionListMenuGUI initialize correct userID or not.
+	 * @throws IOException
+	 */
+	@Test (timeout = 500)
+	public void testvalidFileLocation() throws IOException
+	{
+		QuestionListMenuGUI qListGUI = new QuestionListMenuGUI(1);
+		assertEquals(1,qListGUI.getUserID());
+		InputStream is = new FileInputStream("src//QuestionsList.txt");
+		is.close();
+		
+	}
 }
