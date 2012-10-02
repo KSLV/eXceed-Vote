@@ -48,8 +48,8 @@ public class LoginGUIController extends JFrame{
 		LoginGUI loginGUI;
 		String userName = userField.getText();
 		String password = passField.getText();
-		System.out.println(userName);
-		System.out.println(password);
+		//System.out.println(userName);
+		//System.out.println(password);
 		int userID = 0;
 		try {
 			loginGUI = new LoginGUI(userName, password);

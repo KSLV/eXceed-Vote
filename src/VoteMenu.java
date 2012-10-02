@@ -24,7 +24,7 @@ public class VoteMenu extends VoteProcess{
 	public VoteMenu(int userID, int questionNumber) throws IOException
 	{
 		super(userID , questionNumber);
-		System.out.println("Test");
+		//System.out.println("Test");
 		readTeamList();
 		//displayTeamList();
 		
@@ -39,7 +39,7 @@ public class VoteMenu extends VoteProcess{
 		System.out.printf("You have %d ballot left.\n",getNBallot());
 		System.out.printf("Enter team number you like to vote for\nEnter 0 to go back to Question Menu : ");
 	}
-	
+	/*
 	private void readCommand() throws IOException
 	{
 		scanner = new Scanner(System.in);
@@ -62,7 +62,7 @@ public class VoteMenu extends VoteProcess{
 			}
 		}while(command != 0);
 	}
-	
+	*/
 	private void readTeamList() throws IOException
 	{
 		teamList = new ArrayList<String>();

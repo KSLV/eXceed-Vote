@@ -85,14 +85,14 @@ public class VoteMenuGUIController extends JFrame{
 	{
 		for(int i=0;i<teamList.size();i++)
 		{
-			System.out.println(teamList.get(i));
+			//System.out.println(teamList.get(i));
 			JButton question = new JButton(teamList.get(i));
 			question.setHorizontalAlignment(SwingConstants.LEFT);
 			ActionListener push = new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					System.out.println(e.getActionCommand());
+					//System.out.println(e.getActionCommand());
 					for(int i=0;i<teamList.size();i++)
 					{
 						if(e.getActionCommand().equals(teamList.get(i)))

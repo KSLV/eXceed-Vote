@@ -92,7 +92,7 @@ public class QuestionListMenuGUIController extends JFrame{
 	{
 		for(int i=0;i<questionList.size();i++)
 		{
-			System.out.println(questionList.get(i));
+			//System.out.println(questionList.get(i));
 			JButton question = new JButton(questionList.get(i));
 			JLabel ballot = new JLabel(nBallotList.get(i));
 			ballot.setHorizontalAlignment(SwingConstants.CENTER);
