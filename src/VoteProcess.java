@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -44,6 +45,24 @@ public abstract class VoteProcess {
 		if(tmpVoteScore.exists()) tmpVoteScore.delete();
 		tmpNBallotList.createNewFile();
 		tmpVoteScore.createNewFile();
+	}
+	
+	public int getScore(int team) throws IOException{
+		vis = new FileInputStream(voteScore);
+		vin = new InputStreamReader(vis);
+		vbr = new BufferedReader(vin);
+		String TmpScore = new String();
+		for(int i =1;i <= questionNumber;i++){
+			TmpScore = vbr.readLine();
+		}
+		String[] Score = TmpScore.split("\t");
+		vis.close();
+		vin.close();
+		vbr.close();
+		vis = null;
+		vin = null;
+		vbr = null;
+		return Integer.parseInt(Score[team-1]);
 	}
 	
 	public int getNBallot() throws IOException
