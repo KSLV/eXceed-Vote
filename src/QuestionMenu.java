@@ -21,7 +21,6 @@ public class QuestionMenu {
 	private InputStream qis,nis; //InputStream for QuestionsList.txt and NBallotList.txt, respectively
 	private InputStreamReader qin,nin;
 	private BufferedReader qbr,nbr;
-	private Scanner scanner;
 	private ArrayList<String> questionList;
 	private ArrayList<String> nBallotList;	
 	
@@ -81,6 +80,22 @@ public class QuestionMenu {
 		
 
 	}
+	
+	public ArrayList<String> getQuestionList()
+	{
+		return questionList;
+	}
+	
+	public ArrayList<String> getNBallotList()
+	{
+		return nBallotList;
+	}
+	
+	public int getUserID()
+	{
+		return userID;
+	}
+	
 	/*
 	private void displayQuestionList()
 	{
@@ -130,14 +145,5 @@ public class QuestionMenu {
 		}while(command != 0);
 	}
 	*/
-	public ArrayList<String> getQuestionList()
-	{
-		return questionList;
-	}
-	
-	public ArrayList<String> getNBallotList()
-	{
-		return nBallotList;
-	}
 	
 }

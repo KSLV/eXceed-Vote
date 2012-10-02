@@ -106,7 +106,7 @@ public class QuestionListMenuGUIController extends JFrame{
 						if(e.getActionCommand().equals(questionList.get(i)))
 						{
 							close();
-							new VoteMenuGUIController(userID, i+1,e.getActionCommand(),nBallotList.get(i));
+							selectQuestion(i+1 , e.getActionCommand());
 						}
 					}
 				}
@@ -115,5 +115,10 @@ public class QuestionListMenuGUIController extends JFrame{
 			title.add(question);
 			title.add(ballot);
 		}
+	}
+	
+	public void selectQuestion(int questionNumber , String questionName)
+	{
+		new VoteMenuGUIController(userID, questionNumber,questionName,nBallotList.get(questionNumber - 1));
 	}
 }
