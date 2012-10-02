@@ -60,8 +60,8 @@ public abstract class VerificationProcess {
 		ubr.close();
 		pis.close();
 		pin.close();
-		pbr.close();
-		logger.info("Invalid UserName or Password");
+		pbr.close();		
+		logger.warning("Invalid UserName or Password");
 		return 0;
 	}
 	
