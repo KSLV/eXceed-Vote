@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 
 public class VoteMenu extends VoteProcess{
@@ -18,6 +19,7 @@ public class VoteMenu extends VoteProcess{
 	private Scanner scanner;
 	private ArrayList<String> teamList;
 	
+	///private final Logger logger = Logger.getLogger(this.toString());
 	
 	public VoteMenu(int userID, int questionNumber) throws IOException
 	{

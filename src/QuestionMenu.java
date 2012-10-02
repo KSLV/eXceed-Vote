@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 /**
  * Display question list and handle user choices
@@ -22,7 +23,8 @@ public class QuestionMenu {
 	private BufferedReader qbr,nbr;
 	private Scanner scanner;
 	private ArrayList<String> questionList;
-	private ArrayList<String> nBallotList;
+	private ArrayList<String> nBallotList;	
+	
 	
 	/**
 	 * Constructor for this class
