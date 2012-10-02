@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -49,13 +50,15 @@ public class VoteMenuGUIController extends JFrame{
 		
 		addTeam();
 		
+		JPanel showLast = new JPanel(new BorderLayout(0, 20));
 		JPanel lastLine = new JPanel(new GridLayout(1,2));
 		JLabel nballot = new JLabel("Ballot : "+ nBallotList);
 		JButton cancel = new JButton("Cancel");
+		showLast.add(lastLine,BorderLayout.SOUTH);
 		nballot.setHorizontalAlignment(SwingConstants.CENTER);
 		lastLine.add(nballot);
 		lastLine.add(cancel);
-		add(lastLine);
+		add(showLast);
 		
 		ActionListener cancelPush = new ActionListener() {
 			
@@ -115,7 +118,8 @@ public class VoteMenuGUIController extends JFrame{
 	{
 		close();
 		try {
-			voteMenuGUI.doVote(team);
+			if(!voteMenuGUI.doVote(team))
+				new ShowPopup("Insufficient ballot", "Error!!!!!!!", 2);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

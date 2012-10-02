@@ -59,18 +59,18 @@ public class LoginGUIController extends JFrame{
 		}
 		if(userID != 0)
 		{
-			System.out.println("Fin");
-			cancel();
+			close();
 			new QuestionListMenuGUI(userID);
+			dispose();
 		}else
 		{
-			System.out.print("Fail!!");
+			userField.setText(null);
+			passField.setText(null);
+			new ShowPopup("Username or Password incorrect.","Error!!!!!",0);
 		}
-		
-		dispose();
 	}
 	
-	private void cancel()
+	private void close()
 	{
 		dispose();
 	}
@@ -104,7 +104,7 @@ public class LoginGUIController extends JFrame{
 					}
 				}
 				if (choose.equals("Cancel")) {
-					cancel();
+					close();
 				}
 				
 			}
