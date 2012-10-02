@@ -97,7 +97,7 @@ public class VoteMenuGUIController extends JFrame{
 					{
 						if(e.getActionCommand().equals(teamList.get(i)))
 						{
-							System.out.println(i+1);
+							//System.out.println(i+1);
 							clickVote(i+1);
 						}
 					}

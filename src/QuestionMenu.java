@@ -81,7 +81,7 @@ public class QuestionMenu {
 		
 
 	}
-	
+	/*
 	private void displayQuestionList()
 	{
 		for(int i = 0 ; i < questionList.size() ; i++)
@@ -97,6 +97,7 @@ public class QuestionMenu {
 	 * Receive and handle user commands
 	 * @throws IOException
 	 */
+	/*
 	private void readCommand() throws IOException
 	{
 		scanner = new Scanner(System.in);
@@ -128,7 +129,7 @@ public class QuestionMenu {
 				}
 		}while(command != 0);
 	}
-	
+	*/
 	public ArrayList<String> getQuestionList()
 	{
 		return questionList;
