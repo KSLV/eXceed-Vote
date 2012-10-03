@@ -1,11 +1,20 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-
+/**
+ * Console-Based Voter GUI
+ * @author KSLV
+ * @version Oct 1, 2012
+ */
 public class SimpleUI {
 
 	private int userID;
 	
+	/**
+	 * Constructor for this class
+	 * @param userID Indicate which user is using this class
+	 * @throws IOException
+	 */
 	public SimpleUI(int userID) throws IOException
 	{
 		this.userID = userID;
@@ -13,7 +22,10 @@ public class SimpleUI {
 		getCommand();
 	}
 	
-
+	/**
+	 * Display List of commands
+	 * @throws IOException
+	 */
 	private void displayMenu() throws IOException
 	{
 		System.out.println("== Voter's Command Menu Alpha version ==");
@@ -24,6 +36,10 @@ public class SimpleUI {
 
 	}
 	
+	/**
+	 * Receive and handle user input
+	 * @throws IOException
+	 */
 	private void getCommand() throws IOException
 	{
 		Scanner scanner = new Scanner(System.in);
@@ -47,6 +63,10 @@ public class SimpleUI {
 		}while(command != 0);
 	}
 	
+	/**
+	 * Call QuestionMenu UI
+	 * @throws IOException
+	 */
 	private void displayQuestionList() throws IOException
 	{
 		new QuestionMenu(userID);

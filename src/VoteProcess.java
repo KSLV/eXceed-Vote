@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,7 +10,11 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.logging.Logger;
 
-
+/**
+ * Handle Vote Processes
+ * @author KSLV
+ * @version Oct 1, 2012
+ */
 public abstract class VoteProcess {
 
 	private int userID;
@@ -20,15 +23,21 @@ public abstract class VoteProcess {
 	private File voteScore;
 	private File tmpNBallotList;
 	private File tmpVoteScore;
-	private InputStream nis,vis;
+	private InputStream nis,vis; //InputStream for NBallotList.txt and VoteScore.txt , respectively
 	private InputStreamReader nin,vin;
 	private BufferedReader nbr,vbr;
-	private OutputStream tnos,tvos;
+	private OutputStream tnos,tvos; //OutputStream for tmpNBallotList.txt and tmpVoteScore.txt , respectively
 	private OutputStreamWriter tnor,tvor;
 	private BufferedWriter tnbw,tvbw;
 	
 	private final Logger logger = Logger.getLogger(this.toString());
 	
+	/**
+	 * Constructor for this class
+	 * @param userID Indicate which user is using this class
+	 * @param questionNumber Indicate which question this user is voting on
+	 * @throws IOException
+	 */
 	public VoteProcess(int userID,int questionNumber) throws IOException
 	{
 		logger.info("Question No."+questionNumber);
@@ -47,6 +56,12 @@ public abstract class VoteProcess {
 		tmpVoteScore.createNewFile();
 	}
 	
+	/**
+	 * Read score of specific team
+	 * @param team ID of team to have score return
+	 * @return Score of specific team
+	 * @throws IOException
+	 */
 	public int getScore(int team) throws IOException{
 		vis = new FileInputStream(voteScore);
 		vin = new InputStreamReader(vis);
@@ -65,6 +80,11 @@ public abstract class VoteProcess {
 		return Integer.parseInt(Score[team-1]);
 	}
 	
+	/**
+	 * Read number of ballots of current user and return it as array of int
+	 * @return Number of ballot of this user as array of Integer
+	 * @throws IOException
+	 */
 	public int getNBallot() throws IOException
 	{
 		nis = new FileInputStream(nBallotList);
@@ -86,6 +106,12 @@ public abstract class VoteProcess {
 		return Integer.parseInt(brSplit[questionNumber - 1]);
 	}
 	
+	/**
+	 * Alter VoteScore and NBallotList by Read and Overwrite the file 
+	 * @param team
+	 * @return true if vote is success, else false
+	 * @throws IOException
+	 */
 	protected boolean doVote(int team) throws IOException
 	{
 		if(getNBallot() > 0)
@@ -108,6 +134,11 @@ public abstract class VoteProcess {
 		return false;
 	}
 	
+	/**
+	 * Write temporary VoteScore which to be replace the original VoteScore.txt
+	 * @param team Indicate which team user voted on
+	 * @throws IOException
+	 */
 	private void writeTmpVote(int team) throws IOException
 	{
 		vis = new FileInputStream(voteScore);
@@ -149,6 +180,11 @@ public abstract class VoteProcess {
 		tvbw.close();
 	}
 	
+	/**
+	 * Write temporary nBallot which to be replace the original NBallotList.txt
+	 * @param team Indicate which team user voted on
+	 * @throws IOException
+	 */
 	private void writeTmpNBallot(int team) throws IOException
 	{
 		nis = new FileInputStream(nBallotList);
@@ -196,6 +232,8 @@ public abstract class VoteProcess {
 		tnbw.close();
 		System.gc();
 	}
+	
+	
 	/*private void closeAllStream() throws IOException
 	{
 		vis.close();

@@ -11,12 +11,20 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
+/**
+ * Initialize GUI , receive username, password input, and handle ActionEvents
+ * @author KSLV
+ * @version Oct 1, 2012
+ */
 public class LoginGUIController extends JFrame{
 	
-	private String choose;
-	private JTextField userField;
-	private JPasswordField passField;
+	private String choose; //receive which action user performed on buttons
+	private JTextField userField; //receive username input
+	private JPasswordField passField; //receive password input
+	
+	/**
+	 * Constructor for this class
+	 */
 	public LoginGUIController()
 	{
 		super("Sign in");
@@ -42,7 +50,10 @@ public class LoginGUIController extends JFrame{
 		setVisible(true);
 	}
 	
-
+	/**
+	 * Handle user actions
+	 * @throws IOException
+	 */
 	private void submit() throws IOException
 	{
 		LoginGUI loginGUI;
@@ -70,16 +81,19 @@ public class LoginGUIController extends JFrame{
 		}
 	}
 	
+	/**
+	 * Free memory and close the program
+	 */
 	private void close()
 	{
 		dispose();
 	}
 	
 	/**
-	 * Use to add label.
+	 * Use to add label to buttons.
 	 * 
-	 * @param name
-	 *            is word to show on label.
+	 * @param name String to be show on specific
+	 *            
 	 */
 	public void addLabel(String name) {
 		JLabel label = new JLabel(name);
@@ -88,7 +102,10 @@ public class LoginGUIController extends JFrame{
 		add(label);
 	}
 	
-	
+	/**
+	 * Add new button and assign it's recponsibility 
+	 * @param name
+	 */
 	public void addButton(String name) {
 		final JButton button = new JButton(name);
 		ActionListener push = new ActionListener() {

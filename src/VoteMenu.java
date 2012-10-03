@@ -4,23 +4,32 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.logging.Logger;
+//import java.util.Scanner;
 
-
+/**
+ * Console-Based VoteMenuGUI
+ * @author KSLV
+ * @version Oct 1, 2012
+ */
 public class VoteMenu extends VoteProcess{
 
 	
 	private String teamListDir = ("src//TeamList.txt");
-	private int teamNumber;
-	private InputStream tis;
+	//private int teamNumber;
+	private InputStream tis; //FileInputStream for TeamList.txt
 	private InputStreamReader tin;
 	private BufferedReader tbr;
-	private Scanner scanner;
-	private ArrayList<String> teamList;
+	//private Scanner scanner;
+	private ArrayList<String> teamList; //Contain List name of each team
 	
 	///private final Logger logger = Logger.getLogger(this.toString());
 	
+	/**
+	 * Constructor for this class
+	 * @param userID 
+	 * @param questionNumber
+	 * @throws IOException
+	 */
 	public VoteMenu(int userID, int questionNumber) throws IOException
 	{
 		super(userID , questionNumber);
@@ -31,14 +40,15 @@ public class VoteMenu extends VoteProcess{
 		//readCommand();
 	}
 	
-	private void displayTeamList() throws IOException
+	/*private void displayTeamList() throws IOException
 	{
 		
 
 		
 		System.out.printf("You have %d ballot left.\n",getNBallot());
 		System.out.printf("Enter team number you like to vote for\nEnter 0 to go back to Question Menu : ");
-	}
+	}*/
+	
 	/*
 	private void readCommand() throws IOException
 	{
@@ -63,6 +73,11 @@ public class VoteMenu extends VoteProcess{
 		}while(command != 0);
 	}
 	*/
+	
+	/**
+	 * Read and store name of each team in List
+	 * @throws IOException
+	 */
 	private void readTeamList() throws IOException
 	{
 		teamList = new ArrayList<String>();
@@ -80,6 +95,10 @@ public class VoteMenu extends VoteProcess{
 		tbr.close();
 	}
 	
+	/**
+	 * Return teamList
+	 * @return List of team name
+	 */
 	public ArrayList<String> getTeamList()
 	{
 		return teamList;

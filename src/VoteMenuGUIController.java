@@ -13,13 +13,25 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-
+/**
+ * Initialize GUI and handle user inputs
+ * @author KSLV
+ * @version Oct 1, 2012
+ */
 public class VoteMenuGUIController extends JFrame{
 
 	private JPanel title;
-	private int userID;
+	private int userID; //Indicate which user is using this class
 	private VoteMenuGUI voteMenuGUI;
-	private ArrayList<String> teamList;
+	private ArrayList<String> teamList; //List of name for each team
+	
+	/**
+	 * Constructor for this class
+	 * @param idUser current userID
+	 * @param questionNumber Indicate which question this user is voting on
+	 * @param nameQuestion Contain the question as String
+	 * @param nBallotList List of number of ballots this user has
+	 */
 	public VoteMenuGUIController(int idUser,int questionNumber,String nameQuestion, String nBallotList)
 	{
 		super("TeamList");
@@ -80,7 +92,9 @@ public class VoteMenuGUIController extends JFrame{
 		setVisible(true);
 	}
 	
-	
+	/**
+	 * Create button with each team name as it's Label
+	 */
 	private void addTeam()
 	{
 		for(int i=0;i<teamList.size();i++)
@@ -109,11 +123,18 @@ public class VoteMenuGUIController extends JFrame{
 		}
 	}
 	
+	/**
+	 * Free memory and close this JFrame
+	 */
 	private void close()
 	{
 		this.dispose();
 	}
 	
+	/**
+	 * Handle user action when click on team name
+	 * @param team
+	 */
 	private void clickVote(int team)
 	{
 		close();

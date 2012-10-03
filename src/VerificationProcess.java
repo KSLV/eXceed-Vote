@@ -6,25 +6,42 @@ import java.io.InputStreamReader;
 import java.util.logging.Logger;
 
 
-
+/**
+ * Handles Vote Processes
+ * @author KSLV
+ * @version Oct 1, 2012
+ */
 public abstract class VerificationProcess {
 
-	private InputStream uis,pis;
+	private InputStream uis,pis; //FileInputStream for UsernameList.txt and PasswordList.txt , respectively
 	private InputStreamReader uin,pin;
 	private BufferedReader ubr,pbr;
 	private String tmpUsername;
 	private String tmpPassword;
-	private String userListDir;
-	private String passListDir;	
+	private String userListDir; //Store directory of UsernameList.txt
+	private String passListDir;	//Store directory of PasswordList.txt
 	
 	private final Logger logger = Logger.getLogger(this.toString());
 
+	/**
+	 * Constructor for this class
+	 * @param userListDir receive directory of UsernameList.txt
+	 * @param passListDir receive directory of PasswordList.txt
+	 * @throws IOException
+	 */
 	public VerificationProcess(String userListDir , String passListDir) throws IOException
 	{
 		this.userListDir = userListDir;
 		this.passListDir = passListDir;
 	}
 	
+	/**
+	 * Check if are there any pair of username and password that match, return it's Line number as userId, else return 0
+	 * @param username User input username
+	 * @param password User input Password
+	 * @return userID if input is valid, else return 0
+	 * @throws IOException
+	 */
 	public int verifyLogin(String username , String password) throws IOException
 	{
 		uis = new FileInputStream(userListDir);

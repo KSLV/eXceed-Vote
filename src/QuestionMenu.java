@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.logging.Logger;
+//import java.util.Scanner;
+//import java.util.logging.Logger;
 
 /**
  * Display question list and handle user choices
@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 public class QuestionMenu {
 
 	private int userID; //Indicate line number of the current user
-	private int questionNumber; //Indicate total number of question
+	//private int questionNumber; //Indicate total number of question
 	private String questionListDir = "src//QuestionsList.txt";
 	private String nBallotListDir = "src//NBallotList.txt";
 	private InputStream qis,nis; //InputStream for QuestionsList.txt and NBallotList.txt, respectively
@@ -81,16 +81,28 @@ public class QuestionMenu {
 
 	}
 	
+	/**
+	 * Return QuestionList
+	 * @return List of questions
+	 */
 	public ArrayList<String> getQuestionList()
 	{
 		return questionList;
 	}
 	
+	/**
+	 * Return nBallotList
+	 * @return List of Number of ballots
+	 */
 	public ArrayList<String> getNBallotList()
 	{
 		return nBallotList;
 	}
 	
+	/**
+	 * Return current userID
+	 * @return current userID
+	 */
 	public int getUserID()
 	{
 		return userID;

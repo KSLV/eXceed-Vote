@@ -1,9 +1,6 @@
 import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -13,18 +10,27 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 
-
+/**
+ * Initialize QuestionListMenu Components and hangle user actions 
+ * @author Lattasit 5410545061
+ * @version Oct 3, 2012
+ */
 public class QuestionListMenuGUIController extends JFrame{
 
 
 	private JPanel title;
-	private ArrayList<String> questionList = new ArrayList<String>();
-	private ArrayList<String> nBallotList = new ArrayList<String>();
-	private int userID;
+	private ArrayList<String> questionList = new ArrayList<String>(); //Contain list of vote questions
+	private ArrayList<String> nBallotList = new ArrayList<String>(); //Contain number of ballot on each question of each user
+	private int userID; //Indicate which user is using the class
 
+	/**
+	 * Constructor of this class
+	 * @param idUser Indicate which user is using this class
+	 * @param questionList Contain list of vote questions
+	 * @param nBallotList Contain number of ballot on each question of each person
+	 */
 	public QuestionListMenuGUIController(int idUser , ArrayList<String> questionList , ArrayList<String> nBallotList)
 	{
 		super("QuestionListMenu");
@@ -76,18 +82,26 @@ public class QuestionListMenuGUIController extends JFrame{
 		setVisible(true);
 	}
 	
+	/**
+	 * Free memory and close the program
+	 */
 	private void close()
 	{
 		dispose();
 	}
 	
+	/**
+	 * Close this JFram and call new Login GUI 
+	 */
 	private void signOut()
 	{
 		close();
 		new LoginGUIController();
 	}
 		
-	
+	/**
+	 * Read QuestionList from file and ,Add button with each question as it's Label
+	 */
 	private void addQuestion()
 	{
 		for(int i=0;i<questionList.size();i++)
@@ -117,7 +131,12 @@ public class QuestionListMenuGUIController extends JFrame{
 		}
 	}
 	
-	public void selectQuestion(int questionNumber , String questionName)
+	/**
+	 * Call Vote GUI according to the question user has selected
+	 * @param questionNumber Indicate the number of question the user selected
+	 * @param questionName Contain name of the question
+	 */
+	private void selectQuestion(int questionNumber , String questionName)
 	{
 		new VoteMenuGUIController(userID, questionNumber,questionName,nBallotList.get(questionNumber - 1));
 	}

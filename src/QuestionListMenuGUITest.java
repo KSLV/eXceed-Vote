@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 /**
- * 
+ * Test Unit of QuestionListMenuGUI
  * @author Lattasit 5410545061
  * @version Oct 2, 2012
  */

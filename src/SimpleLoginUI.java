@@ -1,7 +1,11 @@
 import java.io.IOException;
 import java.util.Scanner;
-import java.util.logging.Logger;
 
+/**
+ * Console-based Login UI class
+ * @author KSLV
+ * @version Oct 1, 2012
+ */
 public class SimpleLoginUI extends VerificationProcess{
 
 	private Scanner scanner;
@@ -10,6 +14,10 @@ public class SimpleLoginUI extends VerificationProcess{
 	
 	//private Logger logger = Logger.getLogger(this.toString());
 	
+	/**
+	 * Constructor for this class
+	 * @throws IOException
+	 */
 	public SimpleLoginUI() throws IOException
 	{
 		super(userListDir , passListDir);
@@ -17,6 +25,10 @@ public class SimpleLoginUI extends VerificationProcess{
 		basicLogin();
 	}
 	
+	/**
+	 * Receive username and password and call Verification method
+	 * @throws IOException
+	 */
 	public void basicLogin() throws IOException
 	{
 		String inputUsername = new String();
@@ -40,6 +52,12 @@ public class SimpleLoginUI extends VerificationProcess{
 		
 	}
 	
+	/**
+	 * Tell user which userID they logged into and call Question UI
+	 * @param idCounter Indicate userID that user has logged in
+	 * @param UserName Username of that user
+	 * @throws IOException
+	 */
 	private void callSimpleVoterUI(int idCounter,String UserName) throws IOException
 	{
 		//////////////// log4j /////////////
