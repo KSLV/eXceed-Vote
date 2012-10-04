@@ -19,9 +19,13 @@ public class VoteProcessTest {
 		TmpS1 = vm.getScore(1);
 		TmpS2 = vm.getScore(1);		
 		assertEquals(0,TmpS2 - TmpS1);		
-		vm.doVote(1);
-		TmpS2 = vm.getScore(1);
-		assertEquals(1,TmpS2 - TmpS1);			
+		if(vm.getNBallot() > 0) 
+		{
+			vm.doVote(1);
+			TmpS2 = vm.getScore(1);
+			assertEquals(1,TmpS2 - TmpS1);	
+		}else assertEquals(0,TmpS2 - TmpS1);
+				
 	}
 	
 	/**Test for uerID 2 vote in Question 2 until out of Ballot
@@ -39,6 +43,8 @@ public class VoteProcessTest {
 			vm.doVote(1);
 			count++;
 		}
+		assertEquals(score+count, vm.getScore(1));
+		vm.doVote(1);
 		assertEquals(score+count, vm.getScore(1));
 	}
 
