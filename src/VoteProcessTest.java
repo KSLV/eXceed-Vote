@@ -31,19 +31,15 @@ public class VoteProcessTest {
 	@Test
 	public void testVoteUntilOutOfBallot() throws IOException{
 		VoteMenu vm =  new VoteMenu(2, 2);	
-		assertEquals(0, vm.getScore(1));
-		vm.doVote(1);
-		vm.doVote(1);
-		vm.doVote(1);
-		assertEquals(3, vm.getScore(1));
-		vm.doVote(1);
-		vm.doVote(1);
-		vm.doVote(1);
-		vm.doVote(1);
-		assertEquals(6, vm.getScore(1));
-		vm.doVote(1);
-		vm.doVote(1);
-		assertEquals(6, vm.getScore(1));
+		int score = vm.getScore((1));
+		assertEquals(score, vm.getScore(1));
+		int count = 0;
+		while(vm.getNBallot() > 0)
+		{
+			vm.doVote(1);
+			count++;
+		}
+		assertEquals(score+count, vm.getScore(1));
 	}
 
 }
