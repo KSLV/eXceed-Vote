@@ -1,0 +1,3 @@
+09:24:02 INFO VerificationProcess:verifyLogin - ARLeader Login
+09:24:03 INFO VoteProcess:<init> - Question No.1
+09:24:04 INFO VoteProcess:doVote - vote to team 1

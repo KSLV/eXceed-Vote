@@ -3,7 +3,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.logging.Logger;
+import java.util.Properties; 
+import org.apache.log4j.Logger; 
+import org.apache.log4j.PropertyConfigurator;
 
 
 /**
@@ -21,7 +23,9 @@ public abstract class VerificationProcess {
 	private String userListDir; //Store directory of UsernameList.txt
 	private String passListDir;	//Store directory of PasswordList.txt
 	
-	private final Logger logger = Logger.getLogger(this.toString());
+
+	private final Logger logger = Logger.getLogger(getClass());	
+	protected static Properties properties = new Properties();
 
 	/**
 	 * Constructor for this class
@@ -31,6 +35,8 @@ public abstract class VerificationProcess {
 	 */
 	public VerificationProcess(String userListDir , String passListDir) throws IOException
 	{
+		PropertyConfigurator.configure("src//log4j.properties");
+		
 		this.userListDir = userListDir;
 		this.passListDir = passListDir;
 	}
@@ -78,7 +84,7 @@ public abstract class VerificationProcess {
 		pis.close();
 		pin.close();
 		pbr.close();		
-		logger.warning("Invalid UserName or Password");
+		logger.error("Invalid UserName or Password");
 		return 0;
 	}
 	

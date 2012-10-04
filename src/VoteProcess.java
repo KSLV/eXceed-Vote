@@ -8,7 +8,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.util.logging.Logger;
+import java.util.Properties; 
+import org.apache.log4j.Logger; 
+import org.apache.log4j.PropertyConfigurator;
 
 /**
  * Handle Vote Processes
@@ -30,7 +32,8 @@ public abstract class VoteProcess {
 	private OutputStreamWriter tnor,tvor;
 	private BufferedWriter tnbw,tvbw;
 	
-	private final Logger logger = Logger.getLogger(this.toString());
+	private final Logger logger = Logger.getLogger(getClass());	
+	protected static Properties properties = new Properties();
 	
 	/**
 	 * Constructor for this class
@@ -40,6 +43,8 @@ public abstract class VoteProcess {
 	 */
 	public VoteProcess(int userID,int questionNumber) throws IOException
 	{
+		PropertyConfigurator.configure("src//log4j.properties");
+		
 		logger.info("Question No."+questionNumber);
 		
 		this.userID = userID;
