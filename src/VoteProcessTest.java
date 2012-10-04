@@ -11,7 +11,7 @@ public class VoteProcessTest {
 	/**Test for userID 1 vote for Team 1 in question 1 
 	 * **Ballot in NBallotList.txt must no be 0**
 	 * @throws IOException */
-	@Test (timeout = 100)
+	@Test 
 	public void testVoteOneTime() throws IOException {	
 		 
 		VoteMenu vm =  new VoteMenu(1, 1);	
