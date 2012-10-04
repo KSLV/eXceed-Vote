@@ -2,6 +2,7 @@
 ## Eclipse
 #################
 
+*.log
 *.txt
 *.pydevproject
 .project
