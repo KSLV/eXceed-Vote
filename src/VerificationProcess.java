@@ -88,11 +88,19 @@ public abstract class VerificationProcess {
 		return 0;
 	}
 	
+	/**
+	 * Return username the user input as String
+	 * @return Username user has input
+	 */
 	public String getTmpUserName()
 	{
 		return tmpUsername;
 	}
 	
+	/**
+	 * Return password the user input as String
+	 * @return Password user has input
+	 */
 	public String getTmpPassword()
 	{
 		return tmpPassword;
