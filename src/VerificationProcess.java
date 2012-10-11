@@ -88,4 +88,14 @@ public abstract class VerificationProcess {
 		return 0;
 	}
 	
+	public String getTmpUserName()
+	{
+		return tmpUsername;
+	}
+	
+	public String getTmpPassword()
+	{
+		return tmpPassword;
+	}
+	
 }

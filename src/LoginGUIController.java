@@ -63,7 +63,7 @@ public class LoginGUIController extends JFrame{
 		//System.out.println(password);
 		int userID = 0;
 		try {
-			loginGUI = new LoginGUI(userName, password);
+			loginGUI = new LoginGUI();
 			userID = loginGUI.verifyLogin(userName, password);
 		} catch (IOException e) {
 			e.printStackTrace();
