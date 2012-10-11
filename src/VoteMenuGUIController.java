@@ -28,8 +28,8 @@ public class VoteMenuGUIController extends JFrame{
 	/**
 	 * Constructor for this class
 	 * @param idUser current userID
-	 * @param questionNumber Indicate which question this user is voting on
-	 * @param nameQuestion Contain the question as String
+	 * @param questionNumber Indicate which question number this user is voting on
+	 * @param nameQuestion Contain the question description as String
 	 * @param nBallotList List of number of ballots this user has
 	 */
 	public VoteMenuGUIController(int idUser,int questionNumber,String nameQuestion, String nBallotList)

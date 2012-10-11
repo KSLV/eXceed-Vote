@@ -9,7 +9,6 @@ public class VoteProcessTest {
 
 	
 	/**Test for userID 1 vote for Team 1 in question 1 
-	 * **Ballot in NBallotList.txt must no be 0**
 	 * @throws IOException */
 	@Test 
 	public void testVoteOneTime() throws IOException {	
@@ -29,7 +28,6 @@ public class VoteProcessTest {
 	}
 	
 	/**Test for uerID 2 vote in Question 2 until out of Ballot
-	 * **Ballot of userID2 in NBallotList.txt must be 6**
 	 * @throws IOException
 	 */	
 	@Test

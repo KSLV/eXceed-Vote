@@ -86,8 +86,8 @@ public abstract class VoteProcess {
 	}
 	
 	/**
-	 * Read number of ballots of current user and return it as array of int
-	 * @return Number of ballot of this user as array of Integer
+	 * Read number of ballots of current user and return it as int
+	 * @return Number of ballot of this user as Integer
 	 * @throws IOException
 	 */
 	public int getNBallot() throws IOException
@@ -113,7 +113,7 @@ public abstract class VoteProcess {
 	
 	/**
 	 * Alter VoteScore and NBallotList by Read and Overwrite the file 
-	 * @param team
+	 * @param team Number of team which user has chosen
 	 * @return true if vote is success, else false
 	 * @throws IOException
 	 */
@@ -128,12 +128,21 @@ public abstract class VoteProcess {
 			if(nBallotList.exists() && voteScore.exists())
 			{
 				if(nBallotList.delete()) tmpNBallotList.renameTo(nBallotList);
-				else System.out.println("DELETE ERROR IN N BALLOT");
+				else
+				{
+					logger.info("NBallotList deletion failed");
+					return false;
+				}
 				if(voteScore.delete()) tmpVoteScore.renameTo(voteScore);
-				else System.out.println("DELETE ERROR IN VOTE");
+				else 
+				{
+					logger.info("VoteScore deletion failed");
+					return false;
+				}
 				return true;
 			}
-			
+			logger.info("NBallotList or VoteScore doesn't exist");
+			return false;
 		}
 		logger.info("Out of Ballot");
 		return false;
@@ -141,7 +150,7 @@ public abstract class VoteProcess {
 	
 	/**
 	 * Write temporary VoteScore which to be replace the original VoteScore.txt
-	 * @param team Indicate which team user voted on
+	 * @param team Indicate which team number the user voted on
 	 * @throws IOException
 	 */
 	private void writeTmpVote(int team) throws IOException
@@ -187,7 +196,7 @@ public abstract class VoteProcess {
 	
 	/**
 	 * Write temporary nBallot which to be replace the original NBallotList.txt
-	 * @param team Indicate which team user voted on
+	 * @param team Indicate which team number user voted on
 	 * @throws IOException
 	 */
 	private void writeTmpNBallot(int team) throws IOException

@@ -9,8 +9,8 @@ public class VoteMenuGUI extends VoteMenu{
 
 	/**
 	 * Initialize VoteMenu class
-	 * @param userID
-	 * @param questionNumber
+	 * @param userID Indicate which userID has logged in
+	 * @param questionNumber Indicate which question number this user is voting 
 	 * @throws IOException
 	 */
 	public VoteMenuGUI(int userID, int questionNumber) throws IOException {

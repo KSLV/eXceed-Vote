@@ -62,7 +62,7 @@ public class QuestionListMenuGUITest {
 	{
 		QuestionListMenuGUI qListGUI = new QuestionListMenuGUI(1);
 		assertEquals(1,qListGUI.getUserID());
-		new FileInputStream("src//List.txt");
+		new FileInputStream("src//database//List.txt");
 	}
 	
 	/**
@@ -74,7 +74,7 @@ public class QuestionListMenuGUITest {
 	{
 		QuestionListMenuGUI qListGUI = new QuestionListMenuGUI(1);
 		assertEquals(1,qListGUI.getUserID());
-		InputStream is = new FileInputStream("src//QuestionsList.txt");
+		InputStream is = new FileInputStream("src//database//QuestionsList.txt");
 		is.close();
 		
 	}

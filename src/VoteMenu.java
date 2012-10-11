@@ -26,8 +26,8 @@ public class VoteMenu extends VoteProcess{
 	
 	/**
 	 * Constructor for this class
-	 * @param userID 
-	 * @param questionNumber
+	 * @param userID Indicate which userID has logged in
+	 * @param questionNumber Indicate which question number this user is voting 
 	 * @throws IOException
 	 */
 	public VoteMenu(int userID, int questionNumber) throws IOException
