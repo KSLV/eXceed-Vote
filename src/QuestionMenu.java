@@ -16,8 +16,8 @@ public class QuestionMenu {
 
 	private int userID; //Indicate line number of the current user
 	//private int questionNumber; //Indicate total number of question
-	private String questionListDir = "src//QuestionsList.txt";
-	private String nBallotListDir = "src//NBallotList.txt";
+	private String questionListDir = "src//database//QuestionsList.txt";
+	private String nBallotListDir = "src//database//NBallotList.txt";
 	private InputStream qis,nis; //InputStream for QuestionsList.txt and NBallotList.txt, respectively
 	private InputStreamReader qin,nin;
 	private BufferedReader qbr,nbr;

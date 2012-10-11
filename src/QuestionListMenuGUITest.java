@@ -26,7 +26,7 @@ public class QuestionListMenuGUITest {
 		
 		QuestionListMenuGUI qListGUI = new QuestionListMenuGUI(1);
 		
-		InputStream is = new FileInputStream("src//QuestionsList.txt");
+		InputStream is = new FileInputStream("src//database//QuestionsList.txt");
 		InputStreamReader in = new InputStreamReader(is);
 		BufferedReader br = new BufferedReader(in);
 		ArrayList<String> testList = new ArrayList<String>();

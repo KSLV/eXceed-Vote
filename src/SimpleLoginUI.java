@@ -9,8 +9,8 @@ import java.util.Scanner;
 public class SimpleLoginUI extends VerificationProcess{
 
 	private Scanner scanner;
-	private static String userListDir = "src//UsernameList.txt";
-	private static String passListDir = "src//PasswordList.txt";	
+	private static String userListDir = "src//database//UsernameList.txt";
+	private static String passListDir = "src//database//PasswordList.txt";	
 	
 	//private Logger logger = Logger.getLogger(this.toString());
 	

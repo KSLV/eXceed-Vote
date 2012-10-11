@@ -50,10 +50,10 @@ public abstract class VoteProcess {
 		this.userID = userID;
 		this.questionNumber = questionNumber;
 		
-		nBallotList = new File("src//NBallotList.txt");
-		voteScore = new File("src//VoteScore.txt");
-		tmpNBallotList = new File("src//tmpNBallotList.txt");
-		tmpVoteScore = new File("src//tmpVoteScore.txt");
+		nBallotList = new File("src//database//NBallotList.txt");
+		voteScore = new File("src//database//VoteScore.txt");
+		tmpNBallotList = new File("src//database//tmpNBallotList.txt");
+		tmpVoteScore = new File("src//database//tmpVoteScore.txt");
 		
 		if(tmpNBallotList.exists()) tmpNBallotList.delete();
 		if(tmpVoteScore.exists()) tmpVoteScore.delete();

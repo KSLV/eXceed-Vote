@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class VoteMenu extends VoteProcess{
 
 	
-	private String teamListDir = ("src//TeamList.txt");
+	private String teamListDir = ("src//database//TeamList.txt");
 	//private int teamNumber;
 	private InputStream tis; //FileInputStream for TeamList.txt
 	private InputStreamReader tin;
