@@ -1,0 +1,24 @@
+NBallotList > Indicate number of ballot each user currently has
+PasswordList > Store password of each users
+QuestionList > Store description of each question
+TeamList > Store name for each team
+UsernameList > Store username of each users
+VoteScore Store Score for each team on each question
+
+Adding new user
+---------------
+Insert new username in UsernameList
+Insert new password in PasswordList
+Insert new user's number of ballot seperated by 'tab' in NBallotList
+---------------
+
+NBallotList
+---------------
+	Q1	Q2	Q3	...
+	__________________
+User1 |	x	x	x
+User2 |	x	x	x
+User3 |	x	x	x
+.
+.
+.
