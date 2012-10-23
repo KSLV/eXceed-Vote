@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+
+import javax.print.attribute.standard.Severity;
+
+import servicelocator.ServiceLocator;
 //import java.util.Scanner;
 
 /**
@@ -16,7 +20,7 @@ import java.util.ArrayList;
 public class VoteMenu extends VoteProcess{
 
 	
-	private String teamListDir = ("src//database//TeamList.txt");
+	//private String teamListDir = ("src//database//TeamList.txt");
 	//private int teamNumber;
 	private InputStream tis; //FileInputStream for TeamList.txt
 	private InputStreamReader tin;
@@ -82,8 +86,10 @@ public class VoteMenu extends VoteProcess{
 	 */
 	private void readTeamList() throws IOException
 	{
+		ServiceLocator sl = ServiceLocator.getServiceLocator();
+		
 		teamList = new ArrayList<String>();
-		tis = new FileInputStream(teamListDir);
+		tis = new FileInputStream(sl.getTeamListPath());
 		tin = new InputStreamReader(tis);
 		tbr = new BufferedReader(tin);
 		String tmpTeam = tbr.readLine();

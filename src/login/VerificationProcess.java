@@ -9,6 +9,8 @@ import java.util.Properties;
 import org.apache.log4j.Logger; 
 import org.apache.log4j.PropertyConfigurator;
 
+import servicelocator.ServiceLocator;
+
 
 /**
  * Handles Vote Processes
@@ -35,12 +37,13 @@ public abstract class VerificationProcess {
 	 * @param passListDir receive directory of PasswordList.txt
 	 * @throws IOException
 	 */
-	public VerificationProcess(String userListDir , String passListDir) throws IOException
+	public VerificationProcess() throws IOException
 	{
-		PropertyConfigurator.configure("src//log4j//log4j.properties");
+		ServiceLocator sl = ServiceLocator.getServiceLocator();
+		PropertyConfigurator.configure(sl.getLog4jPath());
 		
-		this.userListDir = userListDir;
-		this.passListDir = passListDir;
+		this.userListDir = sl.getUserListPath();
+		this.passListDir = sl.getPassListPath();
 	}
 	
 	/**

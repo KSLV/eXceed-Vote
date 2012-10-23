@@ -14,6 +14,8 @@ import java.util.Properties;
 import org.apache.log4j.Logger; 
 import org.apache.log4j.PropertyConfigurator;
 
+import servicelocator.ServiceLocator;
+
 /**
  * Handle Vote Processes
  * @author KSLV
@@ -45,17 +47,19 @@ public abstract class VoteProcess {
 	 */
 	public VoteProcess(int userID,int questionNumber) throws IOException
 	{
-		PropertyConfigurator.configure("src//log4j//log4j.properties");
+		ServiceLocator sl = ServiceLocator.getServiceLocator();
+		
+		PropertyConfigurator.configure(sl.getLog4jPath());
 		
 		logger.info("Question No."+questionNumber);
 		
 		this.userID = userID;
 		this.questionNumber = questionNumber;
 		
-		nBallotList = new File("src//database//NBallotList.txt");
-		voteScore = new File("src//database//VoteScore.txt");
-		tmpNBallotList = new File("src//database//tmpNBallotList.txt");
-		tmpVoteScore = new File("src//database//tmpVoteScore.txt");
+		nBallotList = new File(sl.getNBallotListPath());
+		voteScore = new File(sl.getVoteScorePath());
+		tmpNBallotList = new File(sl.getTmpBallotListPath());
+		tmpVoteScore = new File(sl.getTmpVoteScorePath());
 		
 		if(tmpNBallotList.exists()) tmpNBallotList.delete();
 		if(tmpVoteScore.exists()) tmpVoteScore.delete();

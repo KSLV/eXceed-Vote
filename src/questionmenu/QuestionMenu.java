@@ -1,13 +1,18 @@
 package questionmenu;
 
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.ServiceLoader;
+
+import servicelocator.ServiceLocator;
 //import java.util.Scanner;
 //import java.util.logging.Logger;
+
 
 /**
  * Display question list and handle user choices
@@ -18,8 +23,8 @@ public class QuestionMenu {
 
 	private int userID; //Indicate line number of the current user
 	//private int questionNumber; //Indicate total number of question
-	private String questionListDir = "src//database//QuestionsList.txt";
-	private String nBallotListDir = "src//database//NBallotList.txt";
+	//private String questionListDir = "src//database//QuestionsList.txt";
+	//private String nBallotListDir = "src//database//NBallotList.txt";
 	private InputStream qis,nis; //InputStream for QuestionsList.txt and NBallotList.txt, respectively
 	private InputStreamReader qin,nin;
 	private BufferedReader qbr,nbr;
@@ -48,10 +53,12 @@ public class QuestionMenu {
 	 */
 	private void readData() throws IOException
 	{
-		qis = new FileInputStream(questionListDir);
+		ServiceLocator sl = ServiceLocator.getServiceLocator();
+		
+		qis = new FileInputStream(sl.getQuestionListPath());
 		qin = new InputStreamReader(qis);
 		qbr = new BufferedReader(qin);
-		nis = new FileInputStream(nBallotListDir);
+		nis = new FileInputStream(sl.getNBallotListPath());
 		nin = new InputStreamReader(nis);
 		nbr = new BufferedReader(nin);
 		

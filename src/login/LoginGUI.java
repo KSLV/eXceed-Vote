@@ -9,11 +9,11 @@ import java.io.IOException;
  */
 public class LoginGUI extends VerificationProcess{
 
-	private static String userListDir = "src//database//UsernameList.txt";
-	private static String passListDir = "src//database//PasswordList.txt";	
+	//private static String userListDir = "src//database//UsernameList.txt";
+	//private static String passListDir = "src//database//PasswordList.txt";	
 	
 	public LoginGUI() throws IOException {
-		super(userListDir, passListDir);
+		super();
 	}
 
 }
