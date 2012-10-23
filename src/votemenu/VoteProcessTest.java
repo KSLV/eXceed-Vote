@@ -1,3 +1,5 @@
+package votemenu;
+
 import static org.junit.Assert.*;
 
 import java.io.IOException;

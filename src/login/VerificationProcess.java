@@ -1,3 +1,5 @@
+package login;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -35,7 +37,7 @@ public abstract class VerificationProcess {
 	 */
 	public VerificationProcess(String userListDir , String passListDir) throws IOException
 	{
-		PropertyConfigurator.configure("src//log4j.properties");
+		PropertyConfigurator.configure("src//log4j//log4j.properties");
 		
 		this.userListDir = userListDir;
 		this.passListDir = passListDir;

@@ -6,7 +6,7 @@ public class Main {
 	public static void main(String [] args) throws IOException
 	{
 		//new SimpleLoginUI();
-		new LoginGUIController();
+		new login.LoginGUIController();
 		//new QuestionListMenuGUIController();
 	}
 	

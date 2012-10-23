@@ -1,3 +1,5 @@
+package votemenu;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -43,7 +45,7 @@ public abstract class VoteProcess {
 	 */
 	public VoteProcess(int userID,int questionNumber) throws IOException
 	{
-		PropertyConfigurator.configure("src//log4j.properties");
+		PropertyConfigurator.configure("src//log4j//log4j.properties");
 		
 		logger.info("Question No."+questionNumber);
 		

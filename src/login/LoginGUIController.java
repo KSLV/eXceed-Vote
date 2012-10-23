@@ -1,3 +1,5 @@
+package login;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -71,13 +73,13 @@ public class LoginGUIController extends JFrame{
 		if(userID != 0)
 		{
 			close();
-			new QuestionListMenuGUI(userID);
+			new questionmenu.QuestionListMenuGUI(userID);
 			dispose();
 		}else
 		{
 			userField.setText(null);
 			passField.setText(null);
-			new ShowPopup("Username or Password incorrect.","Error!!!!!",0);
+			new messagebox.ShowPopup("Username or Password incorrect.","Error!!!!!",0);
 		}
 	}
 	

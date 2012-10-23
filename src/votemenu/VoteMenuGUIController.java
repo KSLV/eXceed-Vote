@@ -1,3 +1,5 @@
+package votemenu;
+
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -12,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
 
 /**
  * Initialize GUI and handle user inputs
@@ -78,7 +81,7 @@ public class VoteMenuGUIController extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				close();
 				try {
-					new QuestionListMenuGUI(userID);
+					new questionmenu.QuestionListMenuGUI(userID);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -140,12 +143,12 @@ public class VoteMenuGUIController extends JFrame{
 		close();
 		try {
 			if(!voteMenuGUI.doVote(team))
-				new ShowPopup("Insufficient ballot", "Error!!!!!!!", 2);
+				new messagebox.ShowPopup("Insufficient ballot", "Error!!!!!!!", 2);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		try {
-			new QuestionListMenuGUI(userID);
+			new questionmenu.QuestionListMenuGUI(userID);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

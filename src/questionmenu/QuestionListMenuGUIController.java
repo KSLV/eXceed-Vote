@@ -1,3 +1,5 @@
+package questionmenu;
+
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -96,7 +98,7 @@ public class QuestionListMenuGUIController extends JFrame{
 	private void signOut()
 	{
 		close();
-		new LoginGUIController();
+		new login.LoginGUIController();
 	}
 		
 	/**
@@ -138,6 +140,6 @@ public class QuestionListMenuGUIController extends JFrame{
 	 */
 	private void selectQuestion(int questionNumber , String questionName)
 	{
-		new VoteMenuGUIController(userID, questionNumber,questionName,nBallotList.get(questionNumber - 1));
+		new votemenu.VoteMenuGUIController(userID, questionNumber,questionName,nBallotList.get(questionNumber - 1));
 	}
 }

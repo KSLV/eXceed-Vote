@@ -1,3 +1,5 @@
+package login;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -64,7 +66,7 @@ public class SimpleLoginUI extends VerificationProcess{
 		//logger.info(UserName+" Login");
 		////////////////////////////////////
 		System.out.println("Login Success! with ID : "+ idCounter);
-		new SimpleUI(idCounter);
+		new questionmenu.SimpleUI(idCounter);
 	}
 	
 }
