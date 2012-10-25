@@ -57,8 +57,8 @@ public class VoteMenuGUIController extends JFrame{
 		add(head);
 		
 		title = new JPanel(new GridLayout(teamList.size()+1, 1));
-		JLabel name = new JLabel("Team");
-		name.setFont(new Font(name.getFont() + "", 0, 20));
+		JLabel name = new JLabel("Click on a team you like to vote on");
+		name.setFont(new Font(name.getFont() + "", 0, 17));
 		
 		title.add(name);
 		add(title);

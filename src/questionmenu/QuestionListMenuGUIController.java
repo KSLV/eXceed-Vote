@@ -43,7 +43,7 @@ public class QuestionListMenuGUIController extends JFrame{
 		setLayout(new BoxLayout(this.getContentPane(), 1));
 		//JPanel head = new JPanel(new GridLayout(1,2));
 		JPanel head = new JPanel(new BorderLayout());
-		JLabel headWord = new JLabel("ISSUE LIST");
+		JLabel headWord = new JLabel("Click on a question you like to vote");
 		headWord.setFont(new Font(headWord.getFont() + "", 0, 25));
 		head.add(headWord,BorderLayout.WEST);
 		//head.add(headWord);
