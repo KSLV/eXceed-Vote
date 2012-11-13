@@ -209,13 +209,20 @@ public class Main {
 		
 		Ebean.save(a);
 		Ebean.save(b);
-		
+		/*
 
 		VoteLog vl = new VoteLog(a.getId(), q1.getId(),t1.getId());
 		VoteLog vl2 = new VoteLog(a.getId(), q2.getId(),t2.getId());		
+		VoteLog vl3 = new VoteLog(a.getId(), q2.getId(),t2.getId());		
+		VoteLog vl4 = new VoteLog(a.getId(), q2.getId(),t2.getId());		
 		Ebean.save(vl);
 		Ebean.save(vl2);
+		Ebean.save(vl3);
+		Ebean.save(vl4);
 		
+		List<VoteLog> vlist = Ebean.find(VoteLog.class).where().eq("userId", a.getId()).eq("questionId", q2.getId()).findList();	
+		System.out.println("tollototototot"+vlist.size());
+		*/
 	}
 	
 }
