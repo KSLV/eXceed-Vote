@@ -12,6 +12,7 @@ import database.NBallot;
 import database.QuestionDescription;
 import database.TeamDescription;
 import database.User;
+import database.VoteLog;
 import exceed.dao.DaoFactory;
 import exceed.dao.ExceedUserDao;
 import exceed.dao.QuestionDao;
@@ -204,10 +205,16 @@ public class Main {
 			}
 		}
 		
+		
+		
 		Ebean.save(a);
 		Ebean.save(b);
 		
-		
+
+		VoteLog vl = new VoteLog(a.getId(), q1.getId(),t1.getId());
+		VoteLog vl2 = new VoteLog(a.getId(), q2.getId(),t2.getId());		
+		Ebean.save(vl);
+		Ebean.save(vl2);
 		
 	}
 	

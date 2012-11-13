@@ -25,6 +25,12 @@ create table user (
   constraint pk_user primary key (id))
 ;
 
+create table vote_log (
+  user_id                   integer,
+  question_id               integer,
+  team_id                   integer)
+;
+
 alter table nballot add constraint fk_nballot_user_1 foreign key (user_id) references user (id) on delete restrict on update restrict;
 create index ix_nballot_user_1 on nballot (user_id);
 alter table nballot add constraint fk_nballot_question_2 foreign key (question_id) references question_description (id) on delete restrict on update restrict;
