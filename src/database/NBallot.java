@@ -12,17 +12,25 @@ public class NBallot {
 	private Integer id;
 	@ManyToOne
 	private User userPassDB;
+	@ManyToOne
+	private QuestionDescription question;
+	
 	private int ballot;
-	
-	
 	
 	public NBallot(){	
 	}
-	public NBallot(User up,int ballot){
+	public NBallot(User up,QuestionDescription q,int ballot){
 		this.ballot = ballot;
+		this.question = q;
 		this.userPassDB = up;
 	}
 	
+	public QuestionDescription getQuestion() {
+		return question;
+	}
+	public void setQuestion(QuestionDescription question) {
+		this.question = question;
+	}
 	
 	public Integer getId() {
 		return id;

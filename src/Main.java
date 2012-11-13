@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.List;
 
 import com.avaje.ebean.Ebean;
 
@@ -16,6 +17,8 @@ public class Main {
 
 	public static void main(String [] args) throws IOException
 	{
+		
+		database();
 		/*
 		String name = "test";
 		String pass = "test";
@@ -49,6 +52,39 @@ public class Main {
 		ServiceLocator sl = ServiceLocator.getServiceLocator();
 		new login.LoginGUIController();
 		//new QuestionListMenuGUIController();
+	}
+	static void database(){
+		
+		User a = new User("ARLeader","ARLeader");
+		User b = new User("title","title");
+		
+		QuestionDescription q1 = new QuestionDescription("Question 1");
+		QuestionDescription q2 = new QuestionDescription("Question 2");
+		QuestionDescription q3 = new QuestionDescription("Question 3");
+		
+		TeamDiscription t1 = new TeamDiscription("Team 1");
+		TeamDiscription t2 = new TeamDiscription("Team 2");
+		
+		
+		Ebean.save(q1);
+		Ebean.save(q2);
+		Ebean.save(q3);
+		Ebean.save(t1);
+		Ebean.save(t2);
+		
+		List<QuestionDescription> noq = Ebean.find(QuestionDescription.class).findList();
+
+		for (User user : new User[] { a, b }) {
+			for (QuestionDescription q : noq) {
+				user.getNBallot().put(q, new NBallot(user, q, 6));
+			}
+		}
+		
+		Ebean.save(a);
+		Ebean.save(b);
+		
+		
+		
 	}
 	
 }
