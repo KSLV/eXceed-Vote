@@ -22,10 +22,10 @@ create table score (
   constraint pk_score primary key (id))
 ;
 
-create table team_discription (
+create table team_description (
   id                        integer auto_increment not null,
   name                      varchar(255),
-  constraint pk_team_discription primary key (id))
+  constraint pk_team_description primary key (id))
 ;
 
 create table team_score (

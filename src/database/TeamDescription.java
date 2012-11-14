@@ -4,13 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class TeamDiscription {
+public class TeamDescription {
 	@Id
 	private Integer id;
 	private String name;
-	public TeamDiscription() {		
+	public TeamDescription() {		
 	}
-	public TeamDiscription(String name) {
+	public TeamDescription(String name) {
 		this.name = name;
 	}
 	public Integer getId() {

@@ -8,7 +8,7 @@ drop table question_total;
 
 drop table score;
 
-drop table team_discription;
+drop table team_description;
 
 drop table team_score;
 

@@ -12,10 +12,7 @@ public class DaoFactory {
 		if(dao == null)dao = new DaoFactory();
 		return dao;
 	}
-	public UserDao getUserDao() {
-		return new UserDao();
-	}
-	public BallotDao getBallotDao() {
-		return new BallotDao();
+	public ExceedDao getExceedDao() {
+		return new ExceedDao();
 	}
 }

@@ -8,7 +8,7 @@ import com.avaje.ebean.Ebean;
 import database.QuestionDescription;
 import database.User;
 
-public class UserDao {
+public class ExceedDao {
 
 	public void save(User user)
 	{

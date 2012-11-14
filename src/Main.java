@@ -10,12 +10,12 @@ import com.avaje.ebean.Ebean;
 
 import database.NBallot;
 import database.QuestionDescription;
-import database.TeamDiscription;
+import database.Score;
+import database.TeamDescription;
+import database.TeamScore;
 import database.User;
-import exceed.dao.BallotDao;
 import exceed.dao.DaoFactory;
-import exceed.dao.UserDao;
-
+import exceed.dao.ExceedDao;
 import servicelocator.ServiceLocator;
 
 
@@ -58,15 +58,16 @@ public class Main {
 	      // }
 		//new SimpleLoginUI();
 		ServiceLocator sl = ServiceLocator.getServiceLocator();
-		consoleTest();
+		
 		new login.LoginGUIController();
+		consoleTest();
 		//new QuestionListMenuGUIController();
 	}
 	private static void consoleTest() {
 		int testInput = 0;
 		List<QuestionDescription> noq = Ebean.find(QuestionDescription.class).findList();
-		UserDao testDao = DaoFactory.getInstance().getUserDao();
-		BallotDao bdao = DaoFactory.getInstance().getBallotDao();
+		List<TeamDescription> tdl = Ebean.find(TeamDescription.class).findList();
+		ExceedDao testDao = DaoFactory.getInstance().getExceedDao();
 		User harry = new User("Harry","Potter");
 		for (QuestionDescription q : noq) {
 			harry.getNBallot().put(q, new NBallot(harry, q, 6));
@@ -82,7 +83,7 @@ public class Main {
 			System.out.println("3.Add User");
 			System.out.println("4.Find All Voter");
 			System.out.println("5.Show Harry Ballots");
-			//System.out.println("6.Test change of ballot");
+//			System.out.println("6.Vote by harry");
 			System.out.println("0.Exit");
 			System.out.print("Input : ");
 			testInput = Integer.parseInt(scanner.nextLine());
@@ -101,7 +102,12 @@ public class Main {
 				String user = scanner.nextLine();
 				System.out.print("Input Password : ");
 				String pass = scanner.nextLine();
+				System.out.print("Input Number of Given Ballots : ");
+				int ballot = Integer.parseInt(scanner.nextLine());
 				User userA = new User(user , pass);
+				for (QuestionDescription q : noq) {
+					userA.getNBallot().put(q, new NBallot(userA, q, 6));
+				}
 				testDao.save(userA);
 				System.out.println("Saved "+user+" with id " + userA.getId());
 
@@ -122,11 +128,27 @@ public class Main {
 					System.out.println(aa.size());
 					NBallot nb = aa.get(q);
 					System.out.println(nb + " , " + q);
-					int ballot = nb.getBallot();
-					System.out.println("Harry have "+ ballot + " on question "+ q.getName());
+					int ballot1 = nb.getBallot();
+					System.out.println(harry.getName()+" have "+ ballot1 + " on question "+ q.getName());
 				}
 				break;
-					
+//			case 6:
+//				System.out.println("Select a Question");
+//				noq = Ebean.find(QuestionDescription.class).findList();
+//				
+//				for (QuestionDescription q : noq) {
+//					System.out.println(q.getId()+" "+q.getName());
+//					}
+//				System.out.print("Input question Number to vote : ");
+//				int inputQ = Integer.parseInt(scanner.nextLine());
+//				tdl = Ebean.find(TeamDiscription.class).findList();
+//				System.out.println("Select a Team");
+//				for(TeamDiscription t : tdl)
+//				{
+//					System.out.println(t.getId() + " " + t.getName());
+//				}
+//				System.out.print("Input team Number to vote : ");
+//				int inputT = Integer.parseInt(scanner.nextLine());
 				
 				
 			}
@@ -143,8 +165,8 @@ public class Main {
 		QuestionDescription q2 = new QuestionDescription("Question 2");
 		QuestionDescription q3 = new QuestionDescription("Question 3");
 		
-		TeamDiscription t1 = new TeamDiscription("Team 1");
-		TeamDiscription t2 = new TeamDiscription("Team 2");
+		TeamDescription t1 = new TeamDescription("Team 1");
+		TeamDescription t2 = new TeamDescription("Team 2");
 		
 		
 		Ebean.save(q1);
