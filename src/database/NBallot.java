@@ -11,7 +11,7 @@ public class NBallot {
 	@Id
 	private Integer id;
 	@ManyToOne
-	private User userPassDB;
+	private User user;
 	@ManyToOne
 	private QuestionDescription question;
 	
@@ -22,7 +22,7 @@ public class NBallot {
 	public NBallot(User up,QuestionDescription q,int ballot){
 		this.ballot = ballot;
 		this.question = q;
-		this.userPassDB = up;
+		this.user = up;
 	}
 	
 	public QuestionDescription getQuestion() {
@@ -38,11 +38,11 @@ public class NBallot {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public User getUserPassDB() {
-		return userPassDB;
+	public User getUser() {
+		return user;
 	}
-	public void setUserPassDB(User up) {
-		this.userPassDB = up;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	public int getBallot() {
 		return ballot;

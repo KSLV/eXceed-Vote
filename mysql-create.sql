@@ -1,6 +1,6 @@
 create table nballot (
   id                        integer auto_increment not null,
-  user_pass_db_id           integer,
+  user_id                   integer,
   question_id               integer,
   ballot                    integer,
   constraint pk_nballot primary key (id))
@@ -46,8 +46,8 @@ create table uservote (
   constraint pk_uservote primary key (id))
 ;
 
-alter table nballot add constraint fk_nballot_userPassDB_1 foreign key (user_pass_db_id) references user (id) on delete restrict on update restrict;
-create index ix_nballot_userPassDB_1 on nballot (user_pass_db_id);
+alter table nballot add constraint fk_nballot_user_1 foreign key (user_id) references user (id) on delete restrict on update restrict;
+create index ix_nballot_user_1 on nballot (user_id);
 alter table nballot add constraint fk_nballot_question_2 foreign key (question_id) references question_description (id) on delete restrict on update restrict;
 create index ix_nballot_question_2 on nballot (question_id);
 alter table question_total add constraint fk_question_total_score_3 foreign key (id) references score (id) on delete restrict on update restrict;
