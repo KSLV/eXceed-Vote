@@ -12,7 +12,7 @@ public class DaoFactory {
 		if(dao == null)dao = new DaoFactory();
 		return dao;
 	}
-	public ExceedDao getExceedDao() {
-		return new ExceedDao();
+	public ExceedUserDao getExceedUserDao() {
+		return new ExceedUserDao();
 	}
 }

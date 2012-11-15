@@ -10,12 +10,10 @@ import com.avaje.ebean.Ebean;
 
 import database.NBallot;
 import database.QuestionDescription;
-import database.Score;
 import database.TeamDescription;
-import database.TeamScore;
 import database.User;
 import exceed.dao.DaoFactory;
-import exceed.dao.ExceedDao;
+import exceed.dao.ExceedUserDao;
 import servicelocator.ServiceLocator;
 
 
@@ -67,7 +65,7 @@ public class Main {
 		int testInput = 0;
 		List<QuestionDescription> noq = Ebean.find(QuestionDescription.class).findList();
 		List<TeamDescription> tdl = Ebean.find(TeamDescription.class).findList();
-		ExceedDao testDao = DaoFactory.getInstance().getExceedDao();
+		ExceedUserDao testDao = DaoFactory.getInstance().getExceedUserDao();
 		User harry = new User("Harry","Potter");
 		for (QuestionDescription q : noq) {
 			harry.getNBallot().put(q, new NBallot(harry, q, 6));
