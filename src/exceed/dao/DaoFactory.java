@@ -15,4 +15,7 @@ public class DaoFactory {
 	public ExceedUserDao getExceedUserDao() {
 		return new ExceedUserDao();
 	}
+	public QuestionDao getQuestionDao() {
+		return new QuestionDao();
+	}
 }

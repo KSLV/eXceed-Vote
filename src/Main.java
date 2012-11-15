@@ -77,7 +77,7 @@ public class Main {
 			System.out.println("User DAO Tester");
 			System.out.println("---------------");
 			System.out.println("1.New User Harry");
-			System.out.println("2.Find Harry");
+			System.out.println("2.Find Usery");
 			System.out.println("3.Add User");
 			System.out.println("4.Find All Voter");
 			System.out.println("5.Show Harry Ballots");
@@ -92,7 +92,8 @@ public class Main {
 				
 				break;
 			case 2:
-				User voter = testDao.find(harry.getId());
+				System.out.print("Enter user name to find : );" +
+				String inputName = scanner.nextLine();
 				System.out.println("Found " + voter.getName() + " ID " + voter.getId());
 				break;
 			case 3:
