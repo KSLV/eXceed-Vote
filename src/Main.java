@@ -15,6 +15,7 @@ import database.User;
 import exceed.dao.DaoFactory;
 import exceed.dao.ExceedUserDao;
 import exceed.dao.QuestionDao;
+import exceed.dao.TeamDao;
 import servicelocator.ServiceLocator;
 
 
@@ -65,30 +66,33 @@ public class Main {
 	private static void consoleTest() {
 		int testInput = 0;
 		QuestionDao testQDao = DaoFactory.getInstance().getQuestionDao();
-		List<QuestionDescription> noq = (List<QuestionDescription>) testQDao.findAll();
+		List<QuestionDescription> noq = testQDao.findAll();
 		ExceedUserDao testUserDao = DaoFactory.getInstance().getExceedUserDao();
+		TeamDao testTeamDao = DaoFactory.getInstance().getTeamDao();
 		User harry = new User("Harry","Potter");
-		for (QuestionDescription q : noq) {
-			harry.getNBallot().put(q, new NBallot(harry, q, 6));
-		}
-		testUserDao.save(harry);
 		Scanner scanner = new Scanner(System.in);
 		
 		do{
 			System.out.println("User DAO Tester");
 			System.out.println("---------------");
 			System.out.println("1.New User Harry");
-			System.out.println("2.Find Usery");
+			System.out.println("2.Find User");
 			System.out.println("3.Add User");
 			System.out.println("4.Find All Voter");
-			System.out.println("5.Show Harry Ballots");
-//			System.out.println("6.Vote by harry");
+			System.out.println("5.Show user Ballots");
+			System.out.println("6.Vote");
+			System.out.println("7.Display all user and all ballots");
 			System.out.println("0.Exit");
 			System.out.print("Input : ");
 			testInput = Integer.parseInt(scanner.nextLine());
 			switch(testInput)
 			{
 			case 1:
+				
+				for (QuestionDescription q : noq) {
+					harry.getNBallot().put(q, new NBallot(harry, q, 6));
+				}
+				testUserDao.save(harry);
 				System.out.println("Saved Harry Potter with id " + harry.getId());
 				
 				break;
@@ -108,7 +112,7 @@ public class Main {
 				int ballot = Integer.parseInt(scanner.nextLine());
 				User userA = new User(username , pass);
 				for (QuestionDescription q : noq) {
-					userA.getNBallot().put(q, new NBallot(userA, q, 6));
+					userA.getNBallot().put(q, new NBallot(userA, q, ballot));
 				}
 				testUserDao.save(userA);
 				System.out.println("Saved "+username+" with id " + userA.getId());
@@ -119,19 +123,24 @@ public class Main {
 				for(User x: all) System.out.println(x.getName());
 				break;
 			case 5:
-				noq = (List<QuestionDescription>) testQDao.findAll();
-				
-				for (QuestionDescription q : noq) {
-					harry = testUserDao.find(harry.getId());
-					Map<QuestionDescription, NBallot> aa = harry.getNBallot();
-					for (Entry<QuestionDescription, NBallot> entry : aa.entrySet()) {
-						System.out.println(entry.getKey() + " , " + entry.getValue());
+				noq = testQDao.findAll();
+				System.out.print("Enter user name to find : ");
+				inputName = scanner.nextLine();
+				user = testUserDao.find(inputName);
+				if(user == null) System.out.println("User not Found");
+				else{
+					for (QuestionDescription q : noq) {
+						harry = testUserDao.find(user.getId());
+						Map<QuestionDescription, NBallot> aa = user.getNBallot();
+						for (Entry<QuestionDescription, NBallot> entry : aa.entrySet()) {
+							System.out.println(entry.getKey() + " , " + entry.getValue());
+						}
+						System.out.println(aa.size());
+						NBallot nb = aa.get(q);
+						System.out.println(nb + " , " + q);
+						int ballot1 = nb.getBallot();
+						System.out.println(user.getName()+" have "+ ballot1 + " on question "+ q.getName());
 					}
-					System.out.println(aa.size());
-					NBallot nb = aa.get(q);
-					System.out.println(nb + " , " + q);
-					int ballot1 = nb.getBallot();
-					System.out.println(harry.getName()+" have "+ ballot1 + " on question "+ q.getName());
 				}
 				break;
 			case 6:
@@ -142,21 +151,25 @@ public class Main {
 				else 
 				{
 					noq = Ebean.find(QuestionDescription.class).findList();
-					
-					for (QuestionDescription q : noq) {
-						System.out.println(q.getId()+" "+q.getName());
-						}
+				
 					System.out.print("Input question Number to vote : ");
 					int inputQ = Integer.parseInt(scanner.nextLine());
-					tdl = Ebean.find(TeamDiscription.class).findList();
-					System.out.println("Select a Team");
-					for(TeamDiscription t : tdl)
+					QuestionDescription qd = testQDao.find(inputQ);
+					if(qd == null)System.out.println("Question id not found");
+					else
 					{
-						System.out.println(t.getId() + " " + t.getName());
+						System.out.println("Select a Team : to vote");
+						int inputT = Integer.parseInt(scanner.nextLine());
+						int b = user.getNBallot().get(qd).getBallot();
+						System.out.println("Before : " +b);
+						b--;
+						user.getNBallot().get(qd).setBallot(b);
+						testUserDao.save(user.getNBallot().get(qd));
+						System.out.println("Save Successfully with " + user.getNBallot().get(qd).getBallot());
 					}
-					System.out.print("Input team Number to vote : ");
-					int inputT = Integer.parseInt(scanner.nextLine());
 				}
+				break;
+			
 				
 				
 			}

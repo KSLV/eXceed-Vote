@@ -18,4 +18,7 @@ public class DaoFactory {
 	public QuestionDao getQuestionDao() {
 		return new QuestionDao();
 	}
+	public TeamDao getTeamDao() {
+		return new TeamDao();
+	}
 }
