@@ -1,11 +1,7 @@
 package exceed.dao;
 
-import java.util.Collection;
 import java.util.List;
-
 import com.avaje.ebean.Ebean;
-
-import database.QuestionDescription;
 import database.User;
 
 public class ExceedUserDao  {
@@ -25,7 +21,7 @@ public class ExceedUserDao  {
 		return Ebean.find(User.class).where().eq("name", name).findUnique();
 	}
 	
-	public Collection<User> findAll()
+	public List<User> findAll()
 	{
 		return Ebean.find(User.class).findList();
 	}
