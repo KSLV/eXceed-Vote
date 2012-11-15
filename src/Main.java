@@ -14,6 +14,7 @@ import database.TeamDescription;
 import database.User;
 import exceed.dao.DaoFactory;
 import exceed.dao.ExceedUserDao;
+import exceed.dao.QuestionDao;
 import servicelocator.ServiceLocator;
 
 
@@ -63,14 +64,14 @@ public class Main {
 	}
 	private static void consoleTest() {
 		int testInput = 0;
-		List<QuestionDescription> noq = Ebean.find(QuestionDescription.class).findList();
-		List<TeamDescription> tdl = Ebean.find(TeamDescription.class).findList();
-		ExceedUserDao testDao = DaoFactory.getInstance().getExceedUserDao();
+		QuestionDao testQDao = DaoFactory.getInstance().getQuestionDao();
+		List<QuestionDescription> noq = (List<QuestionDescription>) testQDao.findAll();
+		ExceedUserDao testUserDao = DaoFactory.getInstance().getExceedUserDao();
 		User harry = new User("Harry","Potter");
 		for (QuestionDescription q : noq) {
 			harry.getNBallot().put(q, new NBallot(harry, q, 6));
 		}
-		testDao.save(harry);
+		testUserDao.save(harry);
 		Scanner scanner = new Scanner(System.in);
 		
 		do{
@@ -92,34 +93,36 @@ public class Main {
 				
 				break;
 			case 2:
-				System.out.print("Enter user name to find : );" +
+				System.out.print("Enter user name to find : ");
 				String inputName = scanner.nextLine();
-				System.out.println("Found " + voter.getName() + " ID " + voter.getId());
+				User user = testUserDao.find(inputName);
+				if(user == null) System.out.println("User not Found");
+				else System.out.println("Found " + user.getName() + " ID " + user.getId());
 				break;
 			case 3:
 				System.out.print("Input Username : ");
-				String user = scanner.nextLine();
+				String username = scanner.nextLine();
 				System.out.print("Input Password : ");
 				String pass = scanner.nextLine();
 				System.out.print("Input Number of Given Ballots : ");
 				int ballot = Integer.parseInt(scanner.nextLine());
-				User userA = new User(user , pass);
+				User userA = new User(username , pass);
 				for (QuestionDescription q : noq) {
 					userA.getNBallot().put(q, new NBallot(userA, q, 6));
 				}
-				testDao.save(userA);
-				System.out.println("Saved "+user+" with id " + userA.getId());
+				testUserDao.save(userA);
+				System.out.println("Saved "+username+" with id " + userA.getId());
 
 			case 4:
-				Collection<User> all = testDao.findAll();
+				Collection<User> all = testUserDao.findAll();
 				System.out.println("Users in database: " + all.size() ); 
 				for(User x: all) System.out.println(x.getName());
 				break;
 			case 5:
-				noq = Ebean.find(QuestionDescription.class).findList();
+				noq = (List<QuestionDescription>) testQDao.findAll();
 				
 				for (QuestionDescription q : noq) {
-					harry = testDao.find(harry.getId());
+					harry = testUserDao.find(harry.getId());
 					Map<QuestionDescription, NBallot> aa = harry.getNBallot();
 					for (Entry<QuestionDescription, NBallot> entry : aa.entrySet()) {
 						System.out.println(entry.getKey() + " , " + entry.getValue());
@@ -131,23 +134,29 @@ public class Main {
 					System.out.println(harry.getName()+" have "+ ballot1 + " on question "+ q.getName());
 				}
 				break;
-//			case 6:
-//				System.out.println("Select a Question");
-//				noq = Ebean.find(QuestionDescription.class).findList();
-//				
-//				for (QuestionDescription q : noq) {
-//					System.out.println(q.getId()+" "+q.getName());
-//					}
-//				System.out.print("Input question Number to vote : ");
-//				int inputQ = Integer.parseInt(scanner.nextLine());
-//				tdl = Ebean.find(TeamDiscription.class).findList();
-//				System.out.println("Select a Team");
-//				for(TeamDiscription t : tdl)
-//				{
-//					System.out.println(t.getId() + " " + t.getName());
-//				}
-//				System.out.print("Input team Number to vote : ");
-//				int inputT = Integer.parseInt(scanner.nextLine());
+			case 6:
+				System.out.print("Enter user name to vote : ");
+				inputName = scanner.nextLine();
+				user = testUserDao.find(inputName);
+				if(user == null) System.out.println("User not Found");
+				else 
+				{
+					noq = Ebean.find(QuestionDescription.class).findList();
+					
+					for (QuestionDescription q : noq) {
+						System.out.println(q.getId()+" "+q.getName());
+						}
+					System.out.print("Input question Number to vote : ");
+					int inputQ = Integer.parseInt(scanner.nextLine());
+					tdl = Ebean.find(TeamDiscription.class).findList();
+					System.out.println("Select a Team");
+					for(TeamDiscription t : tdl)
+					{
+						System.out.println(t.getId() + " " + t.getName());
+					}
+					System.out.print("Input team Number to vote : ");
+					int inputT = Integer.parseInt(scanner.nextLine());
+				}
 				
 				
 			}

@@ -1,7 +1,9 @@
-package database;
+package exceed.dao;
 
 import java.util.List;
 import com.avaje.ebean.Ebean;
+
+import database.TeamDescription;
 
 
 public class TeamDao {
