@@ -20,6 +20,11 @@ public class ExceedDao {
 		return Ebean.find(User.class).where().eq("id", id).findUnique();
 	}
 	
+	public User find(String name)
+	{
+		return Ebean.find(User.class).where().eq("name", name).findUnique();
+	}
+	
 	public Collection<User> findAll()
 	{
 		return Ebean.find(User.class).findList();
