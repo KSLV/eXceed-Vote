@@ -12,8 +12,9 @@ public class VoteLog {
 	
 	private Integer teamId;
 	
-	public VoteLog() {
-		// TODO Auto-generated constructor stub
+	public VoteLog()
+	{
+		
 	}
 	public VoteLog(Integer id,Integer qi,Integer ti){
 		this.userId = id;

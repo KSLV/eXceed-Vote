@@ -21,4 +21,7 @@ public class DaoFactory {
 	public TeamDao getTeamDao() {
 		return new TeamDao();
 	}
+	public VoteLogDao getVoteLogDao() {
+		return new VoteLogDao();
+	}
 }

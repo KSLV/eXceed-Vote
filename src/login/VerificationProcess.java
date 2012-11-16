@@ -1,13 +1,16 @@
 package login;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Properties; 
 import org.apache.log4j.Logger; 
 import org.apache.log4j.PropertyConfigurator;
+
+import database.User;
+
+import exceed.dao.DaoFactory;
 
 import servicelocator.ServiceLocator;
 
@@ -19,15 +22,8 @@ import servicelocator.ServiceLocator;
  */
 public abstract class VerificationProcess {
 
-	private InputStream uis,pis; //FileInputStream for UsernameList.txt and PasswordList.txt , respectively
-	private InputStreamReader uin,pin;
-	private BufferedReader ubr,pbr;
 	private String tmpUsername;
 	private String tmpPassword;
-	private String userListDir; //Store directory of UsernameList.txt
-	private String passListDir;	//Store directory of PasswordList.txt
-	
-
 	private final Logger logger = Logger.getLogger(getClass());	
 	protected static Properties properties = new Properties();
 
@@ -42,8 +38,8 @@ public abstract class VerificationProcess {
 		ServiceLocator sl = ServiceLocator.getServiceLocator();
 		PropertyConfigurator.configure(sl.getLog4jPath());
 		
-		this.userListDir = sl.getUserListPath();
-		this.passListDir = sl.getPassListPath();
+//		this.userListDir = sl.getUserListPath();
+//		this.passListDir = sl.getPassListPath();
 	}
 	
 	/**
@@ -53,44 +49,25 @@ public abstract class VerificationProcess {
 	 * @return userID if input is valid, else return 0
 	 * @throws IOException
 	 */
-	public int verifyLogin(String username , String password) throws IOException
+	public User verifyLogin(String username , String password) throws IOException
 	{
-		uis = new FileInputStream(userListDir);
-		uin = new InputStreamReader(uis);
-		ubr = new BufferedReader(uin);
-		pis = new FileInputStream(passListDir);
-		pin = new InputStreamReader(pis);
-		pbr = new BufferedReader(pin);
-		int idCounter = 1;
-		tmpUsername = ubr.readLine();
-		tmpPassword = pbr.readLine();
-		while(tmpUsername != null)
+		User user = DaoFactory.getInstance().getExceedUserDao().find(username);
+		if(user == null)
 		{
-			if(tmpUsername.equals(username) && tmpPassword.equals(password)) 
-			{
-				
-				logger.info(username +" Login");
-				
-				uis.close();
-				uin.close();
-				ubr.close();
-				pis.close();
-				pin.close();
-				pbr.close();
-				return idCounter;
-			}			
-			idCounter++;
-			tmpUsername = ubr.readLine();
-			tmpPassword = pbr.readLine();
+			logger.error("Invalid UserName or Password");
+			return null;
 		}
-		uis.close();
-		uin.close();
-		ubr.close();
-		pis.close();
-		pin.close();
-		pbr.close();		
-		logger.error("Invalid UserName or Password");
-		return 0;
+		if(password.equals(user.getPassword()))
+		{
+			logger.info(username +" Login");
+			return user;
+		}else
+		{
+			logger.error("Invalid UserName or Password");
+			return null;
+		}
+			
+
 	}
 	
 	/**

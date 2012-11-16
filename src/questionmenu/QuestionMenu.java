@@ -1,17 +1,14 @@
 package questionmenu;
 
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.ServiceLoader;
-
-import servicelocator.ServiceLocator;
-//import java.util.Scanner;
-//import java.util.logging.Logger;
+import java.util.List;
+import java.util.Map;
+import database.NBallot;
+import database.QuestionDescription;
+import database.User;
+import exceed.dao.DaoFactory;
 
 
 /**
@@ -21,26 +18,23 @@ import servicelocator.ServiceLocator;
  */
 public class QuestionMenu {
 
-	private int userID; //Indicate line number of the current user
+	private User user; //Indicate current user
 	//private int questionNumber; //Indicate total number of question
 	//private String questionListDir = "src//database//QuestionsList.txt";
 	//private String nBallotListDir = "src//database//NBallotList.txt";
-	private InputStream qis,nis; //InputStream for QuestionsList.txt and NBallotList.txt, respectively
-	private InputStreamReader qin,nin;
-	private BufferedReader qbr,nbr;
-	private ArrayList<String> questionList;
-	private ArrayList<String> nBallotList;	
+	private List<QuestionDescription> questionDesc;
+	private List<Integer> nBallotList;	
 	
 	
 	/**
 	 * Constructor for this class
-	 * @param userID Current user's line number indicator
+	 * @param user Current user's line number indicator
 	 * @throws IOException
 	 */
-	public QuestionMenu(int userID) throws IOException {
-		this.userID = userID;
-		questionList = new ArrayList<String>();
-		nBallotList = new ArrayList<String>();
+	public QuestionMenu(User user) throws IOException {
+		this.user = user;
+		questionDesc = DaoFactory.getInstance().getQuestionDao().findAll();
+		nBallotList = new ArrayList<Integer>();
 		readData();
 		//displayQuestionList();
 		//readCommand();
@@ -53,57 +47,28 @@ public class QuestionMenu {
 	 */
 	private void readData() throws IOException
 	{
-		ServiceLocator sl = ServiceLocator.getServiceLocator();
-		
-		qis = new FileInputStream(sl.getQuestionListPath());
-		qin = new InputStreamReader(qis);
-		qbr = new BufferedReader(qin);
-		nis = new FileInputStream(sl.getNBallotListPath());
-		nin = new InputStreamReader(nis);
-		nbr = new BufferedReader(nin);
-		
-		String brTmp = new String();
-		for(int i = 1 ; i <= userID ; i++)
-		{
-			brTmp = nbr.readLine();
+		Map<QuestionDescription, NBallot> ballotMap = user.getNBallot();
+		for (QuestionDescription q : questionDesc) {
+			
+			NBallot nb = ballotMap.get(q);
+			nBallotList.add(nb.getBallot());
 		}
-		String[] brSplitTmp = brTmp.split("\t");
-		for(int i = 0 ; i < brSplitTmp.length ; i++)
-		{
-			nBallotList.add(brSplitTmp[i]);
-		}
-		nis.close();
-		nin.close();
-		nbr.close();
-		
-		String tmpQuestion = qbr.readLine();
-		while(tmpQuestion != null)
-		{
-			questionList.add(tmpQuestion);
-			tmpQuestion = qbr.readLine();
-		}
-		qis.close();
-		qin.close();
-		qbr.close();
-		
-		
-
 	}
 	
 	/**
 	 * Return QuestionList
 	 * @return List of questions
 	 */
-	public ArrayList<String> getQuestionList()
+	public List<QuestionDescription> getQuestionDesc()
 	{
-		return questionList;
+		return questionDesc;
 	}
 	
 	/**
 	 * Return nBallotList
 	 * @return List of Number of ballots
 	 */
-	public ArrayList<String> getNBallotList()
+	public List<Integer> getNBallotList()
 	{
 		return nBallotList;
 	}
@@ -112,9 +77,9 @@ public class QuestionMenu {
 	 * Return current userID
 	 * @return current userID
 	 */
-	public int getUserID()
+	public User getUser()
 	{
-		return userID;
+		return user;
 	}
 	
 	/*

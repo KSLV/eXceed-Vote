@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 import javax.print.attribute.standard.Severity;
 
+import database.QuestionDescription;
+import database.User;
+
 import servicelocator.ServiceLocator;
 //import java.util.Scanner;
 
@@ -32,13 +35,13 @@ public class VoteMenu extends VoteProcess{
 	
 	/**
 	 * Constructor for this class
-	 * @param userID Indicate which userID has logged in
-	 * @param questionNumber Indicate which question number this user is voting 
+	 * @param user Indicate which userID has logged in
+	 * @param q Indicate which question number this user is voting 
 	 * @throws IOException
 	 */
-	public VoteMenu(int userID, int questionNumber) throws IOException
+	public VoteMenu(User user, QuestionDescription q) throws IOException
 	{
-		super(userID , questionNumber);
+		super(user , q);
 		//System.out.println("Test");
 		readTeamList();
 		//displayTeamList();

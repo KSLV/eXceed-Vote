@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -13,6 +14,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
+import database.QuestionDescription;
+import database.User;
 
 /**
  * Initialize QuestionListMenu Components and hangle user actions 
@@ -23,21 +27,21 @@ public class QuestionListMenuGUIController extends JFrame{
 
 
 	private JPanel title;
-	private ArrayList<String> questionList = new ArrayList<String>(); //Contain list of vote questions
-	private ArrayList<String> nBallotList = new ArrayList<String>(); //Contain number of ballot on each question of each user
-	private int userID; //Indicate which user is using the class
+	private List<QuestionDescription> questionDesc; //Contain list of vote questions
+	private List<Integer> nBallotList;  //Contain number of ballot on each question of each user
+	private User user; //Indicate which user is using the class
 
 	/**
 	 * Constructor of this class
-	 * @param idUser Indicate which user is using this class
-	 * @param questionList Contain list of vote questions
-	 * @param nBallotList Contain number of ballot on each question of each person
+	 * @param user Indicate which user is using this class
+	 * @param list Contain list of vote questions
+	 * @param list2 Contain number of ballot on each question of each person
 	 */
-	public QuestionListMenuGUIController(int idUser , ArrayList<String> questionList , ArrayList<String> nBallotList)
+	public QuestionListMenuGUIController(User user , List<QuestionDescription> questionDesc , List<Integer> nBallotList)
 	{
 		super("QuestionListMenu");
-		this.userID = idUser;
-		this.questionList = questionList;
+		this.user = user;
+		this.questionDesc = questionDesc;
 		this.nBallotList = nBallotList;
 		//setLayout(new GridLayout(3, 2));
 		setLayout(new BoxLayout(this.getContentPane(), 1));
@@ -49,7 +53,7 @@ public class QuestionListMenuGUIController extends JFrame{
 		//head.add(headWord);
 		add(head);
 		
-		title = new JPanel(new GridLayout(questionList.size()+1, 2));
+		title = new JPanel(new GridLayout(questionDesc.size()+1, 2));
 		JLabel name = new JLabel("Name");
 		JLabel ballot = new JLabel("Ballot");
 		name.setFont(new Font(name.getFont() + "", 0, 20));
@@ -106,23 +110,23 @@ public class QuestionListMenuGUIController extends JFrame{
 	 */
 	private void addQuestion()
 	{
-		for(int i=0;i<questionList.size();i++)
+		for(QuestionDescription q : questionDesc)
 		{
 			//System.out.println(questionList.get(i));
-			JButton question = new JButton(questionList.get(i));
-			JLabel ballot = new JLabel(nBallotList.get(i));
+			JButton question = new JButton(q.getName());
+			JLabel ballot = new JLabel(Integer.toString(user.getNBallot().get(q).getBallot()));
 			ballot.setHorizontalAlignment(SwingConstants.CENTER);
 			question.setHorizontalAlignment(SwingConstants.LEFT);
 			ActionListener push = new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					for(int i=0;i<questionList.size();i++)
+					for(QuestionDescription q : questionDesc)
 					{
-						if(e.getActionCommand().equals(questionList.get(i)))
+						if(e.getActionCommand().equals(q.getName()))
 						{
 							close();
-							selectQuestion(i+1 , e.getActionCommand());
+							selectQuestion(q , e.getActionCommand());
 						}
 					}
 				}
@@ -135,11 +139,11 @@ public class QuestionListMenuGUIController extends JFrame{
 	
 	/**
 	 * Call Vote GUI according to the question user has selected
-	 * @param questionNumber Indicate the number of question the user selected
+	 * @param q Indicate the number of question the user selected
 	 * @param questionName Contain name of the question
 	 */
-	private void selectQuestion(int questionNumber , String questionName)
+	private void selectQuestion(QuestionDescription q , String questionName)
 	{
-		new votemenu.VoteMenuGUIController(userID, questionNumber,questionName,nBallotList.get(questionNumber - 1));
+		new votemenu.VoteMenuGUIController(user, q,questionName);
 	}
 }

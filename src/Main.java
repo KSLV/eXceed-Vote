@@ -4,19 +4,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
-import java.util.Set;
-
 import com.avaje.ebean.Ebean;
 
 import database.NBallot;
 import database.QuestionDescription;
 import database.TeamDescription;
 import database.User;
-import database.VoteLog;
 import exceed.dao.DaoFactory;
 import exceed.dao.ExceedUserDao;
 import exceed.dao.QuestionDao;
-import exceed.dao.TeamDao;
 import servicelocator.ServiceLocator;
 
 
@@ -28,40 +24,10 @@ public class Main {
 	{
 		
 		database();
-		/*
-		String name = "test";
-		String pass = "test";
-		 
-		User  up = Ebean.find(User.class).where().eq("name", name).findUnique();
-	    if(up == null){
-	    	up = new User(name,pass);
-	    	Ebean.save(up);
-	    }
-	    
-	    NBallot nb = new NBallot(up,5);	    
-	    Ebean.save(nb);
-	    
-	    String teamname = "kiki";
-	    String Qname = "tollolol";		
-	    
-	    TeamDiscription tb = Ebean.find(TeamDiscription.class).where().eq("name", teamname).findUnique();
-	    QuestionDescription qb = Ebean.find(QuestionDescription.class).where().eq("name", Qname).findUnique();	   
-	    
-	    if(tb == null){
-	    	tb = new TeamDiscription(teamname);
-	    	Ebean.save(tb);
-	    }
-	    if(qb == null){
-	    	qb = new QuestionDescription(Qname);
-	    	Ebean.save(qb);
-	    }
-	    */
-	      // }
-		//new SimpleLoginUI();
-		ServiceLocator sl = ServiceLocator.getServiceLocator();
+		ServiceLocator.getServiceLocator();
 		
 		new login.LoginGUIController();
-		consoleTest();
+		//consoleTest();
 		//new QuestionListMenuGUIController();
 	}
 	private static void consoleTest() {
@@ -69,7 +35,7 @@ public class Main {
 		QuestionDao testQDao = DaoFactory.getInstance().getQuestionDao();
 		List<QuestionDescription> noq = testQDao.findAll();
 		ExceedUserDao testUserDao = DaoFactory.getInstance().getExceedUserDao();
-		TeamDao testTeamDao = DaoFactory.getInstance().getTeamDao();
+		DaoFactory.getInstance().getTeamDao();
 		User harry = new User("Harry","Potter");
 		Scanner scanner = new Scanner(System.in);
 		
@@ -131,7 +97,7 @@ public class Main {
 				if(user == null) System.out.println("User not Found");
 				else{
 					for (QuestionDescription q : noq) {
-						harry = testUserDao.find(user.getId());
+						user = testUserDao.find(user.getId());
 						Map<QuestionDescription, NBallot> aa = user.getNBallot();
 						for (Entry<QuestionDescription, NBallot> entry : aa.entrySet()) {
 							System.out.println(entry.getKey() + " , " + entry.getValue());
@@ -160,7 +126,7 @@ public class Main {
 					else
 					{
 						System.out.println("Select a Team : to vote");
-						int inputT = Integer.parseInt(scanner.nextLine());
+						Integer.parseInt(scanner.nextLine());
 						int b = user.getNBallot().get(qd).getBallot();
 						System.out.println("Before : " +b);
 						b--;

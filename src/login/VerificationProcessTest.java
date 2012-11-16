@@ -6,6 +6,8 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import database.User;
+
 
 public class VerificationProcessTest {
 
@@ -18,7 +20,7 @@ public class VerificationProcessTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		int id=0;
+		User id=null;
 		try {
 			id = lg.verifyLogin("ARLeader", "ARLeader");
 		} catch (IOException e) {
@@ -34,7 +36,7 @@ public class VerificationProcessTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		int id=0;
+		User id=null;
 		try {
 			id = lg.verifyLogin("login", "1234");
 		} catch (IOException e) {

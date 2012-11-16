@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import database.User;
 /**
  * Initialize GUI , receive username, password input, and handle ActionEvents
  * @author KSLV
@@ -63,17 +65,17 @@ public class LoginGUIController extends JFrame{
 		String password = passField.getText();
 		//System.out.println(userName);
 		//System.out.println(password);
-		int userID = 0;
+		User user = null;
 		try {
 			loginGUI = new LoginGUI();
-			userID = loginGUI.verifyLogin(userName, password);
+			user = loginGUI.verifyLogin(userName, password);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		if(userID != 0)
+		if(user != null)
 		{
 			close();
-			new questionmenu.QuestionListMenuGUI(userID);
+			new questionmenu.QuestionListMenuGUI(user);
 			dispose();
 		}else
 		{

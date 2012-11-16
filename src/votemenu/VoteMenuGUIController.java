@@ -15,6 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import database.QuestionDescription;
+import database.User;
+
 
 /**
  * Initialize GUI and handle user inputs
@@ -24,24 +27,23 @@ import javax.swing.SwingConstants;
 public class VoteMenuGUIController extends JFrame{
 
 	private JPanel title;
-	private int userID; //Indicate which user is using this class
+	private User user; //Indicate which user is using this class
 	private VoteMenuGUI voteMenuGUI;
 	private ArrayList<String> teamList; //List of name for each team
 	
 	/**
 	 * Constructor for this class
-	 * @param idUser current userID
-	 * @param questionNumber Indicate which question number this user is voting on
+	 * @param user current userID
+	 * @param q Indicate which question number this user is voting on
 	 * @param nameQuestion Contain the question description as String
-	 * @param nBallotList List of number of ballots this user has
 	 */
-	public VoteMenuGUIController(int idUser,int questionNumber,String nameQuestion, String nBallotList)
+	public VoteMenuGUIController(final User user,QuestionDescription q,String nameQuestion)
 	{
 		super("TeamList");
-		this.userID = idUser;
+		this.user = user;
 		
 		try {
-			voteMenuGUI = new VoteMenuGUI(idUser, questionNumber);
+			voteMenuGUI = new VoteMenuGUI(user, q);
 		} catch (IOException e2) {
 			e2.printStackTrace();
 		}
@@ -67,7 +69,7 @@ public class VoteMenuGUIController extends JFrame{
 		
 		JPanel showLast = new JPanel(new BorderLayout(0, 20));
 		JPanel lastLine = new JPanel(new GridLayout(1,2));
-		JLabel nballot = new JLabel("Ballot : "+ nBallotList);
+		JLabel nballot = new JLabel("Ballot : "+ user.getNBallot().get(q).getBallot());
 		JButton cancel = new JButton("Cancel");
 		showLast.add(lastLine,BorderLayout.SOUTH);
 		nballot.setHorizontalAlignment(SwingConstants.CENTER);
@@ -81,7 +83,7 @@ public class VoteMenuGUIController extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				close();
 				try {
-					new questionmenu.QuestionListMenuGUI(userID);
+					new questionmenu.QuestionListMenuGUI(user);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -148,7 +150,7 @@ public class VoteMenuGUIController extends JFrame{
 			e.printStackTrace();
 		}
 		try {
-			new questionmenu.QuestionListMenuGUI(userID);
+			new questionmenu.QuestionListMenuGUI(user);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

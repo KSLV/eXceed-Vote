@@ -2,6 +2,9 @@ package votemenu;
 
 import java.io.IOException;
 
+import database.QuestionDescription;
+import database.User;
+
 /**
  * Model for VoteMenu
  * @author KSLV
@@ -11,12 +14,12 @@ public class VoteMenuGUI extends VoteMenu{
 
 	/**
 	 * Initialize VoteMenu class
-	 * @param userID Indicate which userID has logged in
-	 * @param questionNumber Indicate which question number this user is voting 
+	 * @param user Indicate which userID has logged in
+	 * @param q Indicate which question number this user is voting 
 	 * @throws IOException
 	 */
-	public VoteMenuGUI(int userID, int questionNumber) throws IOException {
-		super(userID, questionNumber);
+	public VoteMenuGUI(User user, QuestionDescription q) throws IOException {
+		super(user, q);
 	}
 
 }
