@@ -6,14 +6,20 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+/**
+ * Contain the number of ballot that user have per criteria 
+ * @author 
+ * @version Nov 9 2012
+ */
 @Entity
 public class NBallot {
 	@Id
 	private Integer id;
+	
 	@ManyToOne
-	private User user;
+	private User user; // user who this ballot belong to
 	@ManyToOne
-	private QuestionDescription question;
+	private QuestionDescription question; // 
 	
 	private int ballot;
 	

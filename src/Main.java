@@ -21,14 +21,10 @@ import servicelocator.ServiceLocator;
 public class Main {
 
 	public static void main(String [] args) throws IOException
-	{
-		
-		database();
-		ServiceLocator.getServiceLocator();
-		
+	{		
+		ServiceLocator.getServiceLocator();		
 		new login.LoginGUIController();
-		//consoleTest();
-		//new QuestionListMenuGUIController();
+		
 	}
 	private static void consoleTest() {
 		int testInput = 0;
@@ -135,60 +131,12 @@ public class Main {
 						System.out.println("Save Successfully with " + user.getNBallot().get(qd).getBallot());
 					}
 				}
-				break;
-			
-				
-				
+				break;				
 			}
 			
 		}while(testInput != 0);
 		
 	}
-	static void database(){
-		
-		User a = new User("ARLeader","ARLeader");
-		User b = new User("title","title");
-		
-		QuestionDescription q1 = new QuestionDescription("Question 1");
-		QuestionDescription q2 = new QuestionDescription("Question 2");
-		QuestionDescription q3 = new QuestionDescription("Question 3");
-		
-		TeamDescription t1 = new TeamDescription("Team 1");
-		TeamDescription t2 = new TeamDescription("Team 2");
-		
-		
-		Ebean.save(q1);
-		Ebean.save(q2);
-		Ebean.save(q3);
-		Ebean.save(t1);
-		Ebean.save(t2);
-		
-		List<QuestionDescription> noq = Ebean.find(QuestionDescription.class).findList();
-
-		for (User user : new User[] { a, b }) {
-			for (QuestionDescription q : noq) {
-				user.getNBallot().put(q, new NBallot(user, q, 6));
-			}
-		}
-		
-		
-		
-		Ebean.save(a);
-		Ebean.save(b);
-		/*
-
-		VoteLog vl = new VoteLog(a.getId(), q1.getId(),t1.getId());
-		VoteLog vl2 = new VoteLog(a.getId(), q2.getId(),t2.getId());		
-		VoteLog vl3 = new VoteLog(a.getId(), q2.getId(),t2.getId());		
-		VoteLog vl4 = new VoteLog(a.getId(), q2.getId(),t2.getId());		
-		Ebean.save(vl);
-		Ebean.save(vl2);
-		Ebean.save(vl3);
-		Ebean.save(vl4);
-		
-		List<VoteLog> vlist = Ebean.find(VoteLog.class).where().eq("userId", a.getId()).eq("questionId", q2.getId()).findList();	
-		System.out.println("tollototototot"+vlist.size());
-		*/
-	}
+	
 	
 }
