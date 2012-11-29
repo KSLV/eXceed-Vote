@@ -22,7 +22,8 @@ public class Main {
 	public static void main(String [] args) throws IOException
 	{		
 		ServiceLocator.getServiceLocator();		
-		new login.LoginGUIController();
+		//new login.LoginGUIController();
+		new admin.QuestionManagement();
 		
 	}
 	private static void consoleTest() {
