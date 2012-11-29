@@ -83,7 +83,7 @@ public class VoteMenuGUIController extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				close();
 				try {
-					new questionmenu.QuestionListMenuGUI(user);
+					new questionmenu.QuestionListMenuGUIController(user);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
@@ -150,7 +150,7 @@ public class VoteMenuGUIController extends JFrame{
 			e.printStackTrace();
 		}
 		try {
-			new questionmenu.QuestionListMenuGUI(user);
+			new questionmenu.QuestionListMenuGUIController(user);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
