@@ -2,6 +2,11 @@ package database;
 
 import javax.persistence.Entity;
 
+/**
+ * Contain which user voted on which questionId in for which teamId.
+ * @author Varunyu 5410546326
+ * @version Nov 9 2012
+ */
 @Entity
 public class VoteLog {
 	

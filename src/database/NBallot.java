@@ -6,7 +6,7 @@ import javax.persistence.ManyToOne;
 
 /**
  * Contain the number of ballot that user have per criteria 
- * @author 
+ * @author Varunyu 5410546326
  * @version Nov 9 2012
  */
 @Entity

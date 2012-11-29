@@ -8,6 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 
+/**
+ * Contain a voter username and password
+ * @author Varunyu 5410546326
+ * @version Nov 9 2012
+ */
 @Entity
 public class User {
 	@Id

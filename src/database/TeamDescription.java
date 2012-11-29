@@ -3,6 +3,11 @@ package database;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ * Contain name of a eXceed project's team
+ * @author Varunyu 5410546326
+ * @version Nov 9 2012
+ */
 @Entity
 public class TeamDescription {
 	@Id
