@@ -7,8 +7,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import javax.print.attribute.standard.Severity;
-
 import database.QuestionDescription;
 import database.User;
 

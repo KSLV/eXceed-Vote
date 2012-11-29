@@ -8,7 +8,6 @@ import com.avaje.ebean.Ebean;
 
 import database.NBallot;
 import database.QuestionDescription;
-import database.TeamDescription;
 import database.User;
 import exceed.dao.DaoFactory;
 import exceed.dao.ExceedUserDao;

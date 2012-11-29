@@ -1,8 +1,6 @@
 package database;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 
 @Entity
 public class VoteLog {

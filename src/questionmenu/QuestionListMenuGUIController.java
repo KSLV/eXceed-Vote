@@ -5,7 +5,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BoxLayout;
@@ -28,7 +27,6 @@ public class QuestionListMenuGUIController extends JFrame{
 
 	private JPanel title;
 	private List<QuestionDescription> questionDesc; //Contain list of vote questions
-	private List<Integer> nBallotList;  //Contain number of ballot on each question of each user
 	private User user; //Indicate which user is using the class
 
 	/**
@@ -42,7 +40,6 @@ public class QuestionListMenuGUIController extends JFrame{
 		super("QuestionListMenu");
 		this.user = user;
 		this.questionDesc = questionDesc;
-		this.nBallotList = nBallotList;
 		//setLayout(new GridLayout(3, 2));
 		setLayout(new BoxLayout(this.getContentPane(), 1));
 		//JPanel head = new JPanel(new GridLayout(1,2));

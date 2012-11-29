@@ -2,9 +2,7 @@ package database;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 /**
  * Contain the number of ballot that user have per criteria 
