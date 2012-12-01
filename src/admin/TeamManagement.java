@@ -11,6 +11,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.border.EtchedBorder;
 
 public class TeamManagement extends JFrame {
 
@@ -25,10 +26,10 @@ public class TeamManagement extends JFrame {
 	public TeamManagement() {
 		setTitle("Team Management");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 354, 190);
+		setBounds(100, 100, 354, 193);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setLayout(new BorderLayout(0, 10));
 		setContentPane(contentPane);
 		
 		JLabel titleText = new JLabel("Team Management");
@@ -37,24 +38,23 @@ public class TeamManagement extends JFrame {
 		contentPane.add(titleText, BorderLayout.NORTH);
 		
 		JPanel centerPanel = new JPanel();
+		centerPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		contentPane.add(centerPanel, BorderLayout.CENTER);
 		centerPanel.setLayout(null);
 		
 		JLabel inputLabel = new JLabel("Team Name");
 		inputLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		inputLabel.setBounds(10, 23, 207, 14);
+		inputLabel.setBounds(10, 11, 207, 14);
 		centerPanel.add(inputLabel);
 		
 		inputBox = new JTextField();
-		inputBox.setBounds(34, 48, 272, 20);
+		inputBox.setBounds(34, 36, 272, 28);
 		centerPanel.add(inputBox);
 		inputBox.setColumns(10);
 		
-		JPanel panel = new JPanel();
-		contentPane.add(panel, BorderLayout.SOUTH);
-		
 		JButton btnAdd = new JButton("ADD");
-		panel.add(btnAdd);
+		btnAdd.setBounds(140, 77, 77, 23);
+		centerPanel.add(btnAdd);
 		
 		setVisible(true);
 		setResizable(false);
