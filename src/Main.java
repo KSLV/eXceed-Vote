@@ -24,6 +24,7 @@ public class Main {
 		ServiceLocator.getServiceLocator();		
 		//new login.LoginGUIController();
 		new admin.QuestionManagement();
+		new admin.TeamManagement();
 		
 	}
 	private static void consoleTest() {
