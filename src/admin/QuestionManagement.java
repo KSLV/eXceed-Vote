@@ -1,70 +1,69 @@
 package admin;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.EventQueue;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.border.EtchedBorder;
 
-public class QuestionManagement extends JFrame{
+public class QuestionManagement extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField inputBox;
+
 	
-	private JLabel titleText;
-	private JTextArea input;
-	private JButton addButton;
+
+	/**
+	 * Create the frame.
+	 */
 	public QuestionManagement() {
-		super("Question Management");
-		BorderLayout borderLayout = new BorderLayout(20,20);
-		borderLayout.setHgap(100);
-		setLayout(borderLayout);
+		setTitle("Question Management");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 354, 193);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 10));
+		setContentPane(contentPane);
 		
-//		NORTH ZONE
-		titleText = new JLabel("Question Management");
-		titleText.setFont(new Font(getFont()+"", 0, 20));
-		titleText.setHorizontalAlignment((int) CENTER_ALIGNMENT);
-		add(titleText,BorderLayout.NORTH);
+		JLabel titleText = new JLabel("Question Management");
+		titleText.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		titleText.setHorizontalAlignment(SwingConstants.CENTER);
+		contentPane.add(titleText, BorderLayout.NORTH);
 		
-//		CENTER ZONE
-		JPanel center = new JPanel();
-		GridLayout gridLayout = new GridLayout(2,1);
-
-		center.setLayout(gridLayout);
-		titleText = new JLabel("Question Name");
-		center.add(titleText,BorderLayout.CENTER);
-		input = new JTextArea();
-		center.add(input,BorderLayout.CENTER);
-		add(center);
+		JPanel centerPanel = new JPanel();
+		centerPanel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		contentPane.add(centerPanel, BorderLayout.CENTER);
+		centerPanel.setLayout(null);
 		
-//		SOUTH ZONE
-		addButton = new JButton("ADD");
-		addButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				addClick();
-			}
-		});
-		add(addButton,BorderLayout.SOUTH);
+		JLabel inputLabel = new JLabel("Question Name");
+		inputLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		inputLabel.setBounds(10, 11, 207, 23);
+		centerPanel.add(inputLabel);
 		
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		pack();
+		inputBox = new JTextField();
+		inputBox.setBounds(34, 36, 272, 28);
+		centerPanel.add(inputBox);
+		inputBox.setColumns(10);
+		
+		JButton btnAdd = new JButton("ADD");
+		btnAdd.setBounds(140, 77, 77, 23);
+		centerPanel.add(btnAdd);
+		
 		setVisible(true);
+		setResizable(false);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
 	}
 	
-	public String getInput() {
-		return input.getText();
-	}
-	
-	private void addClick()
+	public String getInputBox()
 	{
-		if(getInput()==null)return;
-		System.out.println(getInput());
-		input.setText(null);
+		return inputBox.getText();
 	}
-
 }

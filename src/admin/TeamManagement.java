@@ -61,4 +61,9 @@ public class TeamManagement extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 	}
+	
+	public String getInputBox()
+	{
+		return inputBox.getText();
+	}
 }

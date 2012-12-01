@@ -25,6 +25,7 @@ public class Main {
 		new login.LoginGUI();
 		new admin.QuestionManagement();
 		new admin.TeamManagement();
+		new admin.UserManagement();
 		
 	}
 	private static void consoleTest() {
