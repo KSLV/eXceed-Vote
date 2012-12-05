@@ -44,10 +44,10 @@ public class QuestionListMenuGUIController2 {
 				
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					QuestionDescription qDesc = model.getQuestionDesc(num);
-					if(qDesc != null)
+					if(model.isQuestionExist(num))
 					{
-						//TODO call new team
+						QuestionDescription qDesc = model.getQuestionDesc(num);
+						//TODO call teamMenu
 					}
 					else
 					{
