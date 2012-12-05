@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 
+import admin.TeamManagementController;
 import admin.UserManagementController;
 
 import com.avaje.ebean.Ebean;
@@ -27,7 +28,7 @@ public class Main {
 		ServiceLocator.getServiceLocator();		
 		new login.LoginGUI();
 		new admin.QuestionManagement();
-		new admin.TeamManagement();
+		new TeamManagementController(new admin.TeamManagement());
 		new UserManagementController(new admin.UserManagement());
 		
 		
