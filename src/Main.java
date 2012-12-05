@@ -5,6 +5,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 
+import login.LoginGUI2;
+import login.VerificationProcess;
+
+import servicelocator.ServiceLocator;
+import admin.QuestionManagementController;
 import admin.TeamManagementController;
 import admin.UserManagementController;
 
@@ -16,7 +21,6 @@ import database.User;
 import exceed.dao.DaoFactory;
 import exceed.dao.ExceedUserDao;
 import exceed.dao.QuestionDao;
-import servicelocator.ServiceLocator;
 
 
 
@@ -26,10 +30,11 @@ public class Main {
 	public static void main(String [] args) throws IOException
 	{		
 		ServiceLocator.getServiceLocator();		
-		new login.LoginGUI();
-		new admin.QuestionManagement();
-		new TeamManagementController(new admin.TeamManagement());
-		new UserManagementController(new admin.UserManagement());
+		//new login.LoginGUI();
+		new login.LoginGUIController2(new VerificationProcess(),new LoginGUI2());
+//		new QuestionManagementController(new admin.QuestionManagement());
+//		new TeamManagementController(new admin.TeamManagement());
+//		new UserManagementController(new admin.UserManagement());
 		
 		
 	}

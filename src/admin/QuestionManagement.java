@@ -17,6 +17,7 @@ public class QuestionManagement extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField inputBox;
+	private JButton addButton;
 
 	
 
@@ -52,9 +53,9 @@ public class QuestionManagement extends JFrame {
 		centerPanel.add(inputBox);
 		inputBox.setColumns(10);
 		
-		JButton btnAdd = new JButton("ADD");
-		btnAdd.setBounds(140, 77, 77, 23);
-		centerPanel.add(btnAdd);
+		addButton = new JButton("ADD");
+		addButton.setBounds(140, 77, 77, 23);
+		centerPanel.add(addButton);
 		
 		setVisible(true);
 		setResizable(false);
@@ -62,8 +63,13 @@ public class QuestionManagement extends JFrame {
 		
 	}
 	
-	public String getInputBox()
+	public JButton getAddButton()
 	{
-		return inputBox.getText();
+		return addButton;
+	}
+	
+	public JTextField getInputBox()
+	{
+		return inputBox;
 	}
 }
