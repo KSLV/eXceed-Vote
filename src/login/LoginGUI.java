@@ -48,7 +48,6 @@ public class LoginGUI extends JFrame{
 		passField.setPreferredSize(new Dimension(200, 10));
 		add(passField);
 		
-		
 		addButton("Submit");
 		addButton("Cancel");
 		

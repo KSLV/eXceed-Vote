@@ -17,7 +17,7 @@ import servicelocator.ServiceLocator;
  * @author KSLV
  * @version Oct 1, 2012
  */
-public abstract class VerificationProcess {
+public class VerificationProcess {
 
 	private String tmpUsername;
 	private String tmpPassword;
