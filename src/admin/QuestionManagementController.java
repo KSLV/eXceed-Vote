@@ -7,12 +7,12 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 public class QuestionManagementController {
-	private QuestionManagement view;
 	private JButton addButton;
 	private JTextField inputBox;
+	private QuestionManagementModel model;
 
-	public QuestionManagementController(QuestionManagement view) {
-		this.view = view;
+	public QuestionManagementController(QuestionManagement view , QuestionManagementModel model) {
+		this.model = model;
 		addButton = view.getAddButton();
 		inputBox = view.getInputBox();
 		setAction();
@@ -33,7 +33,17 @@ public class QuestionManagementController {
 	private void clickAddButton()
 	{
 		if(inputBox.getText().length()!=0){
-			System.out.println("Question Name : "+inputBox.getText());
+			if(model.checkDuplicateQuestion(inputBox.getText()))
+			{
+				model.addQestion(inputBox.getText());
+				new messagebox.ShowPopup("Adding question [" + inputBox.getText() + "] completed.", "Complete!!", 2);
+			}else
+			{
+				new messagebox.ShowPopup("Duplicate Question Existed.", "Empty input", 2);
+			}
+		}else
+		{
+			new messagebox.ShowPopup("Please enter something", "Empty input", 2);
 		}
 		inputBox.setText(null);
 	}

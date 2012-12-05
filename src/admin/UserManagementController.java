@@ -8,7 +8,6 @@ import javax.swing.JTextField;
 
 public class UserManagementController {
 
-	private UserManagement view;
 	private JButton addButton;
 	private JTextField inputUser;
 	private JTextField inputPass;
@@ -16,7 +15,6 @@ public class UserManagementController {
 	private UserMannagementModel model;
 
 	public UserManagementController(UserManagement view ,UserMannagementModel model) {
-		this.view = view;
 		this.model = model;
 		addButton = view.getAddButton();
 		inputUser = view.getInputUser();
@@ -43,6 +41,11 @@ public class UserManagementController {
 			if(model.checkDuplicateUser(inputUser.getText()))
 			{
 				model.addUser(inputUser.getText(), inputPass.getText(), inputBallot.getText());
+				new messagebox.ShowPopup("Adding user [" + inputUser.getText() + "] completed.", "Complete!!", 2);
+			}
+			else
+			{
+				new messagebox.ShowPopup("This user name is already registered.", "Duplicate Username", 2);
 			}
 		}else
 		{

@@ -7,12 +7,12 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 public class TeamManagementController {
-	private TeamManagement view;
 	private JButton addButton;
 	private JTextField inputBox;
+	private TeamManagementModel model;
 
-	public TeamManagementController(TeamManagement view) {
-		this.view = view;
+	public TeamManagementController(TeamManagement view , TeamManagementModel model) {
+		this.model = model;
 		addButton = view.getAddButton();
 		inputBox = view.getInputBox();
 		setAction();
@@ -33,7 +33,17 @@ public class TeamManagementController {
 	private void clickAddButton()
 	{
 		if(inputBox.getText().length()!=0){
-			System.out.println("Team Name : "+inputBox.getText());
+			if(model.checkDuplicateTeam(inputBox.getText()))
+			{
+				model.addTeam(inputBox.getText());
+				new messagebox.ShowPopup("Adding team [" + inputBox.getText() + "] completed.", "Complete!!", 2);
+			}else
+			{
+				new messagebox.ShowPopup("Duplicate Team Existed.", "Empty input", 2);
+			}
+		}else
+		{
+			new messagebox.ShowPopup("Please enter something", "Empty input", 2);
 		}
 		inputBox.setText(null);
 	}

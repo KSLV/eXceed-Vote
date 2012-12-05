@@ -32,9 +32,9 @@ public class Main {
 		ServiceLocator.getServiceLocator();		
 		//new login.LoginGUI();
 		new login.LoginGUIController2(new VerificationProcess(),new LoginGUI2());
-//		new QuestionManagementController(new admin.QuestionManagement());
-//		new TeamManagementController(new admin.TeamManagement());
-//		new UserManagementController(new admin.UserManagement());
+		new QuestionManagementController(new admin.QuestionManagement() , new admin.QuestionManagementModel());
+		new TeamManagementController(new admin.TeamManagement() , new admin.TeamManagementModel());
+		new UserManagementController(new admin.UserManagement() , new admin.UserMannagementModel()) ;
 		
 		
 	}
