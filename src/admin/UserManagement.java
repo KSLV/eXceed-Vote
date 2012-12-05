@@ -19,6 +19,7 @@ public class UserManagement extends JFrame {
 	private JTextField inputUser;
 	private JTextField inputPass;
 	private JTextField inputBallot;
+	private JButton addButton;
 
 	
 
@@ -64,9 +65,9 @@ public class UserManagement extends JFrame {
 		lblPassword.setBounds(10, 68, 207, 23);
 		centerPanel.add(lblPassword);
 		
-		JButton btnAdd = new JButton("ADD");
-		btnAdd.setBounds(139, 188, 77, 23);
-		centerPanel.add(btnAdd);
+		addButton = new JButton("ADD");
+		addButton.setBounds(139, 188, 77, 23);
+		centerPanel.add(addButton);
 		
 		JLabel lblNumberOfBallot = new JLabel("Number of ballot");
 		lblNumberOfBallot.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -84,18 +85,23 @@ public class UserManagement extends JFrame {
 		
 	}
 	
-	public String getInputUser()
+	public JButton getAddButton()
 	{
-		return inputUser.getText();
+		return addButton;
 	}
 	
-	public String getInputPass()
+	public JTextField getInputUser()
 	{
-		return inputPass.getText();
+		return inputUser;
 	}
 	
-	public String getInputBallot()
+	public JTextField getInputPass()
 	{
-		return inputBallot.getText();
+		return inputPass;
+	}
+	
+	public JTextField getInputBallot()
+	{
+		return inputBallot;
 	}
 }

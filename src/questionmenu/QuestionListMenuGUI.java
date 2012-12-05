@@ -29,6 +29,7 @@ public class QuestionListMenuGUI extends JFrame{
 	private JPanel title;
 	private List<QuestionDescription> questionDesc; //Contain list of vote questions
 	private User user; //Indicate which user is using the class
+	private JButton signOut;
 
 	/**
 	 * Constructor of this class
@@ -66,7 +67,7 @@ public class QuestionListMenuGUI extends JFrame{
 		addQuestion();
 		
 		JPanel lastLine = new JPanel(new BorderLayout(0,30));
-		JButton signOut = new JButton("SignOut");
+		signOut = new JButton("SignOut");
 		lastLine.add(signOut,BorderLayout.SOUTH);
 		add(lastLine);
 		
@@ -147,5 +148,10 @@ public class QuestionListMenuGUI extends JFrame{
 	private void selectQuestion(QuestionDescription q , String questionName)
 	{
 		new votemenu.VoteMenuGUIController(user, q,questionName);
+	}
+	
+	public JButton getSignoutButton()
+	{
+		return signOut;
 	}
 }

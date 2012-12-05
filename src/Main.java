@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
+
+import admin.UserManagementController;
+
 import com.avaje.ebean.Ebean;
 
 import database.NBallot;
@@ -25,7 +28,8 @@ public class Main {
 		new login.LoginGUI();
 		new admin.QuestionManagement();
 		new admin.TeamManagement();
-		new admin.UserManagement();
+		new UserManagementController(new admin.UserManagement());
+		
 		
 	}
 	private static void consoleTest() {
