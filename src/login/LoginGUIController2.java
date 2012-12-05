@@ -7,6 +7,10 @@ import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+import questionmenu.QuestionListMenuGUI2;
+import questionmenu.QuestionListMenuGUIController2;
+import questionmenu.QuestionListMenuModel;
+
 import database.User;
 
 public class LoginGUIController2 {
@@ -37,10 +41,7 @@ public class LoginGUIController2 {
 				String password = inputPass.getText();
 				User user = null;
 				if(username.length()!=0 && password.length()!=0)
-				{
-					System.out.println("Username : "+username);
-					System.out.println("Password : "+password);
-					
+				{		
 					try {
 						user = model.verifyLogin(username, password);
 					} catch (IOException e) {
@@ -48,7 +49,7 @@ public class LoginGUIController2 {
 					}
 					if(user != null)
 					{
-						System.out.println("Login !!");
+						goToQuestionListMenu(user);
 					}else
 					{
 						new messagebox.ShowPopup("Username or Password incorrect.","Error!!!!!",0);
@@ -68,6 +69,12 @@ public class LoginGUIController2 {
 				view.close();
 			}
 		});
+		
 
+	}
+	
+	private void goToQuestionListMenu(User user)
+	{
+		new QuestionListMenuGUIController2(new QuestionListMenuGUI2(), new QuestionListMenuModel(), user);
 	}
 }

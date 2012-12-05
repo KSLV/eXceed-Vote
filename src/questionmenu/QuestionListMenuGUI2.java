@@ -2,7 +2,7 @@ package questionmenu;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.List;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,15 +16,17 @@ import java.util.ArrayList;
 import javax.swing.border.EtchedBorder;
 
 import database.QuestionDescription;
+import exceed.dao.DaoFactory;
+import exceed.dao.QuestionDao;
 
 public class QuestionListMenuGUI2 extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel centerZone;
 	private JPanel eastZone;
-	private ArrayList<JButton> buttonList;
+	private List<JButton> buttonList;
 	//private ArrayList<QuestionDescription> question;
-	private ArrayList<String> question;
+	private List<String> question;
 	private JButton logoutButton;
 
 
@@ -79,11 +81,11 @@ public class QuestionListMenuGUI2 extends JFrame {
 	
 	public void setQuestionList()
 	{
-		String name = "Team";
-		for(int i=0;i<5;i++)
+		List<QuestionDescription> questionList = DaoFactory.getInstance().getQuestionDao().findAll();
+		
+		for(QuestionDescription q : questionList)
 		{
-			question.add(name);
-			name+="mmmm";
+			question.add(q.getName());
 		}
 	}
 	
@@ -100,7 +102,7 @@ public class QuestionListMenuGUI2 extends JFrame {
 		
 	}
 	
-	public ArrayList<JButton> getButtonList()
+	public List<JButton> getButtonList()
 	{
 		return buttonList;
 	}

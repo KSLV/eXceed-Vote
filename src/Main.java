@@ -5,8 +5,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 
-import questionmenu.QuestionListMenuGUI2;
-
 import login.LoginGUI2;
 import login.VerificationProcess;
 
@@ -33,11 +31,11 @@ public class Main {
 	{		
 		ServiceLocator.getServiceLocator();		
 //		new login.LoginGUI();
-//		new login.LoginGUIController2(new VerificationProcess(),new LoginGUI2());
-//		new QuestionManagementController(new admin.QuestionManagement() , new admin.QuestionManagementModel());
-//		new TeamManagementController(new admin.TeamManagement() , new admin.TeamManagementModel());
-//		new UserManagementController(new admin.UserManagement() , new admin.UserMannagementModel()) ;
-		new questionmenu.QuestionListMenuGUIController2(new QuestionListMenuGUI2());
+		new login.LoginGUIController2(new VerificationProcess(),new LoginGUI2());
+		new QuestionManagementController(new admin.QuestionManagement() , new admin.QuestionManagementModel());
+		new TeamManagementController(new admin.TeamManagement() , new admin.TeamManagementModel());
+		new UserManagementController(new admin.UserManagement() , new admin.UserMannagementModel()) ;
+//		new questionmenu.QuestionListMen/uGUIController2(new QuestionListMenuGUI2());
 		
 		
 	}
