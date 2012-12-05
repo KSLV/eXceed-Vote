@@ -13,9 +13,11 @@ public class UserManagementController {
 	private JTextField inputUser;
 	private JTextField inputPass;
 	private JTextField inputBallot;
+	private UserMannagementModel model;
 
-	public UserManagementController(UserManagement view) {
+	public UserManagementController(UserManagement view ,UserMannagementModel model) {
 		this.view = view;
+		this.model = model;
 		addButton = view.getAddButton();
 		inputUser = view.getInputUser();
 		inputPass = view.getInputPass();
@@ -37,13 +39,27 @@ public class UserManagementController {
 
 	private void clickAddButton()
 	{
-		if(inputUser.getText().length()!=0 && inputPass.getText().length()!=0 && inputBallot.getText().length()!=0){
-			System.out.println("UserName : "+inputUser.getText());
-			System.out.println("Password : "+inputPass.getText());
-			System.out.println("Ballot Number : "+inputBallot.getText());
+		if(inputUser.getText().length()!=0 && inputPass.getText().length()!=0 && inputBallot.getText().length()!=0 && isInteger(inputBallot.getText())){
+			if(model.checkDuplicateUser(inputUser.getText()))
+			{
+				model.addUser(inputUser.getText(), inputPass.getText(), inputBallot.getText());
+			}
+		}else
+		{
+			new messagebox.ShowPopup("Invalid input.\n Please check you input", "Invalid Input", 2);
 		}
 		inputUser.setText(null);
 		inputPass.setText(null);
 		inputBallot.setText(null);
+	}
+	
+	public boolean isInteger( String input ) {
+	    try {
+	        Integer.parseInt( input );
+	        return true;
+	    }
+	    catch( Exception e ) {
+	        return false;
+	    }
 	}
 }

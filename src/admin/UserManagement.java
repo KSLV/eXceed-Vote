@@ -27,7 +27,7 @@ public class UserManagement extends JFrame {
 	 * Create the frame.
 	 */
 	public UserManagement() {
-		setTitle("User Management");
+		setTitle("User Register");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 354, 301);
 		contentPane = new JPanel();
@@ -35,7 +35,7 @@ public class UserManagement extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 10));
 		setContentPane(contentPane);
 		
-		JLabel titleText = new JLabel("User Management");
+		JLabel titleText = new JLabel("User Register");
 		titleText.setFont(new Font("Tahoma", Font.PLAIN, 23));
 		titleText.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(titleText, BorderLayout.NORTH);
