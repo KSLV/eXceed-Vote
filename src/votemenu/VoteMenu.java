@@ -19,14 +19,7 @@ import servicelocator.ServiceLocator;
  * @version Oct 1, 2012
  */
 public class VoteMenu extends VoteProcess{
-
-	
-	//private String teamListDir = ("src//database//TeamList.txt");
-	//private int teamNumber;
-	private InputStream tis; //FileInputStream for TeamList.txt
-	private InputStreamReader tin;
-	private BufferedReader tbr;
-	//private Scanner scanner;
+		
 	private ArrayList<String> teamList; //Contain List name of each team
 	
 	///private final Logger logger = Logger.getLogger(this.toString());
@@ -39,52 +32,15 @@ public class VoteMenu extends VoteProcess{
 	 */
 	public VoteMenu(User user, QuestionDescription q) throws IOException
 	{
-		super(user , q);
-		//System.out.println("Test");
-		readTeamList();
-		//displayTeamList();
-		
-		//readCommand();
+		super(user , q);		
+		//readTeamList();		
 	}
-	
-	/*private void displayTeamList() throws IOException
-	{
-		
-
-		
-		System.out.printf("You have %d ballot left.\n",getNBallot());
-		System.out.printf("Enter team number you like to vote for\nEnter 0 to go back to Question Menu : ");
-	}*/
-	
 	/*
-	private void readCommand() throws IOException
-	{
-		scanner = new Scanner(System.in);
-		int command = scanner.nextInt();
-		do{
-			if(command >= 0)
-			{
-				if(command == 0) System.out.println("Back to Question List");
-				else if(command <= teamNumber)
-				{
-					if(doVote(command)) System.out.println("Vote Success");
-					else System.out.println("Insufficient ballot");
-				}else System.out.println("Invalid input. Please enter command again.");
-				
-			}
-			if(command != 0) 
-			{
-			displayTeamList();
-			command = scanner.nextInt();
-			}
-		}while(command != 0);
-	}
-	*/
-	
 	/**
 	 * Read and store name of each team in List
 	 * @throws IOException
 	 */
+	/*
 	private void readTeamList() throws IOException
 	{
 		ServiceLocator sl = ServiceLocator.getServiceLocator();
@@ -103,13 +59,15 @@ public class VoteMenu extends VoteProcess{
 		tin.close();
 		tbr.close();
 	}
-	
+	*/
 	/**
 	 * Return teamList
 	 * @return List of team name
 	 */
+	/*
 	public ArrayList<String> getTeamList()
 	{
 		return teamList;
 	}
+	*/
 }
