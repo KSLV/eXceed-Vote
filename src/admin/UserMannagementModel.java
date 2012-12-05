@@ -28,5 +28,6 @@ public class UserMannagementModel {
 		for (QuestionDescription q : qdList) {
 			user.getNBallot().put(q, new NBallot(user, q, Integer.parseInt(nBallot)));
 		}
+		DaoFactory.getInstance().getExceedUserDao().save(user);
 	}
 }
