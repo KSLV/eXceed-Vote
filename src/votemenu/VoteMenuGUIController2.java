@@ -15,11 +15,12 @@ import questionmenu.QuestionListMenuModel;
 
 public class VoteMenuGUIController2 {
 	private VoteMenuGUI2 view;
-	private JButton logoutButton;
+	private JButton backButton;
 	private List<JButton> buttonList;
 	private User user;
 	private QuestionDescription question;
 	private VoteMenuModel model;
+	private List<JButton> desList;
 
 	public VoteMenuGUIController2(VoteMenuGUI2 view , VoteMenuModel model , User user , QuestionDescription question) {
 		this.view = view;
@@ -29,13 +30,15 @@ public class VoteMenuGUIController2 {
 		view.setTeamList();
 		view.setNBallot(model.getUserBallot(user , question));
 		view.create();
-		logoutButton = view.getbackButton();
+		backButton = view.getbackButton();
 		buttonList = view.getButtonList();
+		desList = view.getDesList();
 		setAction();
 	}
 	
 	private void setAction()
 	{
+		//Add ActionListener for Vote Button
 		for(int i=0;i<buttonList.size();i++)
 		{
 			final int num = i+1;
@@ -56,7 +59,23 @@ public class VoteMenuGUIController2 {
 			});
 		}
 		
-		logoutButton.addActionListener(new ActionListener() {
+		
+		//Add ActionListener for Description Button
+		for(int i=0;i<desList.size();i++)
+		{
+			final int num = i+1;
+			JButton button = desList.get(i);
+			button.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					System.out.println("Description of team : "+num);
+				}
+			});
+		}
+		
+		//Add ActionListener for Back Button
+		backButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {

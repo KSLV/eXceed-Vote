@@ -25,6 +25,7 @@ public class VoteMenuGUI2 extends JFrame {
 	private JPanel contentPane;
 	private JPanel centerZone;
 	private JPanel eastZone;
+	private List<JButton> desList;
 	private List<JButton> buttonList;
 	private List<String> teamList;
 	private JButton backButton;
@@ -40,6 +41,7 @@ public class VoteMenuGUI2 extends JFrame {
 	public VoteMenuGUI2() {
 		buttonList = new ArrayList<JButton>();
 		teamList = new ArrayList<String>();
+		desList = new ArrayList<JButton>();
 		setTitle("Team List");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
@@ -115,6 +117,7 @@ public class VoteMenuGUI2 extends JFrame {
 			eastZone.add(button);
 			eastZone.add(desButton);
 			buttonList.add(button);
+			desList.add(desButton);
 		}
 		
 	}
@@ -122,6 +125,11 @@ public class VoteMenuGUI2 extends JFrame {
 	public List<JButton> getButtonList()
 	{
 		return buttonList;
+	}
+	
+	public List<JButton> getDesList()
+	{
+		return desList;
 	}
 	
 	public JButton getbackButton()
