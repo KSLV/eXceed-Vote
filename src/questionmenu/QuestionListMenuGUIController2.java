@@ -8,6 +8,9 @@ import java.util.List;
 
 import javax.swing.JButton;
 
+import votemenu.VoteMenuGUI2;
+import votemenu.VoteMenuGUIController2;
+
 import database.QuestionDescription;
 import database.User;
 
@@ -47,7 +50,8 @@ public class QuestionListMenuGUIController2 {
 					if(model.isQuestionExist(num))
 					{
 						QuestionDescription qDesc = model.getQuestionDesc(num);
-						//TODO call teamMenu
+						new VoteMenuGUIController2(new VoteMenuGUI2());
+						view.dispose();
 					}
 					else
 					{
@@ -63,6 +67,7 @@ public class QuestionListMenuGUIController2 {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					new login.LoginGUIController2(new VerificationProcess(),new LoginGUI2());
+					view.close();
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}

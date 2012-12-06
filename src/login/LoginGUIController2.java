@@ -76,5 +76,6 @@ public class LoginGUIController2 {
 	private void goToQuestionListMenu(User user)
 	{
 		new QuestionListMenuGUIController2(new QuestionListMenuGUI2(), new QuestionListMenuModel(), user);
+		view.close();
 	}
 }

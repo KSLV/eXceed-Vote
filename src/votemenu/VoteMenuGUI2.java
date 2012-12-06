@@ -35,7 +35,7 @@ public class VoteMenuGUI2 extends JFrame {
 	public VoteMenuGUI2() {
 		buttonList = new ArrayList<JButton>();
 		teamList = new ArrayList<String>();
-		setTitle("Question List");
+		setTitle("Team List");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 		pack();
@@ -77,7 +77,7 @@ public class VoteMenuGUI2 extends JFrame {
 		pack();
 	}
 	
-	public void setQuestionList()
+	public void setTeamList()
 	{
 		List<QuestionDescription> questionList = DaoFactory.getInstance().getQuestionDao().findAll();
 		
