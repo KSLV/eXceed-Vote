@@ -28,6 +28,10 @@ public class VoteMenuGUI2 extends JFrame {
 	private List<JButton> buttonList;
 	private List<String> teamList;
 	private JButton backButton;
+	private JPanel panel;
+	private JPanel panel_1;
+	private JLabel nBallot;
+	private int userBallot;
 
 
 	/**
@@ -39,6 +43,7 @@ public class VoteMenuGUI2 extends JFrame {
 		setTitle("Team List");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
+		//create();
 		pack();
 	}
 	
@@ -61,9 +66,20 @@ public class VoteMenuGUI2 extends JFrame {
 		JPanel southZone = new JPanel();
 		southZone.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		contentPane.add(southZone, BorderLayout.SOUTH);
+		southZone.setLayout(new BorderLayout(0, 0));
+		
+		panel = new JPanel();
+		southZone.add(panel, BorderLayout.SOUTH);
+		
 		
 		backButton = new JButton("Back");
-		southZone.add(backButton);
+		panel.add(backButton);
+		
+		panel_1 = new JPanel();
+		southZone.add(panel_1, BorderLayout.NORTH);
+		
+		nBallot = new JLabel("Ballot :"+userBallot );
+		panel_1.add(nBallot);
 		
 		centerZone = new JPanel();
 		contentPane.add(centerZone, BorderLayout.CENTER);
@@ -71,7 +87,7 @@ public class VoteMenuGUI2 extends JFrame {
 		
 		eastZone = new JPanel();
 		contentPane.add(eastZone, BorderLayout.EAST);
-		eastZone.setLayout(new GridLayout(0, 1, 0, 10));
+		eastZone.setLayout(new GridLayout(0, 2, 0, 10));
 		
 		addList();
 		
@@ -95,7 +111,9 @@ public class VoteMenuGUI2 extends JFrame {
 			JLabel lblTeam = new JLabel(teamList.get(i));
 			centerZone.add(lblTeam);
 			JButton button = new JButton("<<<");
+			JButton desButton = new JButton("?");
 			eastZone.add(button);
+			eastZone.add(desButton);
 			buttonList.add(button);
 		}
 		
@@ -113,6 +131,10 @@ public class VoteMenuGUI2 extends JFrame {
 
 	public void close() {
 		this.dispose();
+	}
+
+	public void setNBallot(int userBallot) {
+		this.userBallot = userBallot;
 	}
 	
 

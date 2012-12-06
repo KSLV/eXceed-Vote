@@ -27,6 +27,7 @@ public class VoteMenuGUIController2 {
 		this.user = user;
 		this.question = question;
 		view.setTeamList();
+		view.setNBallot(model.getUserBallot());
 		view.create();
 		logoutButton = view.getbackButton();
 		buttonList = view.getButtonList();

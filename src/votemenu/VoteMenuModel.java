@@ -6,6 +6,8 @@ import exceed.dao.DaoFactory;
 
 public class VoteMenuModel {
 
+	private int ballot;
+
 	public VoteMenuModel()
 	{
 		
@@ -21,7 +23,7 @@ public class VoteMenuModel {
 		if(user.getNBallot().get(qDesc).getBallot() > 0)
 		{
 			DaoFactory.getInstance().getVoteLogDao().save(user.getId(), qDesc.getId(), team);	
-			int ballot = user.getNBallot().get(qDesc).getBallot();
+			ballot = user.getNBallot().get(qDesc).getBallot();
 			user.getNBallot().get(qDesc).setBallot(ballot - 1);
 			DaoFactory.getInstance().getExceedUserDao().save(user.getNBallot().get(qDesc));
 			return true;
@@ -29,5 +31,9 @@ public class VoteMenuModel {
 		return false;
 	}
 	
+	public int getUserBallot()
+	{
+		return ballot;
+	}
 	
 }

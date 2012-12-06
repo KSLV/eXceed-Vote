@@ -75,7 +75,6 @@ public class QuestionListMenuGUI2 extends JFrame {
 		eastZone.setLayout(new GridLayout(0, 1, 0, 10));
 		
 		addList();
-		
 		pack();
 	}
 	
