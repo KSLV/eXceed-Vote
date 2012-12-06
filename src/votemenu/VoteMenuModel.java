@@ -16,7 +16,7 @@ public class VoteMenuModel {
 		return DaoFactory.getInstance().getTeamDao().find(num) != null;
 	}
 	
-	public boolean getTeamDescription(User user , QuestionDescription qDesc , int team)
+	public boolean vote(User user , QuestionDescription qDesc , int team)
 	{
 		if(user.getNBallot().get(qDesc).getBallot() > 0)
 		{
@@ -24,6 +24,7 @@ public class VoteMenuModel {
 			int ballot = user.getNBallot().get(qDesc).getBallot();
 			user.getNBallot().get(qDesc).setBallot(ballot - 1);
 			DaoFactory.getInstance().getExceedUserDao().save(user.getNBallot().get(qDesc));
+			return true;
 		}
 		return false;
 	}

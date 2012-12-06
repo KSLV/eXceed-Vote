@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import javax.swing.border.EtchedBorder;
 
 import database.QuestionDescription;
+import database.TeamDescription;
 import exceed.dao.DaoFactory;
 import exceed.dao.QuestionDao;
 
@@ -79,11 +80,11 @@ public class VoteMenuGUI2 extends JFrame {
 	
 	public void setTeamList()
 	{
-		List<QuestionDescription> questionList = DaoFactory.getInstance().getQuestionDao().findAll();
+		List<TeamDescription> teamList = DaoFactory.getInstance().getTeamDao().findAll();
 		
-		for(QuestionDescription q : questionList)
+		for(TeamDescription t : teamList)
 		{
-			teamList.add(q.getName());
+			this.teamList.add(t.getName());
 		}
 	}
 	

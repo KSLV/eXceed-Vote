@@ -10,6 +10,7 @@ import javax.swing.JButton;
 
 import votemenu.VoteMenuGUI2;
 import votemenu.VoteMenuGUIController2;
+import votemenu.VoteMenuModel;
 
 import database.QuestionDescription;
 import database.User;
@@ -50,7 +51,7 @@ public class QuestionListMenuGUIController2 {
 					if(model.isQuestionExist(num))
 					{
 						QuestionDescription qDesc = model.getQuestionDesc(num);
-						new VoteMenuGUIController2(new VoteMenuGUI2());
+						new VoteMenuGUIController2(new VoteMenuGUI2() , new VoteMenuModel() , user , qDesc);
 						view.dispose();
 					}
 					else

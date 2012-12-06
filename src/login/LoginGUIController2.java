@@ -53,6 +53,7 @@ public class LoginGUIController2 {
 					}else
 					{
 						new messagebox.ShowPopup("Username or Password incorrect.","Error!!!!!",0);
+						view.close();
 					}
 				}
 				inputUser.setText(null);
