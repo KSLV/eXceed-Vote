@@ -31,9 +31,9 @@ public class VoteMenuModel {
 		return false;
 	}
 	
-	public int getUserBallot()
+	public int getUserBallot(User user , QuestionDescription qDesc)
 	{
-		return ballot;
+		return user.getNBallot().get(qDesc).getBallot();
 	}
 	
 }

@@ -137,5 +137,10 @@ public class VoteMenuGUI2 extends JFrame {
 		this.userBallot = userBallot;
 	}
 	
+	public void setBallotShow(int userBallot)
+	{
+		nBallot.setText("Ballot :"+Integer.toString(userBallot));
+	}
+	
 
 }

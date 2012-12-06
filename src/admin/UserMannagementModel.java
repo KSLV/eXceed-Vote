@@ -30,4 +30,18 @@ public class UserMannagementModel {
 		}
 		DaoFactory.getInstance().getExceedUserDao().save(user);
 	}
+	
+	public User getUser(String username)
+	{
+		return DaoFactory.getInstance().getExceedUserDao().find(username);
+	}
+	
+	public void setNBallot(String username , String nBallot)
+	{
+		User user = getUser(username);
+		List<QuestionDescription> qdList = DaoFactory.getInstance().getQuestionDao().findAll();
+		for (QuestionDescription qDesc : qdList) {
+			user.getNBallot().get(qDesc).setBallot(Integer.parseInt(nBallot));
+		}
+	}
 }

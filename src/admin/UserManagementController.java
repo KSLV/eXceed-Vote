@@ -45,7 +45,8 @@ public class UserManagementController {
 			}
 			else
 			{
-				new messagebox.ShowPopup("This user name is already registered.", "Duplicate Username", 2);
+				model.setNBallot(inputUser.getText(), inputBallot.getText());
+				new messagebox.ShowPopup("This user name is already registered.\nReplaced all ballot left with the input.", "Duplicate Username", 2);
 			}
 		}else
 		{

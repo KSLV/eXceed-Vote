@@ -27,7 +27,7 @@ public class VoteMenuGUIController2 {
 		this.user = user;
 		this.question = question;
 		view.setTeamList();
-		view.setNBallot(model.getUserBallot());
+		view.setNBallot(model.getUserBallot(user , question));
 		view.create();
 		logoutButton = view.getbackButton();
 		buttonList = view.getButtonList();
@@ -49,6 +49,7 @@ public class VoteMenuGUIController2 {
 						if(model.vote(user, question, num))
 						{
 							new messagebox.ShowPopup("Vote Completed","Completed",0);
+							view.setBallotShow(model.getUserBallot(user, question));
 						}else new messagebox.ShowPopup("Inefficient Ballot","Error",0);
 					}else new messagebox.ShowPopup("Can't find team","Unexpected Error",0);
 				}
