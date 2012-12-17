@@ -13,6 +13,7 @@ public class QuestionDescription {
 	@Id
 	private Integer id;
 	private String name;
+	private int maxballot;
 	
 	public QuestionDescription(){
 		
@@ -31,6 +32,12 @@ public class QuestionDescription {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}	
+	public int getMaxballot() {
+		return maxballot;
+	}
+	public void setMaxballot(int maxballot) {
+		this.maxballot = maxballot;
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()

@@ -17,25 +17,28 @@ import javax.persistence.OneToMany;
 public class User {
 	@Id
 	private Integer id;
-	private String name;
+	private String username;
 	private String password;
+	private String name;
+	private String surename;
+	private String type;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@MapKey(name="question")
 	private Map<QuestionDescription, NBallot> nBallot = new LinkedHashMap<QuestionDescription, NBallot>();
 	
 	public User(String name, String password) {		
-		this.name = name;
+		this.username = name;
 		this.password = password;
 	}
 	public User(){
 	
 	}
-	public String getName() {
-		return name;
+	public String getUserName() {
+		return username;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUserName(String name) {
+		this.username = name;
 	}
 	public String getPassword() {
 		return password;
@@ -56,6 +59,24 @@ public class User {
 	public void setNBallot(Map<QuestionDescription, NBallot> nBallot) {
 		this.nBallot = nBallot;
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getSurename() {
+		return surename;
+	}
+	public void setSurename(String surename) {
+		this.surename = surename;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	
 }
