@@ -1,5 +1,7 @@
 package database;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Entity;
 
 /**
@@ -11,9 +13,9 @@ import javax.persistence.Entity;
 public class VoteLog {
 	
 	private Integer userId;	
-	private Integer questionId;
-	
+	private Integer questionId;	
 	private Integer teamId;
+	private Timestamp time;
 	
 	public VoteLog()
 	{
@@ -23,6 +25,7 @@ public class VoteLog {
 		this.userId = id;
 		this.questionId = qi;
 		this.teamId = ti;
+		this.time = new Timestamp(System.currentTimeMillis());
 	}
 	public Integer getUserId() {
 		return userId;
@@ -41,5 +44,11 @@ public class VoteLog {
 	}
 	public void setTeamId(Integer teamId) {
 		this.teamId = teamId;
+	}
+	public Timestamp getTime() {
+		return time;
+	}
+	public void setTime(Timestamp time) {
+		this.time = time;
 	}
 }

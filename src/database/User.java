@@ -21,7 +21,7 @@ public class User {
 	private String password;
 	private String name;
 	private String surename;
-	private String type;
+	
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@MapKey(name="question")
@@ -71,12 +71,6 @@ public class User {
 	}
 	public void setSurename(String surename) {
 		this.surename = surename;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
 	}
 	
 }
