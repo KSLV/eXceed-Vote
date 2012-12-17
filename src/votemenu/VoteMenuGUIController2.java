@@ -51,7 +51,7 @@ public class VoteMenuGUIController2 {
 					{
 						if(model.vote(user, question, num))
 						{
-							new messagebox.ShowPopup("Vote Completed","Completed",0);
+							new messagebox.ShowPopup("Vote Completed","Completed",1);
 							view.setBallotShow(model.getUserBallot(user, question));
 						}else new messagebox.ShowPopup("Inefficient Ballot","Error",0);
 					}else new messagebox.ShowPopup("Can't find team","Unexpected Error",0);
