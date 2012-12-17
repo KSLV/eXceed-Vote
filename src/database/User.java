@@ -34,10 +34,10 @@ public class User {
 	public User(){
 	
 	}
-	public String getUserName() {
+	public String getUsername() {
 		return username;
 	}
-	public void setUserName(String name) {
+	public void setUsername(String name) {
 		this.username = name;
 	}
 	public String getPassword() {
