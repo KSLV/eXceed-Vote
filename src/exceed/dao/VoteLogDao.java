@@ -13,4 +13,9 @@ public class VoteLogDao {
 	public void save(int userId,int questionID,int teamID){
 		Ebean.save(new VoteLog(userId, questionID, teamID));
 	}
+	
+	public int getScoreOf(int questionId , int teamId)
+	{
+		return Ebean.find(VoteLog.class).where().eq("questionId", questionId).eq("teamId", teamId).findList().size();
+	}
 }

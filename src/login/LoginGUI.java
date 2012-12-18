@@ -1,152 +1,87 @@
 package login;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPasswordField;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
-import database.User;
-/**
- * Initialize GUI , receive username, password input, and handle ActionEvents
- * @author KSLV
- * @version Oct 1, 2012
- */
-public class LoginGUI extends JFrame{
+public class LoginGUI extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField inputUser;
+	private JTextField inputPass;
+	private JButton loginButton;
+	private JButton exitButton;
+
 	
-	private String choose; //receive which action user performed on buttons
-	private JTextField userField; //receive username input
-	private JPasswordField passField; //receive password input
-	private LoginGUIController loginGUIController;
-	
+
 	/**
-	 * Constructor for this class
-	 * @throws IOException 
+	 * Create the frame.
 	 */
-	public LoginGUI() throws IOException
-	{
-		super("Sign in");
-		loginGUIController = new LoginGUIController();
-		setLayout(new GridLayout(3, 2));
-		addLabel("UserName");
+	public LoginGUI() {
+		setTitle("Exceed Vote - Login");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 320, 196);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
-		userField = new JTextField();
-		userField.setFont(new Font(userField.getFont() + "", 0, 20));
-		add(userField);
+		JLabel userLabel = new JLabel("Username");
+		userLabel.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		userLabel.setBounds(10, 34, 128, 14);
+		contentPane.add(userLabel);
 		
-		addLabel("Password");
-		passField = new JPasswordField();
-		passField.setFont(new Font(passField.getFont() + "", 0, 20));
-		passField.setPreferredSize(new Dimension(200, 10));
-		add(passField);
+		inputUser = new JTextField();
+		inputUser.setBounds(111, 29, 161, 31);
+		contentPane.add(inputUser);
+		inputUser.setColumns(10);
 		
-		addButton("Submit");
-		addButton("Cancel");
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblPassword.setBounds(10, 75, 128, 14);
+		contentPane.add(lblPassword);
+		
+		inputPass = new JTextField();
+		inputPass.setColumns(10);
+		inputPass.setBounds(111, 71, 161, 28);
+		contentPane.add(inputPass);
+		
+		loginButton = new JButton("Login");
+		loginButton.setBounds(34, 124, 89, 23);
+		contentPane.add(loginButton);
+		
+		exitButton = new JButton("Exit");
+		exitButton.setBounds(166, 124, 89, 23);
+		contentPane.add(exitButton);
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		pack();
 		setVisible(true);
 	}
 	
-	/**
-	 * Handle user actions
-	 * @throws IOException
-	 */
-	private void submit() throws IOException
+	public void close()
 	{
-		String userName = userField.getText();
-		String password = passField.getText();
-		User user = null;
-		try {
-			user = loginGUIController.submit(userName, password);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		if(user != null)
-		{
-			close();
-			loginGUIController.invokeQuestionGUI(user);
-			dispose();
-		}else
-		{
-			userField.setText(null);
-			passField.setText(null);
-			new messagebox.ShowPopup("Username or Password incorrect.","Error!!!!!",0);
-		}
+		this.dispose();
 	}
 	
-	/**
-	 * Free memory and close the program
-	 */
-	private void close()
-	{
-		dispose();
+	public JTextField getInputUser() {
+		return inputUser;
 	}
-	
-	/**
-	 * Use to add label to buttons.
-	 * 
-	 * @param name String to be show on specific
-	 *            
-	 */
-	public void addLabel(String name) {
-		JLabel label = new JLabel(name);
-		label.setFont(new Font(label.getFont() + "", 0, 20));
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		add(label);
-	}
-	
-	/**
-	 * Add new button and assign it's recponsibility 
-	 * @param name
-	 */
-	public void addButton(String name) {
-		final JButton button = new JButton(name);
-		ActionListener push = new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				choose = e.getActionCommand();
-				if (choose.equals("Submit")) {
-					try {
-						submit();
-					} catch (IOException e1) {
-						e1.printStackTrace();
-					}
-				}
-				if (choose.equals("Cancel")) {
-					close();
-				}
-				
-			}
-		};
+	public JTextField getInputPass() {
+		return inputPass;
+	}
 
-		button.setFont(new Font(button.getFont() + "", 0, 12));
-		button.setForeground(Color.BLACK);
-		button.addActionListener(push);
-		button.setPreferredSize(new Dimension(10, 10));
-		add(button);
+	public JButton getLoginButton() {
+		return loginButton;
 	}
 	
+	public JButton getExitButton() {
+		return exitButton;
+	}
 	
-	/**
-	 * Use to add button.
-	 * 
-	 * @param name
-	 *            is word to show on button.
-	 */
-	/*
-	public void addButton(String name) {
-		JButton button = new JButton(name);
-		button.setFont(new Font(button.getFont() + "", 0, 20));
-		add(button);
-	}*/
 }

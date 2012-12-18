@@ -16,7 +16,6 @@ public class Commissioner extends JFrame {
 	private JButton userButton;
 
 	public Commissioner() {
-		BorderLayout borderLayout = (BorderLayout) getContentPane().getLayout();
 		setTitle("Commissioner");
 		
 		JPanel northZone = new JPanel();

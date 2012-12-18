@@ -1,158 +1,87 @@
 package votemenu;
 
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 import database.QuestionDescription;
 import database.User;
 
+import questionmenu.QuestionListMenuGUI;
+import questionmenu.QuestionListMenuGUIController;
+import questionmenu.QuestionListMenuModel;
 
-/**
- * Initialize GUI and handle user inputs
- * @author KSLV
- * @version Oct 1, 2012
- */
-public class VoteMenuGUIController extends JFrame{
+public class VoteMenuGUIController {
+	private VoteMenuGUI view;
+	private JButton backButton;
+	private List<JButton> buttonList;
+	private User user;
+	private QuestionDescription question;
+	private VoteMenuModel model;
+	private List<JButton> desList;
 
-	private JPanel title;
-	private User user; //Indicate which user is using this class
-	private VoteMenuGUI voteMenuGUI;
-	private ArrayList<String> teamList; //List of name for each team
-	
-	/**
-	 * Constructor for this class
-	 * @param user current userID
-	 * @param q Indicate which question number this user is voting on
-	 * @param nameQuestion Contain the question description as String
-	 */
-	public VoteMenuGUIController(final User user,QuestionDescription q,String nameQuestion)
-	{
-		super("TeamList");
+	public VoteMenuGUIController(VoteMenuGUI view , VoteMenuModel model , User user , QuestionDescription question) {
+		this.view = view;
+		this.model = model;
 		this.user = user;
-		
-		try {
-			voteMenuGUI = new VoteMenuGUI(user, q);
-		} catch (IOException e2) {
-			e2.printStackTrace();
+		this.question = question;
+		view.setTeamList();
+		view.setNBallot(model.getUserBallot(user , question));
+		view.create(question);
+		backButton = view.getbackButton();
+		buttonList = view.getButtonList();
+		desList = view.getDesList();
+		setAction();
+	}
+	
+	private void setAction()
+	{
+		//Add ActionListener for Vote Button
+		for(int i=0;i<buttonList.size();i++)
+		{
+			final int num = i+1;
+			JButton button = buttonList.get(i);
+			button.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					if(model.isTextExist(num))
+					{
+						if(model.vote(user, question, num))
+						{
+							new messagebox.ShowPopup("Vote Completed","Completed",1);
+							view.setBallotShow(model.getUserBallot(user, question));
+						}else new messagebox.ShowPopup("Inefficient Ballot","Error",0);
+					}else new messagebox.ShowPopup("Can't find team","Unexpected Error",0);
+				}
+			});
 		}
-	    teamList = voteMenuGUI.getTeamList();
 		
 		
+		//Add ActionListener for Description Button
+		for(int i=0;i<desList.size();i++)
+		{
+			final int num = i+1;
+			JButton button = desList.get(i);
+			button.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					System.out.println("Description of team : "+num);
+				}
+			});
+		}
 		
-		setLayout(new BoxLayout(this.getContentPane(), 1));
-		JPanel head = new JPanel(new GridLayout(1,1));
-		JLabel headWord = new JLabel(nameQuestion);
-		headWord.setFont(new Font(headWord.getFont() + "", 0, 25));
-		head.add(headWord);
-		add(head);
-		
-		title = new JPanel(new GridLayout(teamList.size()+1, 1));
-		JLabel name = new JLabel("Click on a team you like to vote on");
-		name.setFont(new Font(name.getFont() + "", 0, 17));
-		
-		title.add(name);
-		add(title);
-		
-		addTeam();
-		
-		JPanel showLast = new JPanel(new BorderLayout(0, 20));
-		JPanel lastLine = new JPanel(new GridLayout(1,2));
-		JLabel nballot = new JLabel("Ballot : "+ user.getNBallot().get(q).getBallot());
-		JButton cancel = new JButton("Cancel");
-		showLast.add(lastLine,BorderLayout.SOUTH);
-		nballot.setHorizontalAlignment(SwingConstants.CENTER);
-		lastLine.add(nballot);
-		lastLine.add(cancel);
-		add(showLast);
-		
-		ActionListener cancelPush = new ActionListener() {
+		//Add ActionListener for Back Button
+		backButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				close();
-				try {
-					new questionmenu.QuestionListMenuGUIController(user);
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-				
+				new QuestionListMenuGUIController(new QuestionListMenuGUI(), new QuestionListMenuModel(), user);
+				view.close();
 			}
-		};
-		
-		cancel.addActionListener(cancelPush);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		pack();
-		setVisible(true);
-	}
-	
-	/**
-	 * Create button with each team name as it's Label
-	 */
-	private void addTeam()
-	{
-		for(int i=0;i<teamList.size();i++)
-		{
-			//System.out.println(teamList.get(i));
-			JButton question = new JButton(teamList.get(i));
-			question.setHorizontalAlignment(SwingConstants.LEFT);
-			ActionListener push = new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					//System.out.println(e.getActionCommand());
-					for(int i=0;i<teamList.size();i++)
-					{
-						if(e.getActionCommand().equals(teamList.get(i)))
-						{
-							//System.out.println(i+1);
-							clickVote(i+1);
-						}
-					}
-					
-				}
-			};
-			question.addActionListener(push);
-			title.add(question);
-		}
-	}
-	
-	/**
-	 * Free memory and close this JFrame
-	 */
-	private void close()
-	{
-		this.dispose();
-	}
-	
-	/**
-	 * Handle user action when click on team name
-	 * @param team
-	 */
-	private void clickVote(int team)
-	{
-		close();
-		try {
-			if(!voteMenuGUI.doVote(team))
-				new messagebox.ShowPopup("Insufficient ballot", "Error!!!!!!!", 2);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		try {
-			new questionmenu.QuestionListMenuGUIController(user);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		});
 	}
 }

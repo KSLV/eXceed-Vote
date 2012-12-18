@@ -1,8 +1,6 @@
 package admin;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -17,36 +15,33 @@ import java.util.ArrayList;
 import javax.swing.border.EtchedBorder;
 
 import database.QuestionDescription;
+import database.TeamDescription;
 import exceed.dao.DaoFactory;
-import exceed.dao.QuestionDao;
-import java.awt.FlowLayout;
 
-public class ScoreList extends JFrame {
+public class ScoreViewTeamList extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel centerZone;
 	private JPanel eastZone;
-	private List<JButton> buttonList;
-	//private ArrayList<QuestionDescription> question;
-	private List<String> question;
+	private List<String> teamList;
+	private int userBallot;
 
 
 	/**
 	 * Create the frame.
 	 */
-	public ScoreList() {
-		buttonList = new ArrayList<JButton>();
-		question = new ArrayList<String>();
-		setTitle("Question List");
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	public ScoreViewTeamList() {
+		new ArrayList<JButton>();
+		teamList = new ArrayList<String>();
+		new ArrayList<JButton>();
+		setTitle("Score Viewer");
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
-		create();
 		pack();
 	}
 	
-	public void create()
+	public void create(List<Integer> scores , QuestionDescription qDesc)
 	{
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -56,11 +51,15 @@ public class ScoreList extends JFrame {
 		JPanel northZone = new JPanel();
 		northZone.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		contentPane.add(northZone, BorderLayout.NORTH);
-		northZone.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JLabel titleText = new JLabel("Score List");
-		northZone.add(titleText);
+		JLabel titleText = new JLabel("Score List of question : " + qDesc.getName()+".");
 		titleText.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		northZone.add(titleText);
+		
+		JPanel southZone = new JPanel();
+		southZone.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		contentPane.add(southZone, BorderLayout.SOUTH);
+		southZone.setLayout(new BorderLayout(0, 0));
 		
 		centerZone = new JPanel();
 		contentPane.add(centerZone, BorderLayout.CENTER);
@@ -70,47 +69,38 @@ public class ScoreList extends JFrame {
 		contentPane.add(eastZone, BorderLayout.EAST);
 		eastZone.setLayout(new GridLayout(0, 1, 0, 10));
 		
-		addList();
-		//setMinimumSize(new Dimension(150,0));
+		addList(scores);
+		
 		pack();
 	}
 	
-	public void setQuestionList()
+	public void setTeamList()
 	{
-		List<QuestionDescription> questionList = DaoFactory.getInstance().getQuestionDao().findAll();
+		List<TeamDescription> teamList = DaoFactory.getInstance().getTeamDao().findAll();
 		
-		for(QuestionDescription q : questionList)
+		for(TeamDescription t : teamList)
 		{
-			question.add(q.getName());
+			this.teamList.add(t.getName());
 		}
 	}
 	
-	private void addList()
+	private void addList(List<Integer> scores)
 	{
-		for(int i=0;i<question.size();i++)
+		for(int i=0;i<teamList.size();i++)
 		{
-			JLabel lblTeam = new JLabel(question.get(i));
+			JLabel lblTeam = new JLabel(teamList.get(i));
 			centerZone.add(lblTeam);
-			JButton button = new JButton("<<<");
-			eastZone.add(button);
-			buttonList.add(button);
+			JLabel lblScore = new JLabel(scores.get(i).toString());
+			eastZone.add(lblScore);
 		}
 		
 	}
 	
-	public List<JButton> getButtonList()
-	{
-		return buttonList;
-	}
-	
-	public JButton getLogoutButton()
-	{
-		return logoutButton;
-	}
-
 	public void close() {
 		this.dispose();
 	}
+
+	
 	
 
 }

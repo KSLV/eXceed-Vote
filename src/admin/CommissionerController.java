@@ -7,14 +7,12 @@ import javax.swing.JButton;
 
 public class CommissionerController {
 
-	private Commissioner view;
 	private JButton questionButton;
 	private JButton teamButton;
 	private JButton userButton;
 	private JButton scoreButton;
 
 	public CommissionerController(Commissioner view) {
-		this.view = view;
 		questionButton = view.getQuestionButton();
 		teamButton = view.getTeamButton();
 		userButton = view.getUserButton();
@@ -51,6 +49,7 @@ public class CommissionerController {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				new ScoreViewQuestionListController(new admin.ScoreViewQuestionList() , new admin.ScoreViewQuestionListModel());
 			}
 		});
 	}

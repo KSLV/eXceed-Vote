@@ -1,157 +1,135 @@
 package questionmenu;
 
 import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.List;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.GridLayout;
+import java.util.ArrayList;
+
+import javax.swing.border.EtchedBorder;
 
 import database.QuestionDescription;
 import database.User;
+import exceed.dao.DaoFactory;
+import java.awt.FlowLayout;
 
-/**
- * Initialize QuestionListMenu Components and hangle user actions 
- * @author Lattasit 5410545061
- * @version Oct 3, 2012
- */
-public class QuestionListMenuGUI extends JFrame{
+public class QuestionListMenuGUI extends JFrame {
 
+	private JPanel contentPane;
+	private JPanel centerZone;
+	private JPanel eastZone;
+	private List<JButton> buttonList;
+	//private ArrayList<QuestionDescription> question;
+	private List<String> question;
+	private JButton logoutButton;
+	private JPanel north_south_zone;
+	private JPanel north_north_zone;
+	private JLabel labelWelcome;
 
-	private JPanel title;
-	private List<QuestionDescription> questionDesc; //Contain list of vote questions
-	private User user; //Indicate which user is using the class
-	private JButton signOut;
 
 	/**
-	 * Constructor of this class
-	 * @param user Indicate which user is using this class
-	 * @param list Contain list of vote questions
-	 * @param list2 Contain number of ballot on each question of each person
+	 * Create the frame.
 	 */
-	public QuestionListMenuGUI(User user , List<QuestionDescription> questionDesc , List<Integer> nBallotList)
-	{
-		super("QuestionListMenu");
-		this.user = user;
-		this.questionDesc = questionDesc;
-		//setLayout(new GridLayout(3, 2));
-		setLayout(new BoxLayout(this.getContentPane(), 1));
-		//JPanel head = new JPanel(new GridLayout(1,2));
-		JPanel head = new JPanel(new BorderLayout());
-		JLabel headWord = new JLabel("Click on a question you like to vote");
-		headWord.setFont(new Font(headWord.getFont() + "", 0, 25));
-		head.add(headWord,BorderLayout.WEST);
-		//head.add(headWord);
-		add(head);
-		
-		title = new JPanel(new GridLayout(questionDesc.size()+1, 2));
-		JLabel name = new JLabel("Name");
-		JLabel ballot = new JLabel("Ballot");
-		name.setFont(new Font(name.getFont() + "", 0, 20));
-		ballot.setFont(new Font(ballot.getFont() + "", 0, 20));
-		name.setHorizontalAlignment(SwingConstants.CENTER);
-		ballot.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		title.add(name);
-		title.add(ballot);
-		add(title);
-		
-		addQuestion();
-		
-		JPanel lastLine = new JPanel(new BorderLayout(0,30));
-		signOut = new JButton("SignOut");
-		lastLine.add(signOut,BorderLayout.SOUTH);
-		add(lastLine);
-		
-		ActionListener signOutPush = new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				signOut();
-				
-			}
-		};
-		
-		signOut.addActionListener(signOutPush);
-		
+	public QuestionListMenuGUI() {
+		buttonList = new ArrayList<JButton>();
+		question = new ArrayList<String>();
+		setTitle("Question List");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		pack();
 		setVisible(true);
-	}
-	
-	/**
-	 * Free memory and close the program
-	 */
-	private void close()
-	{
-		dispose();
-	}
-	
-	/**
-	 * Close this JFram and call new Login GUI 
-	 */
-	private void signOut()
-	{
-		close();
-		try {
-			new login.LoginGUI();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 		
-	/**
-	 * Read QuestionList from file and ,Add button with each question as it's Label
-	 */
-	private void addQuestion()
+		pack();
+	}
+	
+	public void create(User user)
 	{
-		for(QuestionDescription q : questionDesc)
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(new BorderLayout(10, 20));
+		
+		JPanel northZone = new JPanel();
+		northZone.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		contentPane.add(northZone, BorderLayout.NORTH);
+		northZone.setLayout(new BorderLayout(0, 0));
+		
+		north_south_zone = new JPanel();
+		northZone.add(north_south_zone, BorderLayout.SOUTH);
+		
+		JLabel titleText = new JLabel("Question List");
+		north_south_zone.add(titleText);
+		titleText.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		
+		north_north_zone = new JPanel();
+		northZone.add(north_north_zone, BorderLayout.NORTH);
+		north_north_zone.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		labelWelcome = new JLabel("Welcome!! " + user.getName() + " "+ user.getSurename() + ". Please select question to vote on.");
+		north_north_zone.add(labelWelcome);
+		
+		JPanel southZone = new JPanel();
+		southZone.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		contentPane.add(southZone, BorderLayout.SOUTH);
+		
+		logoutButton = new JButton("Logout");
+		southZone.add(logoutButton);
+		
+		centerZone = new JPanel();
+		contentPane.add(centerZone, BorderLayout.CENTER);
+		centerZone.setLayout(new GridLayout(0, 1, 0, 10));
+		
+		eastZone = new JPanel();
+		contentPane.add(eastZone, BorderLayout.EAST);
+		eastZone.setLayout(new GridLayout(0, 1, 0, 10));
+		
+		addList();
+		//setMinimumSize(new Dimension(150,0));
+		pack();
+	}
+	
+	public void setQuestionList()
+	{
+		List<QuestionDescription> questionList = DaoFactory.getInstance().getQuestionDao().findAll();
+		
+		for(QuestionDescription q : questionList)
 		{
-			//System.out.println(questionList.get(i));
-			JButton question = new JButton(q.getName());
-			JLabel ballot = new JLabel(Integer.toString(user.getNBallot().get(q).getBallot()));
-			ballot.setHorizontalAlignment(SwingConstants.CENTER);
-			question.setHorizontalAlignment(SwingConstants.LEFT);
-			ActionListener push = new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					for(QuestionDescription q : questionDesc)
-					{
-						if(e.getActionCommand().equals(q.getName()))
-						{
-							close();
-							selectQuestion(q , e.getActionCommand());
-						}
-					}
-				}
-			};
-			question.addActionListener(push);
-			title.add(question);
-			title.add(ballot);
+			question.add(q.getName());
 		}
 	}
 	
-	/**
-	 * Call Vote GUI according to the question user has selected
-	 * @param q Indicate the number of question the user selected
-	 * @param questionName Contain name of the question
-	 */
-	private void selectQuestion(QuestionDescription q , String questionName)
+	private void addList()
 	{
-		new votemenu.VoteMenuGUIController(user, q,questionName);
+		for(int i=0;i<question.size();i++)
+		{
+			JLabel lblTeam = new JLabel(question.get(i));
+			centerZone.add(lblTeam);
+			JButton button = new JButton("<<<");
+			eastZone.add(button);
+			buttonList.add(button);
+		}
+		
 	}
 	
-	public JButton getSignoutButton()
+	public List<JButton> getButtonList()
 	{
-		return signOut;
+		return buttonList;
 	}
+	
+	public JButton getLogoutButton()
+	{
+		return logoutButton;
+	}
+
+	public void close() {
+		this.dispose();
+	}
+	
+
 }

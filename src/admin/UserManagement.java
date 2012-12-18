@@ -10,8 +10,6 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.border.EtchedBorder;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 
 public class UserManagement extends JFrame {
 

@@ -1,8 +1,6 @@
-package questionmenu;
+package admin;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -18,10 +16,9 @@ import javax.swing.border.EtchedBorder;
 
 import database.QuestionDescription;
 import exceed.dao.DaoFactory;
-import exceed.dao.QuestionDao;
 import java.awt.FlowLayout;
 
-public class QuestionListMenuGUI2 extends JFrame {
+public class ScoreViewQuestionList extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel centerZone;
@@ -29,29 +26,24 @@ public class QuestionListMenuGUI2 extends JFrame {
 	private List<JButton> buttonList;
 	//private ArrayList<QuestionDescription> question;
 	private List<String> question;
-	private JButton logoutButton;
-	private JPanel north_south_zone;
-	private JPanel north_north_zone;
-	private JLabel labelWelcome;
 
 
 	/**
 	 * Create the frame.
 	 */
-	public QuestionListMenuGUI2() {
+	public ScoreViewQuestionList() {
 		buttonList = new ArrayList<JButton>();
 		question = new ArrayList<String>();
-		setTitle("Question List");
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setTitle("Score Viewer");
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setVisible(true);
-		create();
 		pack();
 	}
 	
 	public void create()
 	{
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 226, 286);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -60,28 +52,11 @@ public class QuestionListMenuGUI2 extends JFrame {
 		JPanel northZone = new JPanel();
 		northZone.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		contentPane.add(northZone, BorderLayout.NORTH);
-		northZone.setLayout(new BorderLayout(0, 0));
+		northZone.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		north_south_zone = new JPanel();
-		northZone.add(north_south_zone, BorderLayout.SOUTH);
-		
-		JLabel titleText = new JLabel("Question List");
-		north_south_zone.add(titleText);
+		JLabel titleText = new JLabel("Score Viewer. Please select question to inspect.");
+		northZone.add(titleText);
 		titleText.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		
-		north_north_zone = new JPanel();
-		northZone.add(north_north_zone, BorderLayout.NORTH);
-		north_north_zone.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		labelWelcome = new JLabel("Welcome!! Firstname Surename");
-		north_north_zone.add(labelWelcome);
-		
-		JPanel southZone = new JPanel();
-		southZone.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		contentPane.add(southZone, BorderLayout.SOUTH);
-		
-		logoutButton = new JButton("Logout");
-		southZone.add(logoutButton);
 		
 		centerZone = new JPanel();
 		contentPane.add(centerZone, BorderLayout.CENTER);
@@ -124,10 +99,7 @@ public class QuestionListMenuGUI2 extends JFrame {
 		return buttonList;
 	}
 	
-	public JButton getLogoutButton()
-	{
-		return logoutButton;
-	}
+
 
 	public void close() {
 		this.dispose();
