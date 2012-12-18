@@ -9,6 +9,8 @@ import login.LoginGUI2;
 import login.VerificationProcess;
 
 import servicelocator.ServiceLocator;
+import admin.Commissioner;
+import admin.CommissionerController;
 import admin.QuestionManagementController;
 import admin.TeamManagementController;
 import admin.UserManagementController;
@@ -32,9 +34,10 @@ public class Main {
 		ServiceLocator.getServiceLocator();		
 //		new login.LoginGUI();
 		new login.LoginGUIController2(new VerificationProcess(),new LoginGUI2());
-		new QuestionManagementController(new admin.QuestionManagement() , new admin.QuestionManagementModel());
-		new TeamManagementController(new admin.TeamManagement() , new admin.TeamManagementModel());
-		new UserManagementController(new admin.UserManagement() , new admin.UserMannagementModel()) ;
+		new CommissionerController(new Commissioner());
+//		new QuestionManagementController(new admin.QuestionManagement() , new admin.QuestionManagementModel());
+//		new TeamManagementController(new admin.TeamManagement() , new admin.TeamManagementModel());
+//		new UserManagementController(new admin.UserManagement() , new admin.UserMannagementModel()) ;
 //		new questionmenu.QuestionListMen/uGUIController2(new QuestionListMenuGUI2());
 		
 		

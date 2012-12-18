@@ -9,6 +9,7 @@ create table nballot (
 create table question_description (
   id                        integer auto_increment not null,
   name                      varchar(255),
+  maxballot                 integer,
   constraint pk_question_description primary key (id))
 ;
 
@@ -20,15 +21,18 @@ create table team_description (
 
 create table user (
   id                        integer auto_increment not null,
-  name                      varchar(255),
+  username                  varchar(255),
   password                  varchar(255),
+  name                      varchar(255),
+  surename                  varchar(255),
   constraint pk_user primary key (id))
 ;
 
 create table vote_log (
   user_id                   integer,
   question_id               integer,
-  team_id                   integer)
+  team_id                   integer,
+  time                      datetime)
 ;
 
 alter table nballot add constraint fk_nballot_user_1 foreign key (user_id) references user (id) on delete restrict on update restrict;

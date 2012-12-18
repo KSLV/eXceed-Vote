@@ -20,13 +20,16 @@ public class UserMannagementModel {
 		return (DaoFactory.getInstance().getExceedUserDao().find(username) == null);
 	}
 	
-	public void addUser(String username , String password , String nBallot)
+	public void addUser(String username , String password ,String name,String surname)
 	{
 		User user = new User(username , password);
+		user.setName(name);
+		user.setSurename(surname);
 		QuestionDao qDAO = DaoFactory.getInstance().getQuestionDao();
 		List<QuestionDescription> qdList = qDAO.findAll();
+		
 		for (QuestionDescription q : qdList) {
-			user.getNBallot().put(q, new NBallot(user, q, Integer.parseInt(nBallot)));
+			user.getNBallot().put(q, new NBallot(user, q, q.getMaxballot()));
 		}
 		DaoFactory.getInstance().getExceedUserDao().save(user);
 	}
@@ -35,7 +38,7 @@ public class UserMannagementModel {
 	{
 		return DaoFactory.getInstance().getExceedUserDao().find(username);
 	}
-	
+	/*
 	public void setNBallot(String username , String nBallot)
 	{
 		User user = getUser(username);
@@ -43,5 +46,5 @@ public class UserMannagementModel {
 		for (QuestionDescription qDesc : qdList) {
 			user.getNBallot().get(qDesc).setBallot(Integer.parseInt(nBallot));
 		}
-	}
+	}*/
 }

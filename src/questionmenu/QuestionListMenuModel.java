@@ -17,8 +17,7 @@ public class QuestionListMenuModel {
 	
 	public QuestionDescription getQuestionDesc(int num)
 	{
-		return DaoFactory.getInstance().getQuestionDao().find(num);
-		
+		return DaoFactory.getInstance().getQuestionDao().find(num);		
 	}
 	
 }

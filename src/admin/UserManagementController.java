@@ -42,13 +42,13 @@ public class UserManagementController {
 		if(inpusIsNULL()){
 			if(model.checkDuplicateUser(inputUser.getText()))
 			{
-				//model.addUser(inputUser.getText(), inputPass.getText(), inputFirstName.getText());
+				model.addUser(inputUser.getText(), inputPass.getText(),inputFirstName.getText(),inputSureName.getText());
 				new messagebox.ShowPopup("Adding user [" + inputUser.getText() + "] completed.", "Complete!!", 2);
 			}
 			else
 			{
-				//model.setNBallot(inputUser.getText(), inputFirstName.getText());
-				new messagebox.ShowPopup("This user name is already registered.\nReplaced all ballot left with the input.", "Duplicate Username", 2);
+				//model.setNBallot(inputUser.getText(), "5");/**/
+				new messagebox.ShowPopup("This user name is already registered.", "Duplicate Username", 2);
 			}
 		}else
 		{

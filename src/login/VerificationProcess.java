@@ -1,13 +1,17 @@
 package login;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties; 
 import org.apache.log4j.Logger; 
 import org.apache.log4j.PropertyConfigurator;
 
+import database.NBallot;
+import database.QuestionDescription;
 import database.User;
 
 import exceed.dao.DaoFactory;
+import exceed.dao.QuestionDao;
 
 import servicelocator.ServiceLocator;
 
@@ -57,6 +61,7 @@ public class VerificationProcess {
 		if(password.equals(user.getPassword()))
 		{
 			logger.info(username +" Login");
+			checkballot(user);
 			return user;
 		}else
 		{
@@ -65,6 +70,23 @@ public class VerificationProcess {
 		}
 			
 
+	}
+	/**
+	 * Check that user have ballot for all question or not if not it will auto generate ballot
+	 * @param user
+	 */
+	public void checkballot(User user){
+		QuestionDao qDAO = DaoFactory.getInstance().getQuestionDao();
+		List<QuestionDescription> qdList = qDAO.findAll();
+		
+		for (QuestionDescription q : qdList) {
+			if(!user.getNBallot().containsKey(q)){
+				NBallot ballot = new NBallot(user, q, q.getMaxballot());
+				user.getNBallot().put(q, ballot);
+				DaoFactory.getInstance().getExceedUserDao().save(ballot);
+			}
+		}
+		
 	}
 	
 	/**

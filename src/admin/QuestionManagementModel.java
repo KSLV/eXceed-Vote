@@ -15,9 +15,9 @@ public class QuestionManagementModel {
 	{
 		return (DaoFactory.getInstance().getQuestionDao().find(questionName) == null);
 	}
-	
-	public void addQestion(String questionName)
+
+	public void addQestion(String questionName,int maxballot)
 	{
-		DaoFactory.getInstance().getQuestionDao().save(new QuestionDescription(questionName));
+		DaoFactory.getInstance().getQuestionDao().save(new QuestionDescription(questionName,maxballot));
 	}
 }

@@ -18,8 +18,9 @@ public class QuestionDescription {
 	public QuestionDescription(){
 		
 	}
-	public QuestionDescription(String name){
+	public QuestionDescription(String name,int maxballot){
 		this.name = name;
+		this.maxballot = maxballot;
 	}
 	public Integer getId() {
 		return id;

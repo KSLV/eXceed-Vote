@@ -15,6 +15,7 @@ public class QuestionManagement extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField inputBox;
+	private JTextField inputBallot;
 	private JButton addButton;
 
 	
@@ -25,7 +26,7 @@ public class QuestionManagement extends JFrame {
 	public QuestionManagement() {
 		setTitle("Question Management");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 354, 193);
+		setBounds(100, 100, 354, 250);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 10));
@@ -52,8 +53,18 @@ public class QuestionManagement extends JFrame {
 		inputBox.setColumns(10);
 		
 		addButton = new JButton("ADD");
-		addButton.setBounds(140, 77, 77, 23);
+		addButton.setBounds(139, 131, 77, 23);
 		centerPanel.add(addButton);
+		
+		JLabel labelBallot = new JLabel("Ballot Ja");
+		labelBallot.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		labelBallot.setBounds(10, 67, 207, 23);
+		centerPanel.add(labelBallot);
+		
+		inputBallot = new JTextField();
+		inputBallot.setColumns(10);
+		inputBallot.setBounds(34, 92, 272, 28);
+		centerPanel.add(inputBallot);
 		
 		setVisible(true);
 		setResizable(false);
@@ -70,4 +81,10 @@ public class QuestionManagement extends JFrame {
 	{
 		return inputBox;
 	}
+	
+	public JTextField getInputBallot()
+	{
+		return inputBallot;
+	}
+	
 }
