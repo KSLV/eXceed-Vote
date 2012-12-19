@@ -1,5 +1,7 @@
 package exceed.dao;
 
+import com.avaje.ebean.Ebean;
+
 /**
  * Provide Dao for data classes
  * @author Varunyu 5410546326	
@@ -10,7 +12,8 @@ public class DaoFactory {
 	
 	private DaoFactory()
 	{
-		
+		Ebean.beginTransaction();
+		Ebean.endTransaction();
 	}
 	
 	public static DaoFactory getInstance() {
