@@ -31,7 +31,7 @@ public class ExceedUserDao  {
 	}
 	
 	/*
-	 * fin user with specific username
+	 * find user with specific username
 	 */
 	public User find(String username)
 	{
