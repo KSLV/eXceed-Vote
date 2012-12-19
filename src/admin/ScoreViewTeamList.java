@@ -20,15 +20,16 @@ import exceed.dao.DaoFactory;
 
 public class ScoreViewTeamList extends JFrame {
 
-	private JPanel contentPane;
+	/**Center of BorderLayout*/
 	private JPanel centerZone;
+	/**East of BorderLayout*/
 	private JPanel eastZone;
+	/**Save list of team name*/
 	private List<String> teamList;
-	private int userBallot;
 
 
 	/**
-	 * Create the frame.
+	 * Set important variable
 	 */
 	public ScoreViewTeamList() {
 		new ArrayList<JButton>();
@@ -40,10 +41,13 @@ public class ScoreViewTeamList extends JFrame {
 		pack();
 	}
 	
+	/**
+	 * Create the frame.
+	 */
 	public void create(List<Integer> scores , QuestionDescription qDesc)
 	{
 		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(10, 20));
@@ -74,6 +78,9 @@ public class ScoreViewTeamList extends JFrame {
 		pack();
 	}
 	
+	/**
+	 * Add team into team list
+	 */
 	public void setTeamList()
 	{
 		List<TeamDescription> teamList = DaoFactory.getInstance().getTeamDao().findAll();
@@ -84,6 +91,9 @@ public class ScoreViewTeamList extends JFrame {
 		}
 	}
 	
+	/**
+	 * Add team button into button list and program GUI
+	 */
 	private void addList(List<Integer> scores)
 	{
 		for(int i=0;i<teamList.size();i++)
@@ -96,6 +106,9 @@ public class ScoreViewTeamList extends JFrame {
 		
 	}
 	
+	/**
+	 * Close the frame
+	 */
 	public void close() {
 		this.dispose();
 	}

@@ -7,11 +7,20 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 public class QuestionManagementController {
+	/**Save add button*/
 	private JButton addButton;
+	/**Save textField of question name*/
 	private JTextField inputBox;
+	/**Save model of QuestionManagement*/
 	private QuestionManagementModel model;
+	/**Save textField of max ballot*/
 	private JTextField inputBallot;
 
+	/**
+	 * Set important variable
+	 * @param view from class QuestionManagement
+	 * @param model from class QuestionManagementModel
+	 */
 	public QuestionManagementController(QuestionManagement view , QuestionManagementModel model) {
 		this.model = model;
 		addButton = view.getAddButton();
@@ -20,6 +29,9 @@ public class QuestionManagementController {
 		setAction();
 	}
 	
+	/**
+	 * Set listener for each button
+	 */
 	private void setAction()
 	{
 		addButton.addActionListener(new ActionListener() {
@@ -32,6 +44,9 @@ public class QuestionManagementController {
 		
 	}
 	
+	/**
+	 * Work when user click add button
+	 */
 	private void clickAddButton()
 	{
 		if(inputIsNULL()){
@@ -51,6 +66,10 @@ public class QuestionManagementController {
 		inputBallot.setText(null);
 	}
 	
+	/**
+	 * Check data of input
+	 * @return true when input isn't empty
+	 */
 	private boolean inputIsNULL()
 	{
 		if(inputBox.getText().length()==0)return false;

@@ -19,6 +19,9 @@ public class Commissioner extends JFrame {
 	/**Open the user management*/
 	private JButton userButton;
 
+	/**
+	 * Create the frame.
+	 */
 	public Commissioner() {
 		setTitle("Commissioner");
 		
@@ -53,21 +56,37 @@ public class Commissioner extends JFrame {
 		setBounds(100, 300, 450, 200);
 	}
 	
+	/**
+	 * return the question button
+	 * @return question button
+	 */
 	public JButton getQuestionButton()
 	{
 		return questionButton;
 	}
 	
+	/**
+	 * return the team button
+	 * @return team button
+	 */
 	public JButton getTeamButton()
 	{
 		return teamButton;
 	}
 	
+	/**
+	 * return the user button
+	 * @return user button
+	 */
 	public JButton getUserButton()
 	{
 		return userButton;
 	}
 	
+	/**
+	 * return the score button
+	 * @return score button
+	 */
 	public JButton getScoreButton()
 	{
 		return scoreButton;

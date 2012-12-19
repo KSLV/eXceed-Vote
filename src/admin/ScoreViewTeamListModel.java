@@ -14,9 +14,7 @@ public class ScoreViewTeamListModel {
 	private int ballot;
 
 	public ScoreViewTeamListModel()
-	{
-		
-	}
+	{}
 	
 	public boolean isTextExist(int num)
 	{

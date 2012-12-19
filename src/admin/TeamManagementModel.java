@@ -6,9 +6,7 @@ import exceed.dao.DaoFactory;
 public class TeamManagementModel {
 
 	public TeamManagementModel()
-	{
-		
-	}
+	{}
 	
 	public boolean checkDuplicateTeam(String teamName)
 	{

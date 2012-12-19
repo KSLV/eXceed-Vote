@@ -11,9 +11,7 @@ import exceed.dao.QuestionDao;
 public class UserMannagementModel {
 
 	public UserMannagementModel()
-	{
-		
-	}
+	{}
 	
 	public boolean checkDuplicateUser(String username)
 	{

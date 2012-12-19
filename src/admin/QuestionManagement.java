@@ -13,12 +13,11 @@ import javax.swing.border.EtchedBorder;
 
 public class QuestionManagement extends JFrame {
 
-	private JPanel contentPane;
 	/**Get question name from user*/
 	private JTextField inputBox;
-	/**Get maxBallot name from user*/
+	/**Get Max Ballot from user*/
 	private JTextField inputBallot;
-	/**Submit data*/
+	/**Submit input data*/
 	private JButton addButton;
 
 	
@@ -30,7 +29,7 @@ public class QuestionManagement extends JFrame {
 		setTitle("Question Management");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 354, 250);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 10));
 		setContentPane(contentPane);
@@ -74,17 +73,29 @@ public class QuestionManagement extends JFrame {
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 	}
-	
+
+	/**
+	 * return the add button
+	 * @return add button
+	 */
 	public JButton getAddButton()
 	{
 		return addButton;
 	}
-	
+
+	/**
+	 * return the input question name
+	 * @return textField of question name
+	 */
 	public JTextField getInputBox()
 	{
 		return inputBox;
 	}
 	
+	/**
+	 * return the input max ballot
+	 * @return textField of max ballot
+	 */
 	public JTextField getInputBallot()
 	{
 		return inputBallot;

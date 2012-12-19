@@ -6,9 +6,7 @@ import exceed.dao.DaoFactory;
 public class ScoreViewQuestionListModel {
 
 	public ScoreViewQuestionListModel()
-	{
-		
-	}
+	{}
 	
 	public boolean isQuestionExist(int num)
 	{

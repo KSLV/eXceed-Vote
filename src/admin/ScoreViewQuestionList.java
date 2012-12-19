@@ -20,16 +20,18 @@ import java.awt.FlowLayout;
 
 public class ScoreViewQuestionList extends JFrame {
 
-	private JPanel contentPane;
+	/**Center of BorderLayout*/
 	private JPanel centerZone;
+	/**East of BorderLayout*/
 	private JPanel eastZone;
+	/**Save list of button*/
 	private List<JButton> buttonList;
-	//private ArrayList<QuestionDescription> question;
+	/**Save list of question name*/
 	private List<String> question;
 
 
 	/**
-	 * Create the frame.
+	 * Set important variable
 	 */
 	public ScoreViewQuestionList() {
 		buttonList = new ArrayList<JButton>();
@@ -40,11 +42,14 @@ public class ScoreViewQuestionList extends JFrame {
 		pack();
 	}
 	
+	/**
+	 * Create the frame.
+	 */
 	public void create()
 	{
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 226, 286);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(10, 20));
@@ -67,10 +72,12 @@ public class ScoreViewQuestionList extends JFrame {
 		eastZone.setLayout(new GridLayout(0, 1, 0, 10));
 		
 		addList();
-		//setMinimumSize(new Dimension(150,0));
 		pack();
 	}
 	
+	/**
+	 * Add question into question list
+	 */
 	public void setQuestionList()
 	{
 		List<QuestionDescription> questionList = DaoFactory.getInstance().getQuestionDao().findAll();
@@ -81,6 +88,9 @@ public class ScoreViewQuestionList extends JFrame {
 		}
 	}
 	
+	/**
+	 * Add question button into button list and program GUI
+	 */
 	private void addList()
 	{
 		for(int i=0;i<question.size();i++)
@@ -94,6 +104,10 @@ public class ScoreViewQuestionList extends JFrame {
 		
 	}
 	
+	/**
+	 * return the list of button
+	 * @return list of button
+	 */
 	public List<JButton> getButtonList()
 	{
 		return buttonList;
@@ -101,6 +115,9 @@ public class ScoreViewQuestionList extends JFrame {
 	
 
 
+	/**
+	 * Close the frame
+	 */
 	public void close() {
 		this.dispose();
 	}

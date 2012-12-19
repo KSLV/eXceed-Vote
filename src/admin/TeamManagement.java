@@ -13,8 +13,9 @@ import javax.swing.border.EtchedBorder;
 
 public class TeamManagement extends JFrame {
 
-	private JPanel contentPane;
+	/**Get team name from user*/
 	private JTextField inputBox;
+	/**Submit input data*/
 	private JButton addButton;
 
 	
@@ -26,7 +27,7 @@ public class TeamManagement extends JFrame {
 		setTitle("Team Management");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 354, 193);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 10));
 		setContentPane(contentPane);
@@ -61,11 +62,19 @@ public class TeamManagement extends JFrame {
 		
 	}
 	
+	/**
+	 * return the add button
+	 * @return add button
+	 */
 	public JButton getAddButton()
 	{
 		return addButton;
 	}
 	
+	/**
+	 * return the input team name
+	 * @return textField of team name
+	 */
 	public JTextField getInputBox()
 	{
 		return inputBox;

@@ -7,10 +7,18 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 public class TeamManagementController {
+	/**Save add button*/
 	private JButton addButton;
+	/**Save textField of team name*/
 	private JTextField inputBox;
+	/**Save model of TeamManagement*/
 	private TeamManagementModel model;
 
+	/**
+	 * Set important variable
+	 * @param view from class TeamManagement
+	 * @param model from class TeamManagementModel
+	 */
 	public TeamManagementController(TeamManagement view , TeamManagementModel model) {
 		this.model = model;
 		addButton = view.getAddButton();
@@ -18,6 +26,9 @@ public class TeamManagementController {
 		setAction();
 	}
 	
+	/**
+	 * Set listener for each button
+	 */
 	private void setAction()
 	{
 		addButton.addActionListener(new ActionListener() {
@@ -30,6 +41,9 @@ public class TeamManagementController {
 		
 	}
 	
+	/**
+	 * Work when user click add button
+	 */
 	private void clickAddButton()
 	{
 		if(inputBox.getText().length()!=0){

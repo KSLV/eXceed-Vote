@@ -9,9 +9,16 @@ import javax.swing.JButton;
 import database.QuestionDescription;
 
 public class ScoreViewQuestionListController {
+	/**Save list of button*/
 	private List<JButton> buttonList;
+	/**Save model of ScoreViewQuestion*/
 	private ScoreViewQuestionListModel model;
 
+	/**
+	 * Set important variable
+	 * @param view from class ScoreViewQuestionList
+	 * @param model from class ScoreViewQuestionListModel
+	 */
 	public ScoreViewQuestionListController(ScoreViewQuestionList view , ScoreViewQuestionListModel model ) {
 		this.model = model;
 		view.setQuestionList();
@@ -20,6 +27,9 @@ public class ScoreViewQuestionListController {
 		addAction();
 	}
 	
+	/**
+	 * Set listener for each button
+	 */
 	private void addAction()
 	{
 		for(int i=0;i<buttonList.size();i++)

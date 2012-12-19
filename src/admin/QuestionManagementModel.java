@@ -7,9 +7,7 @@ public class QuestionManagementModel {
 
 	
 	public QuestionManagementModel()
-	{
-		
-	}
+	{}
 	
 	public boolean checkDuplicateQuestion(String questionName)
 	{

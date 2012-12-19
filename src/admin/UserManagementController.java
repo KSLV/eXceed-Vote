@@ -8,13 +8,24 @@ import javax.swing.JTextField;
 
 public class UserManagementController {
 
+	/**Save add button*/
 	private JButton addButton;
+	/**Save textField of username*/
 	private JTextField inputUser;
+	/**Save textField if password*/
 	private JTextField inputPass;
+	/**Save textField if first name*/
 	private JTextField inputFirstName;
-	private UserMannagementModel model;
+	/**Save textField if sur name*/
 	private JTextField inputSureName;
+	/**Save model of UserManagement*/
+	private UserMannagementModel model;
 
+	/**
+	 * Set important variable
+	 * @param view from class UserManagement
+	 * @param model from class UsermanagementModel
+	 */
 	public UserManagementController(UserManagement view ,UserMannagementModel model) {
 		this.model = model;
 		addButton = view.getAddButton();
@@ -26,6 +37,9 @@ public class UserManagementController {
 
 	}
 
+	/**
+	 * Set listener for each button
+	 */
 	private void setAction()
 	{
 		addButton.addActionListener(new ActionListener() {
@@ -37,6 +51,9 @@ public class UserManagementController {
 		});
 	}
 
+	/**
+	 * Work when user click add button
+	 */
 	private void clickAddButton()
 	{
 		if(inpusIsNULL()){
@@ -60,6 +77,10 @@ public class UserManagementController {
 		inputSureName.setText(null);
 	}
 	
+	/**
+	 * Check data of input
+	 * @return true when input isn't empty
+	 */
 	public boolean inpusIsNULL()
 	{
 		if(inputUser.getText().length()==0)return false;
@@ -69,6 +90,10 @@ public class UserManagementController {
 		return true;
 	}
 	
+	/**
+	 * Check data of input
+	 * @return true when input is can convert to int
+	 */
 	public boolean isInteger( String input ) {
 	    try {
 	        Integer.parseInt( input );

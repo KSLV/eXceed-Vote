@@ -13,11 +13,15 @@ import javax.swing.border.EtchedBorder;
 
 public class UserManagement extends JFrame {
 
-	private JPanel contentPane;
+	/**Get username from user*/
 	private JTextField inputUser;
+	/**Get password name from user*/
 	private JTextField inputPass;
+	/**Get First Name from user*/
 	private JTextField inputFirstName;
+	/**Get Sur Name from user*/
 	private JTextField inputSureName;
+	/**Submit input data*/
 	private JButton addButton;
 
 	
@@ -29,7 +33,7 @@ public class UserManagement extends JFrame {
 		setTitle("User Register");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 354, 350);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 10));
 		setContentPane(contentPane);
@@ -78,7 +82,7 @@ public class UserManagement extends JFrame {
 		inputFirstName.setBounds(34, 149, 272, 28);
 		centerPanel.add(inputFirstName);
 		
-		JLabel labelSureName = new JLabel("Sure Name");
+		JLabel labelSureName = new JLabel("Sur Name");
 		labelSureName.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		labelSureName.setBounds(10, 180, 207, 23);
 		centerPanel.add(labelSureName);
@@ -94,26 +98,46 @@ public class UserManagement extends JFrame {
 		
 	}
 	
+	/**
+	 * return the add button
+	 * @return add button
+	 */
 	public JButton getAddButton()
 	{
 		return addButton;
 	}
 	
+	/**
+	 * return the input username
+	 * @return textField of username
+	 */
 	public JTextField getInputUser()
 	{
 		return inputUser;
 	}
 	
+	/**
+	 * return the input password
+	 * @return textField of password
+	 */
 	public JTextField getInputPass()
 	{
 		return inputPass;
 	}
 	
+	/**
+	 * return the input first name
+	 * @return textField of first name
+	 */
 	public JTextField getInputFirstName()
 	{
 		return inputFirstName;
 	}
 	
+	/**
+	 * return the input sur name
+	 * @return textField of sur name
+	 */
 	public JTextField getInputSureName()
 	{
 		return inputSureName;
