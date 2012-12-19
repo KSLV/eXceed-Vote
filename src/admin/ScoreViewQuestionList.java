@@ -18,6 +18,10 @@ import database.QuestionDescription;
 import exceed.dao.DaoFactory;
 import java.awt.FlowLayout;
 
+/**
+ * View class of ScoreViewQuestionList application
+ * @author Varunyu 5410546326	
+ */
 public class ScoreViewQuestionList extends JFrame {
 
 	/**Center of BorderLayout*/

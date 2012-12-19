@@ -6,6 +6,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+/**
+ * Add or edit team in the database
+ * @author Lattasit 5410545061
+ * @author Khanet 5410545974	
+ */
 public class TeamManagementController {
 	/**Save add button*/
 	private JButton addButton;
@@ -47,7 +52,7 @@ public class TeamManagementController {
 	private void clickAddButton()
 	{
 		if(inputBox.getText().length()!=0){
-			if(model.checkDuplicateTeam(inputBox.getText()))
+			if(!model.checkDuplicateTeam(inputBox.getText()))
 			{
 				model.addTeam(inputBox.getText());
 				new messagebox.ShowPopup("Adding team [" + inputBox.getText() + "] completed.", "Complete!!", 2);

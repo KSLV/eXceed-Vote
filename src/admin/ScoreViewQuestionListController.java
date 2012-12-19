@@ -8,6 +8,11 @@ import javax.swing.JButton;
 
 import database.QuestionDescription;
 
+/**
+ * Display List of question to be select for score viewing
+ * @author Lattasit 5410545061
+ * @author Khanet	5410545974	( ActionListeners )
+ */
 public class ScoreViewQuestionListController {
 	/**Save list of button*/
 	private List<JButton> buttonList;

@@ -9,12 +9,8 @@ import login.LoginGUI;
 import login.VerificationProcess;
 
 import servicelocator.ServiceLocator;
-import admin.Commissioner;
+import admin.CommissionerView;
 import admin.CommissionerController;
-import admin.QuestionManagementController;
-import admin.TeamManagementController;
-import admin.UserManagementController;
-
 import com.avaje.ebean.Ebean;
 
 import database.NBallot;
@@ -34,7 +30,7 @@ public class Main {
 		ServiceLocator.getServiceLocator();		
 //		new login.LoginGUI();
 		new login.LoginGUIController(new VerificationProcess(),new LoginGUI());
-		new CommissionerController(new Commissioner());
+		new CommissionerController(new CommissionerView());
 //		new QuestionManagementController(new admin.QuestionManagement() , new admin.QuestionManagementModel());
 //		new TeamManagementController(new admin.TeamManagement() , new admin.TeamManagementModel());
 //		new UserManagementController(new admin.UserManagement() , new admin.UserMannagementModel()) ;

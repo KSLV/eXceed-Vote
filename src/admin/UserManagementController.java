@@ -6,6 +6,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+/**
+ * Add or edit User to the database
+ * @author Lattasit 5410545061
+ * @author Khanet 	5410545974	( ActionListeners )
+ */
 public class UserManagementController {
 
 	/**Save add button*/
@@ -56,8 +61,8 @@ public class UserManagementController {
 	 */
 	private void clickAddButton()
 	{
-		if(inpusIsNULL()){
-			if(model.checkDuplicateUser(inputUser.getText()))
+		if(inputIsNULL()){
+			if(!model.checkDuplicateUser(inputUser.getText()))
 			{
 				model.addUser(inputUser.getText(), inputPass.getText(),inputFirstName.getText(),inputSureName.getText());
 				new messagebox.ShowPopup("Adding user [" + inputUser.getText() + "] completed.", "Complete!!", 2);
@@ -81,7 +86,7 @@ public class UserManagementController {
 	 * Check data of input
 	 * @return true when input isn't empty
 	 */
-	public boolean inpusIsNULL()
+	public boolean inputIsNULL()
 	{
 		if(inputUser.getText().length()==0)return false;
 		if(inputPass.getText().length()==0)return false;

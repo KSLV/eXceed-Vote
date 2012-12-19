@@ -8,16 +8,32 @@ import database.User;
 import exceed.dao.DaoFactory;
 import exceed.dao.QuestionDao;
 
+/**
+ * Model class of UserManagement application
+ * @author Varunyu 5410546326	
+ */
 public class UserMannagementModel {
 
 	public UserMannagementModel()
 	{}
 	
+	/**
+	 * Check if there is already a User with this name or not
+	 * @param username A username to be check
+	 * @return true if there exist some user with this username , else return false
+	 */
 	public boolean checkDuplicateUser(String username)
 	{
-		return (DaoFactory.getInstance().getExceedUserDao().find(username) == null);
+		return (DaoFactory.getInstance().getExceedUserDao().find(username) != null);
 	}
 	
+	/**
+	 * Add a User with specific informations to the database
+	 * @param username
+	 * @param password
+	 * @param name
+	 * @param surname
+	 */
 	public void addUser(String username , String password ,String name,String surname)
 	{
 		User user = new User(username , password);

@@ -18,6 +18,10 @@ import database.QuestionDescription;
 import database.TeamDescription;
 import exceed.dao.DaoFactory;
 
+/**
+ * View class of ScoreViewTeamList application
+ * @author Varunyu 5410546326	
+ */
 public class ScoreViewTeamList extends JFrame {
 
 	/**Center of BorderLayout*/

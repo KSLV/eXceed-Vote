@@ -8,7 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Commissioner extends JFrame {
+/**
+ * View class of Commissioner program
+ * @author team KSLV
+ */
+public class CommissionerView extends JFrame {
 
 	/**Open the question management*/
 	private JButton questionButton;
@@ -22,7 +26,7 @@ public class Commissioner extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Commissioner() {
+	public CommissionerView() {
 		setTitle("Commissioner");
 		
 		JPanel northZone = new JPanel();

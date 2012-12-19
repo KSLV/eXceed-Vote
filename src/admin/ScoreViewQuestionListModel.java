@@ -3,6 +3,10 @@ package admin;
 import database.QuestionDescription;
 import exceed.dao.DaoFactory;
 
+/**
+ * Model class of ScoreViewQuestionList application
+ * @author Varunyu 5410546326	
+ */
 public class ScoreViewQuestionListModel {
 
 	public ScoreViewQuestionListModel()

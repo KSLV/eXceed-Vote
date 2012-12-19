@@ -11,6 +11,10 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.border.EtchedBorder;
 
+/**
+ * View class of TeamManagement application
+ * @author Khanet 5410545974	
+ */
 public class TeamManagement extends JFrame {
 
 	/**Get team name from user*/

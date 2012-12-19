@@ -5,6 +5,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+/**
+ * Contain pack of applications for commissioner
+ * @author Lattasit 5410545061
+ * @author Khanet	5410545974	( ActionListeners )
+ */
 public class CommissionerController {
 
 	/**Save question button*/
@@ -20,7 +25,7 @@ public class CommissionerController {
 	 * Set important variable
 	 * @param view from class Commissioner
 	 */
-	public CommissionerController(Commissioner view) {
+	public CommissionerController(CommissionerView view) {
 		questionButton = view.getQuestionButton();
 		teamButton = view.getTeamButton();
 		userButton = view.getUserButton();

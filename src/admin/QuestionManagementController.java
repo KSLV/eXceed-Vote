@@ -6,6 +6,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
+/**
+ * Add , Edit questions
+ * @author Lattasit 5410545061
+ * @author Khanet	5410545974	( ActionListeners )
+ */
 public class QuestionManagementController {
 	/**Save add button*/
 	private JButton addButton;
@@ -50,7 +55,7 @@ public class QuestionManagementController {
 	private void clickAddButton()
 	{
 		if(inputIsNULL()){
-			if(model.checkDuplicateQuestion(inputBox.getText()))
+			if(!model.checkDuplicateQuestion(inputBox.getText()))
 			{
 				model.addQestion(inputBox.getText(),Integer.parseInt(inputBallot.getText()) );
 				new messagebox.ShowPopup("Adding question [" + inputBox.getText() + "] completed.", "Complete!!", 2);
