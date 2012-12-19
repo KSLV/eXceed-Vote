@@ -10,9 +10,13 @@ import javax.swing.JPanel;
 
 public class Commissioner extends JFrame {
 
+	/**Open the question management*/
 	private JButton questionButton;
+	/**Open the team management*/
 	private JButton teamButton;
+	/**Open the score viewer*/
 	private JButton scoreButton;
+	/**Open the user management*/
 	private JButton userButton;
 
 	public Commissioner() {

@@ -14,8 +14,11 @@ import javax.swing.border.EtchedBorder;
 public class QuestionManagement extends JFrame {
 
 	private JPanel contentPane;
+	/**Get question name from user*/
 	private JTextField inputBox;
+	/**Get maxBallot name from user*/
 	private JTextField inputBallot;
+	/**Submit data*/
 	private JButton addButton;
 
 	
