@@ -5,14 +5,20 @@ import javax.persistence.Id;
 
 /**
  * Contain a eXceed camp's voting criteria.
- * @author Varunyu 5410546326
+ * @author Varunyu Fuvattanasilp 5410546326
  * @version Nov 9 2012
  */
 @Entity
 public class QuestionDescription {
 	@Id
 	private Integer id;
+	/**
+	 * name of this question
+	 */
 	private String name;
+	/**
+	 * maximum number that user can vote for this question
+	 */
 	private int maxballot;
 	
 	public QuestionDescription(){
@@ -22,24 +28,48 @@ public class QuestionDescription {
 		this.name = name;
 		this.maxballot = maxballot;
 	}
+	/**
+	 * return id of this entity
+	 */
 	public Integer getId() {
 		return id;
 	}
+	/**
+	 * 
+	 * @param id
+	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	/**
+	 * 
+	 * @return name of question
+	 */
 	public String getName() {
 		return name;
 	}
+	/**
+	 * 
+	 * @param name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}	
+	/**
+	 * 
+	 * @return maximum number that user can vote for this question
+	 */
 	public int getMaxballot() {
 		return maxballot;
 	}
+	/**
+	 * 
+	 * @param maxballot
+	 */
 	public void setMaxballot(int maxballot) {
 		this.maxballot = maxballot;
 	}
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
