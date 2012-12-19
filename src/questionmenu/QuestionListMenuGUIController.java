@@ -17,6 +17,11 @@ import database.User;
 import login.LoginGUI;
 import login.VerificationProcess;
 
+/**
+ * Controller class of QuestionListMenu
+ * @author Lattasit 5410545061
+ * @author Khanet 	5410545974	( ActionListeners )
+ */
 public class QuestionListMenuGUIController {
 	private QuestionListMenuGUI view;
 	private List<JButton> buttonList;
@@ -24,6 +29,12 @@ public class QuestionListMenuGUIController {
 	private QuestionListMenuModel model;
 	private User user;
 
+	/**
+	 * setup view's questionList , call button creation method and setup ActionListeners
+	 * @param view
+	 * @param model
+	 * @param user currrent User identity
+	 */
 	public QuestionListMenuGUIController(QuestionListMenuGUI view , QuestionListMenuModel model , User user ) {
 		this.view = view;
 		this.model = model;
@@ -35,6 +46,9 @@ public class QuestionListMenuGUIController {
 		addAction();
 	}
 	
+	/**
+	 * Setup actionListeners on each button
+	 */
 	private void addAction()
 	{
 		for(int i=0;i<buttonList.size();i++)

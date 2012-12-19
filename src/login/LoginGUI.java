@@ -9,6 +9,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Provide view class for Login windows
+ * @author Khanet 5410545974
+ */
 public class LoginGUI extends JFrame {
 
 	private JPanel contentPane;
@@ -20,9 +24,19 @@ public class LoginGUI extends JFrame {
 	
 
 	/**
-	 * Create the frame.
+	 * call components initialization and set the frame visible
 	 */
 	public LoginGUI() {
+		initComponents();
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
+	}
+	
+	/**
+	 * Initialize swing Components
+	 */
+	private void initComponents()
+	{
 		setTitle("Exceed Vote - Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 320, 196);
@@ -58,28 +72,42 @@ public class LoginGUI extends JFrame {
 		exitButton = new JButton("Exit");
 		exitButton.setBounds(166, 124, 89, 23);
 		contentPane.add(exitButton);
-		
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setVisible(true);
 	}
 	
+	/** dispose this page	 */
 	public void close()
 	{
 		this.dispose();
 	}
 	
+	/**
+	 * get username textField
+	 * @return username textField
+	 */
 	public JTextField getInputUser() {
 		return inputUser;
 	}
 
+	/**
+	 * get password textField
+	 * @return password textField
+	 */
 	public JTextField getInputPass() {
 		return inputPass;
 	}
 
+	/**
+	 * get login button
+	 * @return login button
+	 */
 	public JButton getLoginButton() {
 		return loginButton;
 	}
 	
+	/**
+	 * get exit button
+	 * @return exit button
+	 */
 	public JButton getExitButton() {
 		return exitButton;
 	}

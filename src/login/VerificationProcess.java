@@ -17,9 +17,9 @@ import servicelocator.ServiceLocator;
 
 
 /**
- * Handles Vote Processes
- * @author KSLV
- * @version Oct 1, 2012
+ * Model for Login page, handle login processes
+ * @author Lattasit 5410545061
+ * @author Varunyu 	5410546326	( checkBallot )
  */
 public class VerificationProcess {
 

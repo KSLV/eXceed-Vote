@@ -18,12 +18,15 @@ import database.QuestionDescription;
 import database.TeamDescription;
 import exceed.dao.DaoFactory;
 
+/**
+ * View class for VoteMenu
+ * @author Khanet	5410545974	
+ */
 public class VoteMenuGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel centerZone;
 	private JPanel eastZone;
-	private List<JButton> desList;
 	private List<JButton> buttonList;
 	private List<String> teamList;
 	private JButton backButton;
@@ -34,12 +37,12 @@ public class VoteMenuGUI extends JFrame {
 
 
 	/**
-	 * Create the frame.
+	 * Create JFrame and set it visible
 	 */
 	public VoteMenuGUI() {
 		buttonList = new ArrayList<JButton>();
 		teamList = new ArrayList<String>();
-		desList = new ArrayList<JButton>();
+		new ArrayList<JButton>();
 		setTitle("Team List");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
@@ -47,6 +50,10 @@ public class VoteMenuGUI extends JFrame {
 		pack();
 	}
 	
+	/**
+	 * Initialize and setup components 
+	 * @param qDesc indicate currently selected question
+	 */
 	public void create(QuestionDescription qDesc)
 	{
 		setBounds(100, 100, 450, 300);
@@ -87,13 +94,16 @@ public class VoteMenuGUI extends JFrame {
 		
 		eastZone = new JPanel();
 		contentPane.add(eastZone, BorderLayout.EAST);
-		eastZone.setLayout(new GridLayout(0, 2, 0, 10));
+		eastZone.setLayout(new GridLayout(0, 1, 0, 10));
 		
 		addList();
 		
 		pack();
 	}
 	
+	/**
+	 * setup List of teamDescription
+	 */
 	public void setTeamList()
 	{
 		List<TeamDescription> teamList = DaoFactory.getInstance().getTeamDao().findAll();
@@ -104,6 +114,9 @@ public class VoteMenuGUI extends JFrame {
 		}
 	}
 	
+	/**
+	 * Create and add button for every teamDescription in teamList
+	 */
 	private void addList()
 	{
 		for(int i=0;i<teamList.size();i++)
@@ -111,38 +124,49 @@ public class VoteMenuGUI extends JFrame {
 			JLabel lblTeam = new JLabel(teamList.get(i));
 			centerZone.add(lblTeam);
 			JButton button = new JButton("<<<");
-			JButton desButton = new JButton("?");
 			eastZone.add(button);
-			eastZone.add(desButton);
 			buttonList.add(button);
-			desList.add(desButton);
 		}
 		
 	}
 	
+	/**
+	 * get list of team buttons
+	 * @return list of team buttons
+	 */
 	public List<JButton> getButtonList()
 	{
 		return buttonList;
 	}
 	
-	public List<JButton> getDesList()
-	{
-		return desList;
-	}
-	
+	/**
+	 * get back button
+	 * @return back button
+	 */
 	public JButton getbackButton()
 	{
 		return backButton;
 	}
 
+	/**
+	 * dispose this page
+	 */
 	public void close() {
 		this.dispose();
 	}
 
+	/**
+	 * set number of ballot
+	 * @param userBallot number of ballot this user have on this question
+	 */
 	public void setNBallot(int userBallot) {
 		this.userBallot = userBallot;
 	}
 	
+	/**
+	 * update label indicating number of ballot
+	 * @param userBallot number of ballot this user have on this question
+	 */
 	public void setBallotShow(int userBallot)
 	{
 		nBallot.setText("Ballot :"+Integer.toString(userBallot));

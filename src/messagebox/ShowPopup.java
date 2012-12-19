@@ -4,10 +4,10 @@ import javax.swing.JOptionPane;
 
 /**
  * Create a pop-up according to input send to Constructor method
- * @author KSLV
- * @version Oct 1, 2012
+ * @author Khanet 	5410545974	
  */
 public class ShowPopup {
+	
 	/*
 	 * 0 = x
 	 * 1 = i

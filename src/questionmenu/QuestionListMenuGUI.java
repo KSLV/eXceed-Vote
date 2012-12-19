@@ -19,13 +19,16 @@ import database.User;
 import exceed.dao.DaoFactory;
 import java.awt.FlowLayout;
 
+/**
+ * view class of QuestionMenu
+ * @author Khanet 5410545974	
+ */
 public class QuestionListMenuGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel centerZone;
 	private JPanel eastZone;
 	private List<JButton> buttonList;
-	//private ArrayList<QuestionDescription> question;
 	private List<String> question;
 	private JButton logoutButton;
 	private JPanel north_south_zone;
@@ -34,7 +37,7 @@ public class QuestionListMenuGUI extends JFrame {
 
 
 	/**
-	 * Create the frame.
+	 * Create Jframe and initialize lists.
 	 */
 	public QuestionListMenuGUI() {
 		buttonList = new ArrayList<JButton>();
@@ -46,6 +49,10 @@ public class QuestionListMenuGUI extends JFrame {
 		pack();
 	}
 	
+	/**
+	 * Initialize components
+	 * @param user contain current User identity
+	 */
 	public void create(User user)
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -94,6 +101,9 @@ public class QuestionListMenuGUI extends JFrame {
 		pack();
 	}
 	
+	/**
+	 * setup list of questionDescription
+	 */
 	public void setQuestionList()
 	{
 		List<QuestionDescription> questionList = DaoFactory.getInstance().getQuestionDao().findAll();
@@ -104,6 +114,9 @@ public class QuestionListMenuGUI extends JFrame {
 		}
 	}
 	
+	/**
+	 * Add buttons to list equal to number of questionDescription List
+	 */
 	private void addList()
 	{
 		for(int i=0;i<question.size();i++)
@@ -117,16 +130,27 @@ public class QuestionListMenuGUI extends JFrame {
 		
 	}
 	
+	/**
+	 * get List of QuestionDescription buttons
+	 * @return list of QuestionDescription buttons
+	 */
 	public List<JButton> getButtonList()
 	{
 		return buttonList;
 	}
 	
+	/**
+	 * get Logout button
+	 * @return Logout button
+	 */
 	public JButton getLogoutButton()
 	{
 		return logoutButton;
 	}
 
+	/**
+	 * Dispose this page
+	 */
 	public void close() {
 		this.dispose();
 	}

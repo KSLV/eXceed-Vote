@@ -13,14 +13,26 @@ import questionmenu.QuestionListMenuModel;
 
 import database.User;
 
+/**
+ * Controller for login page
+ * @author Lattasit 5410545061
+ * @author Khanet 5410545974( ActionListeners )
+ */
 public class LoginGUIController {
+	
 	private VerificationProcess model;
 	private LoginGUI view;
+	
 	private JTextField inputUser;
 	private JTextField inputPass;
 	private JButton loginButton;
 	private JButton exitButton;
 
+	/**
+	 * Initialize view and model , retrieve components from view , and setup actionListener 
+	 * @param model
+	 * @param view
+	 */
 	public LoginGUIController(VerificationProcess model , LoginGUI view) {
 		this.model = model;
 		this.view = view;
@@ -31,6 +43,9 @@ public class LoginGUIController {
 		setAction();
 	}
 
+	/**
+	 * Setup actionListener on login and exit button
+	 */
 	private void setAction()
 	{
 		loginButton.addActionListener(new ActionListener() {
@@ -74,6 +89,10 @@ public class LoginGUIController {
 
 	}
 	
+	/**
+	 * process to next page and close this page
+	 * @param user contain User identity
+	 */
 	private void goToQuestionListMenu(User user)
 	{
 		new QuestionListMenuGUIController(new QuestionListMenuGUI(), new QuestionListMenuModel(), user);

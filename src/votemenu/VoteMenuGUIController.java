@@ -13,15 +13,27 @@ import questionmenu.QuestionListMenuGUI;
 import questionmenu.QuestionListMenuGUIController;
 import questionmenu.QuestionListMenuModel;
 
+/**
+ * Controller class of VoteMenu
+ * @author Lattasit 5410545061
+ * @author Khanet 	5410545974	( ActionListeners )
+ */
 public class VoteMenuGUIController {
+	
 	private VoteMenuGUI view;
 	private JButton backButton;
 	private List<JButton> buttonList;
 	private User user;
 	private QuestionDescription question;
 	private VoteMenuModel model;
-	private List<JButton> desList;
 
+	/**
+	 * Receive View, Model, User,and QuestionDescription , call view to update the TeamDescription List, update number of ballots , initialize buttons and setup ActionListener
+	 * @param view
+	 * @param model
+	 * @param user Current User identity
+	 * @param question Currently selected question
+	 */
 	public VoteMenuGUIController(VoteMenuGUI view , VoteMenuModel model , User user , QuestionDescription question) {
 		this.view = view;
 		this.model = model;
@@ -32,10 +44,12 @@ public class VoteMenuGUIController {
 		view.create(question);
 		backButton = view.getbackButton();
 		buttonList = view.getButtonList();
-		desList = view.getDesList();
 		setAction();
 	}
 	
+	/**
+	 * Setup ActionListener of every button in view
+	 */
 	private void setAction()
 	{
 		//Add ActionListener for Vote Button
@@ -47,7 +61,7 @@ public class VoteMenuGUIController {
 				
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					if(model.isTextExist(num))
+					if(model.isTeamExist(num))
 					{
 						if(model.vote(user, question, num))
 						{
@@ -55,21 +69,6 @@ public class VoteMenuGUIController {
 							view.setBallotShow(model.getUserBallot(user, question));
 						}else new messagebox.ShowPopup("Inefficient Ballot","Error",0);
 					}else new messagebox.ShowPopup("Can't find team","Unexpected Error",0);
-				}
-			});
-		}
-		
-		
-		//Add ActionListener for Description Button
-		for(int i=0;i<desList.size();i++)
-		{
-			final int num = i+1;
-			JButton button = desList.get(i);
-			button.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					System.out.println("Description of team : "+num);
 				}
 			});
 		}
