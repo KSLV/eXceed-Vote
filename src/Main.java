@@ -29,13 +29,8 @@ public class Main {
 	{		
 		ServiceLocator.getServiceLocator();	
 		DaoFactory.getInstance();
-//		new login.LoginGUI();
 		new login.LoginGUIController(new VerificationProcess(),new LoginGUI());
 		new CommissionerController(new CommissionerView());
-//		new QuestionManagementController(new admin.QuestionManagement() , new admin.QuestionManagementModel());
-//		new TeamManagementController(new admin.TeamManagement() , new admin.TeamManagementModel());
-//		new UserManagementController(new admin.UserManagement() , new admin.UserMannagementModel()) ;
-//		new questionmenu.QuestionListMen/uGUIController2(new QuestionListMenuGUI2());
 		
 		
 	}

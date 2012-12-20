@@ -38,9 +38,6 @@ public class VerificationProcess {
 	{
 		ServiceLocator sl = ServiceLocator.getServiceLocator();
 		PropertyConfigurator.configure(sl.getLog4jPath());
-		
-//		this.userListDir = sl.getUserListPath();
-//		this.passListDir = sl.getPassListPath();
 	}
 	
 	/**
