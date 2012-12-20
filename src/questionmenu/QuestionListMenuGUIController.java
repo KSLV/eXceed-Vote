@@ -61,6 +61,7 @@ public class QuestionListMenuGUIController {
 				public void actionPerformed(ActionEvent arg0) {
 					if(model.isQuestionExist(num))
 					{
+						model.checkballot(user);
 						QuestionDescription qDesc = model.getQuestionDesc(num);
 						new VoteMenuGUIController(new VoteMenuGUI() , new VoteMenuModel() , user , qDesc);
 						view.dispose();

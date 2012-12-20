@@ -62,7 +62,7 @@ public class QuestionManagement extends JFrame {
 		addButton.setBounds(139, 131, 77, 23);
 		centerPanel.add(addButton);
 		
-		JLabel labelBallot = new JLabel("Ballot Ja");
+		JLabel labelBallot = new JLabel("Number of Starting Ballot");
 		labelBallot.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		labelBallot.setBounds(10, 67, 207, 23);
 		centerPanel.add(labelBallot);
