@@ -16,6 +16,7 @@ public class Main {
 	public static void main(String [] args) throws IOException
 	{		
 		ServiceLocator.getServiceLocator();	
+		DaoFactory.configure();
 		DaoFactory.getInstance();
 		new login.LoginGUIController(new VerificationProcess(),new LoginGUI());
 		new CommissionerController(new CommissionerView());
