@@ -5,7 +5,6 @@ import java.util.List;
 
 import database.QuestionDescription;
 import database.TeamDescription;
-import database.User;
 import exceed.dao.DaoFactory;
 import exceed.dao.VoteLogDao;
 
