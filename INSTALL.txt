@@ -1,0 +1,20 @@
+Installation note of KSLV's eXceedVote :
+
+
+
+Instruction of how to launching an application
+
+-you can launch this application via command line by type the following command
+
+java -cp "JAR files directories" main.Main
+
+
+
+3rd party JAR files used in this application
+
+eBean (ebean-2.7.7)
+java.persistence
+junit
+log4j (log4j-1.2.17)
+mysql connector (mysql-connector-java-5.1.20-bin)
+hamcrest (org.hamcrest.core_1.1.0.v20090501071000)
